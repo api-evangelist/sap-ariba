@@ -1,0 +1,135 @@
+name: SAP Ariba
+description: SAP Ariba is a cloud-based procurement and supply chain collaboration platform that connects buyers and suppliers. It offers APIs for procurement, sourcing, contract management, supplier management, and spend analysis.
+image: https://www.ariba.com/ariba-logo.png
+url: https://www.ariba.com
+created: '2024'
+modified: '2024'
+tags:
+- Procurement
+- Supply Chain
+- B2B
+- Sourcing
+- Supplier Management
+- Contract Management
+- Spend Analysis
+apis:
+- name: SAP Ariba Procurement API
+  description: Enables integration with procurement processes including requisitions, purchase orders, and receipts
+  image: https://api.ariba.com/procurement-icon.png
+  humanURL: https://developer.ariba.com/api/procurement
+  baseURL: https://openapi.ariba.com/api/procurement
+  tags:
+  - Procurement
+  - Purchase Orders
+  - Requisitions
+  properties:
+  - type: Documentation
+    url: https://developer.ariba.com/api/apis/procurement/overview
+  - type: OpenAPI
+    url: https://developer.ariba.com/api/procurement/openapi.json
+  - type: Authentication
+    url: https://developer.ariba.com/api/authentication
+- name: SAP Ariba Sourcing API
+  description: Provides access to sourcing events, RFx processes, auctions, and bid management
+  image: https://api.ariba.com/sourcing-icon.png
+  humanURL: https://developer.ariba.com/api/sourcing
+  baseURL: https://openapi.ariba.com/api/sourcing
+  tags:
+  - Sourcing
+  - RFx
+  - Auctions
+  - Bidding
+  properties:
+  - type: Documentation
+    url: https://developer.ariba.com/api/apis/sourcing/overview
+  - type: OpenAPI
+    url: https://developer.ariba.com/api/sourcing/openapi.json
+  - type: Sandbox
+    url: https://sandbox.ariba.com/api/sourcing
+- name: SAP Ariba Supplier Management API
+  description: Manages supplier lifecycle including onboarding, qualification, performance, and risk assessment
+  image: https://api.ariba.com/supplier-icon.png
+  humanURL: https://developer.ariba.com/api/supplier
+  baseURL: https://openapi.ariba.com/api/supplier
+  tags:
+  - Suppliers
+  - Onboarding
+  - Risk Management
+  - Performance
+  properties:
+  - type: Documentation
+    url: https://developer.ariba.com/api/apis/supplier/overview
+  - type: OpenAPI
+    url: https://developer.ariba.com/api/supplier/openapi.json
+  - type: Postman Collection
+    url: https://developer.ariba.com/api/supplier/postman
+- name: SAP Ariba Contract Management API
+  description: Enables contract creation, management, compliance tracking, and renewal workflows
+  image: https://api.ariba.com/contract-icon.png
+  humanURL: https://developer.ariba.com/api/contracts
+  baseURL: https://openapi.ariba.com/api/contracts
+  tags:
+  - Contracts
+  - Compliance
+  - CLM
+  properties:
+  - type: Documentation
+    url: https://developer.ariba.com/api/apis/contracts/overview
+  - type: OpenAPI
+    url: https://developer.ariba.com/api/contracts/openapi.json
+- name: SAP Ariba Analytical Reporting API
+  description: Provides access to spend analytics, reporting data, and business intelligence metrics
+  image: https://api.ariba.com/analytics-icon.png
+  humanURL: https://developer.ariba.com/api/analytics
+  baseURL: https://openapi.ariba.com/api/analytics
+  tags:
+  - Analytics
+  - Reporting
+  - Spend Analysis
+  - Business Intelligence
+  properties:
+  - type: Documentation
+    url: https://developer.ariba.com/api/apis/analytics/overview
+  - type: OpenAPI
+    url: https://developer.ariba.com/api/analytics/openapi.json
+  - type: Query Guide
+    url: https://developer.ariba.com/api/analytics/query-guide
+- name: SAP Ariba Invoice Management API
+  description: Manages invoice processing, approval workflows, and payment status tracking
+  image: https://api.ariba.com/invoice-icon.png
+  humanURL: https://developer.ariba.com/api/invoices
+  baseURL: https://openapi.ariba.com/api/invoices
+  tags:
+  - Invoices
+  - Payments
+  - AP Automation
+  properties:
+  - type: Documentation
+    url: https://developer.ariba.com/api/apis/invoices/overview
+  - type: OpenAPI
+    url: https://developer.ariba.com/api/invoices/openapi.json
+common:
+- type: Developer Portal
+  url: https://developer.ariba.com
+- type: Authentication
+  url: https://developer.ariba.com/api/authentication
+- type: Getting Started
+  url: https://developer.ariba.com/api/getting-started
+- type: API Status
+  url: https://status.ariba.com
+- type: Support
+  url: https://help.sap.com/ariba
+- type: Terms of Service
+  url: https://www.ariba.com/legal/terms-of-use
+- type: Rate Limits
+  url: https://developer.ariba.com/api/rate-limits
+- type: SDKs
+  url: https://developer.ariba.com/tools/sdks
+- type: Community
+  url: https://community.ariba.com
+- type: Release Notes
+  url: https://developer.ariba.com/api/release-notes
+maintainers:
+- name: SAP Ariba
+  email: developer@ariba.com
+  url: https://developer.ariba.com
