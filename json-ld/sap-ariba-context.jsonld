@@ -1,0 +1,680 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "ariba": "https://openapi.ariba.com/api/procurement/v1/vocab#",
+    "sap": "https://api.sap.com/vocab#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "gr": "http://purl.org/goodrelations/v1#",
+    "unspsc": "https://www.unspsc.org/code/",
+
+    "PurchaseOrder": {
+      "@id": "ariba:PurchaseOrder",
+      "@context": {
+        "orderId": {
+          "@id": "schema:orderNumber",
+          "@type": "xsd:string"
+        },
+        "erpPONumber": {
+          "@id": "ariba:erpPONumber",
+          "@type": "xsd:string"
+        },
+        "versionNumber": {
+          "@id": "ariba:versionNumber",
+          "@type": "xsd:integer"
+        },
+        "orderDate": {
+          "@id": "schema:orderDate",
+          "@type": "xsd:dateTime"
+        },
+        "status": {
+          "@id": "schema:orderStatus",
+          "@type": "xsd:string"
+        },
+        "orderMethodCategory": {
+          "@id": "ariba:orderMethodCategory",
+          "@type": "xsd:string"
+        },
+        "supplier": {
+          "@id": "ariba:supplier",
+          "@type": "@id"
+        },
+        "buyer": {
+          "@id": "ariba:buyer",
+          "@type": "@id"
+        },
+        "currency": {
+          "@id": "schema:priceCurrency",
+          "@type": "xsd:string"
+        },
+        "totalAmount": {
+          "@id": "schema:totalPrice",
+          "@type": "@id"
+        },
+        "taxAmount": {
+          "@id": "ariba:taxAmount",
+          "@type": "@id"
+        },
+        "shippingAmount": {
+          "@id": "ariba:shippingAmount",
+          "@type": "@id"
+        },
+        "paymentTerms": {
+          "@id": "ariba:paymentTerms",
+          "@type": "@id"
+        },
+        "purchaseOrg": {
+          "@id": "ariba:purchaseOrg",
+          "@type": "xsd:string"
+        },
+        "purchaseGroup": {
+          "@id": "ariba:purchaseGroup",
+          "@type": "xsd:string"
+        },
+        "companyCode": {
+          "@id": "ariba:companyCode",
+          "@type": "xsd:string"
+        },
+        "shipTo": {
+          "@id": "ariba:shipTo",
+          "@type": "@id"
+        },
+        "billTo": {
+          "@id": "ariba:billTo",
+          "@type": "@id"
+        },
+        "lineItems": {
+          "@id": "schema:orderedItem",
+          "@type": "@id",
+          "@container": "@list"
+        },
+        "requisitionId": {
+          "@id": "ariba:requisitionId",
+          "@type": "xsd:string"
+        },
+        "contractId": {
+          "@id": "ariba:contractId",
+          "@type": "xsd:string"
+        },
+        "comments": {
+          "@id": "schema:comment",
+          "@type": "xsd:string"
+        },
+        "createdDate": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "lastModifiedDate": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "closedDate": {
+          "@id": "ariba:closedDate",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "PurchaseOrderLineItem": {
+      "@id": "ariba:PurchaseOrderLineItem",
+      "@context": {
+        "numberOnPO": {
+          "@id": "ariba:numberOnPO",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "quantity": {
+          "@id": "schema:orderQuantity",
+          "@type": "xsd:double"
+        },
+        "unitPrice": {
+          "@id": "schema:price",
+          "@type": "@id"
+        },
+        "unitOfMeasure": {
+          "@id": "gr:hasUnitOfMeasurement",
+          "@type": "@id"
+        },
+        "netAmount": {
+          "@id": "ariba:netAmount",
+          "@type": "@id"
+        },
+        "commodityCode": {
+          "@id": "ariba:commodityCode",
+          "@type": "@id"
+        },
+        "buyerPartNumber": {
+          "@id": "ariba:buyerPartNumber",
+          "@type": "xsd:string"
+        },
+        "supplierPartNumber": {
+          "@id": "schema:sku",
+          "@type": "xsd:string"
+        },
+        "manufacturerPartId": {
+          "@id": "schema:mpn",
+          "@type": "xsd:string"
+        },
+        "manufacturerName": {
+          "@id": "schema:manufacturer",
+          "@type": "xsd:string"
+        },
+        "itemCategory": {
+          "@id": "ariba:itemCategory",
+          "@type": "xsd:string"
+        },
+        "accountCategory": {
+          "@id": "ariba:accountCategory",
+          "@type": "xsd:string"
+        },
+        "needByDate": {
+          "@id": "ariba:needByDate",
+          "@type": "xsd:date"
+        },
+        "shipTo": {
+          "@id": "ariba:shipTo",
+          "@type": "@id"
+        },
+        "accountings": {
+          "@id": "ariba:accountings",
+          "@type": "@id",
+          "@container": "@set"
+        },
+        "receivingType": {
+          "@id": "ariba:receivingType",
+          "@type": "xsd:integer"
+        },
+        "taxCode": {
+          "@id": "ariba:taxCode",
+          "@type": "xsd:string"
+        },
+        "serviceStartDate": {
+          "@id": "ariba:serviceStartDate",
+          "@type": "xsd:date"
+        },
+        "serviceEndDate": {
+          "@id": "ariba:serviceEndDate",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "Invoice": {
+      "@id": "ariba:Invoice",
+      "@context": {
+        "invoiceId": {
+          "@id": "schema:confirmationNumber",
+          "@type": "xsd:string"
+        },
+        "invoiceNumber": {
+          "@id": "ariba:invoiceNumber",
+          "@type": "xsd:string"
+        },
+        "invoiceDate": {
+          "@id": "schema:paymentDueDate",
+          "@type": "xsd:date"
+        },
+        "status": {
+          "@id": "schema:paymentStatus",
+          "@type": "xsd:string"
+        },
+        "invoiceType": {
+          "@id": "ariba:invoiceType",
+          "@type": "xsd:string"
+        },
+        "supplier": {
+          "@id": "ariba:supplier",
+          "@type": "@id"
+        },
+        "buyer": {
+          "@id": "ariba:buyer",
+          "@type": "@id"
+        },
+        "purchaseOrderReference": {
+          "@id": "schema:referencesOrder",
+          "@type": "xsd:string"
+        },
+        "currency": {
+          "@id": "schema:priceCurrency",
+          "@type": "xsd:string"
+        },
+        "subtotalAmount": {
+          "@id": "ariba:subtotalAmount",
+          "@type": "@id"
+        },
+        "taxAmount": {
+          "@id": "ariba:taxAmount",
+          "@type": "@id"
+        },
+        "shippingAmount": {
+          "@id": "ariba:shippingAmount",
+          "@type": "@id"
+        },
+        "totalAmount": {
+          "@id": "schema:totalPrice",
+          "@type": "@id"
+        },
+        "paymentTerms": {
+          "@id": "ariba:paymentTerms",
+          "@type": "@id"
+        },
+        "dueDate": {
+          "@id": "schema:paymentDueDate",
+          "@type": "xsd:date"
+        },
+        "remitTo": {
+          "@id": "ariba:remitTo",
+          "@type": "@id"
+        },
+        "lineItems": {
+          "@id": "ariba:invoiceLineItems",
+          "@type": "@id",
+          "@container": "@list"
+        },
+        "approvalDate": {
+          "@id": "ariba:approvalDate",
+          "@type": "xsd:dateTime"
+        },
+        "paymentDate": {
+          "@id": "ariba:paymentDate",
+          "@type": "xsd:date"
+        },
+        "paymentReference": {
+          "@id": "ariba:paymentReference",
+          "@type": "xsd:string"
+        },
+        "createdDate": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "lastModifiedDate": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Supplier": {
+      "@id": "ariba:Supplier",
+      "@context": {
+        "supplierId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:legalName",
+          "@type": "xsd:string"
+        },
+        "doingBusinessAs": {
+          "@id": "schema:alternateName",
+          "@type": "xsd:string"
+        },
+        "dunsNumber": {
+          "@id": "schema:duns",
+          "@type": "xsd:string"
+        },
+        "taxId": {
+          "@id": "schema:taxID",
+          "@type": "xsd:string"
+        },
+        "yearEstablished": {
+          "@id": "schema:foundingDate",
+          "@type": "xsd:integer"
+        },
+        "numberOfEmployees": {
+          "@id": "schema:numberOfEmployees",
+          "@type": "xsd:string"
+        },
+        "annualRevenue": {
+          "@id": "ariba:annualRevenue",
+          "@type": "@id"
+        },
+        "qualificationStatus": {
+          "@id": "ariba:qualificationStatus",
+          "@type": "xsd:string"
+        },
+        "registrationStatus": {
+          "@id": "ariba:registrationStatus",
+          "@type": "xsd:string"
+        },
+        "address": {
+          "@id": "schema:address",
+          "@type": "@id"
+        },
+        "primaryContact": {
+          "@id": "schema:contactPoint",
+          "@type": "@id"
+        },
+        "commodityCodes": {
+          "@id": "ariba:commodityCodes",
+          "@type": "@id",
+          "@container": "@set"
+        },
+        "certifications": {
+          "@id": "ariba:certifications",
+          "@type": "@id",
+          "@container": "@set"
+        },
+        "diversityClassifications": {
+          "@id": "ariba:diversityClassifications",
+          "@container": "@set"
+        },
+        "website": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "createdDate": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "lastModifiedDate": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Money": {
+      "@id": "ariba:Money",
+      "@context": {
+        "amount": {
+          "@id": "schema:value",
+          "@type": "xsd:double"
+        },
+        "currencyCode": {
+          "@id": "schema:priceCurrency",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Address": {
+      "@id": "schema:PostalAddress",
+      "@context": {
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "lines": {
+          "@id": "schema:streetAddress",
+          "@type": "xsd:string"
+        },
+        "city": {
+          "@id": "schema:addressLocality",
+          "@type": "xsd:string"
+        },
+        "state": {
+          "@id": "schema:addressRegion",
+          "@type": "xsd:string"
+        },
+        "postalCode": {
+          "@id": "schema:postalCode",
+          "@type": "xsd:string"
+        },
+        "country": {
+          "@id": "schema:addressCountry",
+          "@type": "xsd:string"
+        },
+        "phone": {
+          "@id": "schema:telephone",
+          "@type": "xsd:string"
+        },
+        "email": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "CommodityCode": {
+      "@id": "ariba:CommodityCode",
+      "@context": {
+        "code": {
+          "@id": "schema:codeValue",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "domain": {
+          "@id": "schema:codingSystem",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "AccountingInfo": {
+      "@id": "ariba:AccountingInfo",
+      "@context": {
+        "costCenter": {
+          "@id": "ariba:costCenter",
+          "@type": "xsd:string"
+        },
+        "generalLedger": {
+          "@id": "ariba:generalLedger",
+          "@type": "xsd:string"
+        },
+        "asset": {
+          "@id": "ariba:asset",
+          "@type": "xsd:string"
+        },
+        "internalOrder": {
+          "@id": "ariba:internalOrder",
+          "@type": "xsd:string"
+        },
+        "wbsElement": {
+          "@id": "ariba:wbsElement",
+          "@type": "xsd:string"
+        },
+        "amount": {
+          "@id": "ariba:amount",
+          "@type": "@id"
+        },
+        "percentage": {
+          "@id": "ariba:percentage",
+          "@type": "xsd:double"
+        },
+        "accountCategory": {
+          "@id": "ariba:accountCategory",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "PaymentTerms": {
+      "@id": "ariba:PaymentTerms",
+      "@context": {
+        "code": {
+          "@id": "schema:codeValue",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "netDays": {
+          "@id": "ariba:netDays",
+          "@type": "xsd:integer"
+        },
+        "discountPercent": {
+          "@id": "ariba:discountPercent",
+          "@type": "xsd:double"
+        },
+        "discountDays": {
+          "@id": "ariba:discountDays",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "TaxDetail": {
+      "@id": "ariba:TaxDetail",
+      "@context": {
+        "taxCode": {
+          "@id": "ariba:taxCode",
+          "@type": "xsd:string"
+        },
+        "taxCategory": {
+          "@id": "ariba:taxCategory",
+          "@type": "xsd:string"
+        },
+        "taxRate": {
+          "@id": "ariba:taxRate",
+          "@type": "xsd:double"
+        },
+        "taxAmount": {
+          "@id": "ariba:taxAmount",
+          "@type": "@id"
+        },
+        "taxableAmount": {
+          "@id": "ariba:taxableAmount",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "UnitOfMeasure": {
+      "@id": "ariba:UnitOfMeasure",
+      "@context": {
+        "code": {
+          "@id": "schema:unitCode",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:unitText",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "ContactInfo": {
+      "@id": "schema:ContactPoint",
+      "@context": {
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "email": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "phone": {
+          "@id": "schema:telephone",
+          "@type": "xsd:string"
+        },
+        "fax": {
+          "@id": "schema:faxNumber",
+          "@type": "xsd:string"
+        },
+        "department": {
+          "@id": "schema:department",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Requisition": {
+      "@id": "ariba:Requisition",
+      "@context": {
+        "requisitionId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "title": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "schema:orderStatus",
+          "@type": "xsd:string"
+        },
+        "requestor": {
+          "@id": "ariba:requestor",
+          "@type": "xsd:string"
+        },
+        "requestorName": {
+          "@id": "ariba:requestorName",
+          "@type": "xsd:string"
+        },
+        "department": {
+          "@id": "schema:department",
+          "@type": "xsd:string"
+        },
+        "needByDate": {
+          "@id": "ariba:needByDate",
+          "@type": "xsd:date"
+        },
+        "lineItems": {
+          "@id": "schema:orderedItem",
+          "@type": "@id",
+          "@container": "@list"
+        },
+        "totalAmount": {
+          "@id": "schema:totalPrice",
+          "@type": "@id"
+        },
+        "purchaseOrderIds": {
+          "@id": "ariba:purchaseOrderIds",
+          "@container": "@set"
+        },
+        "createdDate": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "lastModifiedDate": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Receipt": {
+      "@id": "ariba:Receipt",
+      "@context": {
+        "receiptId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "purchaseOrderId": {
+          "@id": "schema:referencesOrder",
+          "@type": "xsd:string"
+        },
+        "receiptDate": {
+          "@id": "ariba:receiptDate",
+          "@type": "xsd:date"
+        },
+        "receiptType": {
+          "@id": "ariba:receiptType",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "schema:orderStatus",
+          "@type": "xsd:string"
+        },
+        "lineItems": {
+          "@id": "ariba:receiptLineItems",
+          "@type": "@id",
+          "@container": "@list"
+        },
+        "createdDate": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "createdBy": {
+          "@id": "dcterms:creator",
+          "@type": "xsd:string"
+        }
+      }
+    }
+  }
+}

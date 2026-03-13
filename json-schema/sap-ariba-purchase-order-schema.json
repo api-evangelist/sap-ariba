@@ -1,0 +1,915 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.ariba.com/procurement/purchase-order/v1",
+  "title": "SAP Ariba Purchase Order",
+  "description": "JSON Schema for an SAP Ariba Purchase Order document representing a buyer's commitment to purchase goods or services from a supplier through the SAP Business Network. Based on the SAP Ariba Procurement API data model documented at https://help.sap.com/docs/ariba-apis and the Purchase Order web service schemas.",
+  "type": "object",
+  "required": [
+    "orderId",
+    "orderDate",
+    "supplier",
+    "currency",
+    "lineItems"
+  ],
+  "properties": {
+    "orderId": {
+      "type": "string",
+      "description": "Unique purchase order identifier (UniqueName) including version number. This is the primary key for the purchase order in SAP Ariba.",
+      "examples": [
+        "PO-2025-001234",
+        "PO4500012345-1"
+      ]
+    },
+    "erpPONumber": {
+      "type": "string",
+      "description": "ERP system purchase order number (ERPPONumber). Defines the unique ID for every version of the purchase order in the backend ERP system.",
+      "examples": [
+        "4500012345"
+      ]
+    },
+    "versionNumber": {
+      "type": "integer",
+      "description": "Supplemental version number of the original order. Incremented with each change request or modification.",
+      "minimum": 1,
+      "default": 1,
+      "examples": [
+        1,
+        2,
+        3
+      ]
+    },
+    "orderDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the purchase order was created (ISO 8601 format)."
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the purchase order in the procurement lifecycle.",
+      "enum": [
+        "Draft",
+        "Submitted",
+        "Ordered",
+        "Confirmed",
+        "PartiallyReceived",
+        "Received",
+        "PartiallyInvoiced",
+        "Invoiced",
+        "Cancelled",
+        "Closed",
+        "Rejected"
+      ]
+    },
+    "orderMethodCategory": {
+      "type": "string",
+      "description": "Defines the ordering method category for the purchase order indicating how it was generated (e.g., manual entry, automatic from requisition, blanket release).",
+      "examples": [
+        "Manual",
+        "Automatic",
+        "BlanketRelease"
+      ]
+    },
+    "supplier": {
+      "$ref": "#/$defs/SupplierReference",
+      "description": "The supplier from whom goods or services are being purchased."
+    },
+    "buyer": {
+      "$ref": "#/$defs/BuyerReference",
+      "description": "The buyer organization placing the purchase order."
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code defining the type of currency used for the purchase order.",
+      "pattern": "^[A-Z]{3}$",
+      "examples": [
+        "USD",
+        "EUR",
+        "GBP",
+        "JPY"
+      ]
+    },
+    "totalAmount": {
+      "$ref": "#/$defs/Money",
+      "description": "Total monetary value of the purchase order including all line items."
+    },
+    "taxAmount": {
+      "$ref": "#/$defs/Money",
+      "description": "Total tax amount for the purchase order."
+    },
+    "shippingAmount": {
+      "$ref": "#/$defs/Money",
+      "description": "Total shipping and handling charges."
+    },
+    "paymentTerms": {
+      "$ref": "#/$defs/PaymentTerms",
+      "description": "Payment terms governing when and how invoices against this order should be paid. References the unique payment terms code assigned to the supplier."
+    },
+    "purchaseOrg": {
+      "type": "string",
+      "description": "Purchasing organization identifier (PurchaseOrg/UniqueName). Defines the unique purchase organization responsible for this order.",
+      "examples": [
+        "PO-1000",
+        "US01"
+      ]
+    },
+    "purchaseGroup": {
+      "type": "string",
+      "description": "Purchasing group identifier (PurchaseGroup/UniqueName). Defines the unique purchase group handling this order.",
+      "examples": [
+        "PG-001",
+        "100"
+      ]
+    },
+    "companyCode": {
+      "type": "string",
+      "description": "Company code for the buying legal entity.",
+      "examples": [
+        "1000",
+        "US01"
+      ]
+    },
+    "shipTo": {
+      "$ref": "#/$defs/Address",
+      "description": "Default shipping address for the purchase order. Can be overridden at the line item level."
+    },
+    "billTo": {
+      "$ref": "#/$defs/Address",
+      "description": "Billing address for invoice submission."
+    },
+    "lineItems": {
+      "type": "array",
+      "description": "Line items contained in the purchase order. Each line item represents a specific good or service being procured.",
+      "items": {
+        "$ref": "#/$defs/PurchaseOrderLineItem"
+      },
+      "minItems": 1
+    },
+    "deletedLineItems": {
+      "type": "array",
+      "description": "Line items that have been deleted in a change order. Contains the line numbers of removed items.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "numberOnPO": {
+            "type": "string",
+            "description": "The line number of the deleted line item (NumberOnPOString)."
+          }
+        },
+        "required": [
+          "numberOnPO"
+        ]
+      }
+    },
+    "requisitionId": {
+      "type": "string",
+      "description": "Reference to the originating purchase requisition that generated this order."
+    },
+    "contractId": {
+      "type": "string",
+      "description": "Reference to a master agreement or contract against which this order is placed."
+    },
+    "comments": {
+      "type": "string",
+      "description": "Header-level comments or notes on the purchase order."
+    },
+    "headerText": {
+      "type": "array",
+      "description": "Structured header text elements for SAP integration.",
+      "items": {
+        "$ref": "#/$defs/TextElement"
+      }
+    },
+    "customFields": {
+      "$ref": "#/$defs/CustomFields",
+      "description": "Custom field extensions for organization-specific data requirements."
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the order was first created in the system."
+    },
+    "lastModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the most recent modification."
+    },
+    "closedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the order was closed."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "Money": {
+      "type": "object",
+      "description": "Monetary amount with currency code following ISO 4217. Represents price and amount values throughout the purchase order.",
+      "required": [
+        "amount",
+        "currencyCode"
+      ],
+      "properties": {
+        "amount": {
+          "type": "number",
+          "description": "The monetary value.",
+          "examples": [
+            1250.0,
+            99.99,
+            0.0
+          ]
+        },
+        "currencyCode": {
+          "type": "string",
+          "description": "ISO 4217 three-letter currency code.",
+          "pattern": "^[A-Z]{3}$",
+          "examples": [
+            "USD",
+            "EUR"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Address": {
+      "type": "object",
+      "description": "Postal address structure used for ShipTo, BillTo, and RemitTo addresses. Fields align with the SAP Ariba PostalAddress structure.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Addressee name or attention line."
+        },
+        "lines": {
+          "type": "string",
+          "description": "Street address lines containing the valid shipping or billing address."
+        },
+        "city": {
+          "type": "string",
+          "description": "City name where goods need to be shipped or invoices directed."
+        },
+        "state": {
+          "type": "string",
+          "description": "State or province."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Postal or ZIP code of the area."
+        },
+        "country": {
+          "type": "string",
+          "description": "Country code (ISO 3166-1 alpha-2).",
+          "pattern": "^[A-Z]{2}$",
+          "examples": [
+            "US",
+            "DE",
+            "GB"
+          ]
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address."
+        }
+      },
+      "additionalProperties": false
+    },
+    "UnitOfMeasure": {
+      "type": "object",
+      "description": "Unit of measure specification. Uses UN/ECE Recommendation 20 standard codes or SAP Ariba internal codes.",
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Unit of measure code (UN/ECE Rec 20 or SAP internal).",
+          "examples": [
+            "EA",
+            "KG",
+            "PC",
+            "HR",
+            "M",
+            "L"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of the unit.",
+          "examples": [
+            "Each",
+            "Kilogram",
+            "Piece",
+            "Hour"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "CommodityCode": {
+      "type": "object",
+      "description": "UNSPSC commodity classification code used to classify goods and services on line items.",
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "UNSPSC commodity code.",
+          "examples": [
+            "43211500",
+            "72101500"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Commodity description.",
+          "examples": [
+            "Computers",
+            "Building maintenance and repair services"
+          ]
+        },
+        "domain": {
+          "type": "string",
+          "description": "Classification domain identifier.",
+          "default": "UNSPSC"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AccountingInfo": {
+      "type": "object",
+      "description": "Accounting assignment (split accounting) information for distributing line item costs across multiple cost objects. Corresponds to the SplitAccountings element in SAP Ariba.",
+      "properties": {
+        "costCenter": {
+          "type": "string",
+          "description": "Cost center identifier for expenditure allocation (CostCenter)."
+        },
+        "generalLedger": {
+          "type": "string",
+          "description": "General ledger account number (GeneralLedger)."
+        },
+        "asset": {
+          "type": "string",
+          "description": "Fixed asset number (Asset)."
+        },
+        "internalOrder": {
+          "type": "string",
+          "description": "Internal order number (InternalOrder)."
+        },
+        "wbsElement": {
+          "type": "string",
+          "description": "Work Breakdown Structure element (WBSElement)."
+        },
+        "amount": {
+          "$ref": "#/$defs/Money",
+          "description": "Amount allocated to this accounting assignment."
+        },
+        "percentage": {
+          "type": "number",
+          "description": "Percentage of line item amount allocated to this accounting assignment.",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "sapDistributionFlag": {
+          "type": "string",
+          "description": "SAP Distribution Flag (SAPDistributionFlag) indicator."
+        },
+        "accountCategory": {
+          "type": "string",
+          "description": "Account assignment category code for the line item expenditure (AccountCategory/UniqueName)."
+        },
+        "sapSerialNumber": {
+          "type": "string",
+          "description": "SAP serial number for the accounting split entry."
+        }
+      },
+      "additionalProperties": false
+    },
+    "TaxDetail": {
+      "type": "object",
+      "description": "Tax calculation details for a line item. References the tax code per evaluated receipt settlement agreements.",
+      "properties": {
+        "taxCode": {
+          "type": "string",
+          "description": "Tax code identifier (TaxCode/UniqueName)."
+        },
+        "taxCategory": {
+          "type": "string",
+          "description": "Tax category (e.g., VAT, GST, Sales Tax)."
+        },
+        "taxRate": {
+          "type": "number",
+          "description": "Tax rate as a percentage.",
+          "minimum": 0
+        },
+        "taxAmount": {
+          "$ref": "#/$defs/Money",
+          "description": "Calculated tax amount."
+        },
+        "taxableAmount": {
+          "$ref": "#/$defs/Money",
+          "description": "Amount on which tax is calculated."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the tax."
+        }
+      },
+      "additionalProperties": false
+    },
+    "PaymentTerms": {
+      "type": "object",
+      "description": "Payment terms specifying when and how invoices against this purchase order should be paid. References PaymentTerms/UniqueName in SAP Ariba.",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Unique code of the supplier payment terms (PaymentTerms/UniqueName).",
+          "examples": [
+            "NET30",
+            "NET60",
+            "2/10NET30"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable payment terms description.",
+          "examples": [
+            "Net 30 days",
+            "2% discount if paid within 10 days, net 30 days"
+          ]
+        },
+        "netDays": {
+          "type": "integer",
+          "description": "Number of days until payment is due.",
+          "minimum": 0
+        },
+        "discountPercent": {
+          "type": "number",
+          "description": "Early payment discount percentage.",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "discountDays": {
+          "type": "integer",
+          "description": "Number of days within which the discount applies.",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "SupplierReference": {
+      "type": "object",
+      "description": "Reference to a supplier on the SAP Ariba Network. The supplierId corresponds to the Supplier/UniqueName field.",
+      "required": [
+        "supplierId"
+      ],
+      "properties": {
+        "supplierId": {
+          "type": "string",
+          "description": "Supplier unique number (Supplier/UniqueName). AN-ID on the Ariba Network or internal supplier number.",
+          "examples": [
+            "AN01000000001",
+            "SUP-10001"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Supplier company name."
+        },
+        "erpSupplierId": {
+          "type": "string",
+          "description": "Supplier number in the ERP system."
+        }
+      },
+      "additionalProperties": false
+    },
+    "BuyerReference": {
+      "type": "object",
+      "description": "Reference to the buyer organization placing the purchase order.",
+      "properties": {
+        "buyerId": {
+          "type": "string",
+          "description": "Buyer AN-ID on the SAP Ariba Network."
+        },
+        "name": {
+          "type": "string",
+          "description": "Buyer organization name."
+        },
+        "erpBuyerId": {
+          "type": "string",
+          "description": "Buyer identifier in the ERP system."
+        }
+      },
+      "additionalProperties": false
+    },
+    "PurchaseOrderLineItem": {
+      "type": "object",
+      "description": "A line item within a purchase order representing a specific good or service being procured. Corresponds to the ERPOrder line detail elements in SAP Ariba.",
+      "required": [
+        "numberOnPO",
+        "description",
+        "quantity",
+        "unitPrice",
+        "unitOfMeasure"
+      ],
+      "properties": {
+        "numberOnPO": {
+          "type": "string",
+          "description": "Line item number within the purchase order (NumberOnPOString). Unique within the order."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the item or service being purchased (Description/Description)."
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Quantity to purchase (Quantity).",
+          "minimum": 0
+        },
+        "unitPrice": {
+          "$ref": "#/$defs/Money",
+          "description": "Price per unit of measure (Description/Price/Amount). Defines the net amount of each line item."
+        },
+        "unitOfMeasure": {
+          "$ref": "#/$defs/UnitOfMeasure",
+          "description": "Unit of measure for the line item (Description/UnitOfMeasure/UniqueName)."
+        },
+        "netAmount": {
+          "$ref": "#/$defs/Money",
+          "description": "Net line item amount (quantity multiplied by unit price)."
+        },
+        "commodityCode": {
+          "$ref": "#/$defs/CommodityCode",
+          "description": "UNSPSC commodity code for the line item (CommodityCode/UniqueName)."
+        },
+        "buyerPartNumber": {
+          "type": "string",
+          "description": "Buyer-assigned part or material number (ItemMasterID/BuyerPartNumber)."
+        },
+        "supplierPartNumber": {
+          "type": "string",
+          "description": "Supplier-assigned part or catalog number (SupplierPartNumber)."
+        },
+        "manufacturerPartId": {
+          "type": "string",
+          "description": "Manufacturer part identifier (ManufacturerPartID)."
+        },
+        "manufacturerName": {
+          "type": "string",
+          "description": "Name of the manufacturer (ManufacturerName)."
+        },
+        "itemCategory": {
+          "type": "string",
+          "description": "Item category code distinguishing material, service, or other item types (ItemCategory/UniqueName)."
+        },
+        "accountCategory": {
+          "type": "string",
+          "description": "Account assignment category for the line item expenditure (AccountCategory/UniqueName)."
+        },
+        "needByDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Requested delivery date for the line item (NeedByDateString) in ISO 8601 YYYY-MM-DD format."
+        },
+        "shipTo": {
+          "$ref": "#/$defs/Address",
+          "description": "Line-item-level shipping address overriding the header ShipTo."
+        },
+        "accountings": {
+          "type": "array",
+          "description": "Split accounting assignments for distributing costs across multiple cost objects (SplitAccountings).",
+          "items": {
+            "$ref": "#/$defs/AccountingInfo"
+          }
+        },
+        "receivingType": {
+          "type": "integer",
+          "description": "Receiving type value indicating how receipts should be processed for this line item (ReceivingType)."
+        },
+        "taxCode": {
+          "type": "string",
+          "description": "Tax code per evaluated receipt settlement agreements (TaxCode/UniqueName)."
+        },
+        "taxDetail": {
+          "$ref": "#/$defs/TaxDetail",
+          "description": "Detailed tax information for this line item."
+        },
+        "itemOnRequisition": {
+          "type": "string",
+          "description": "Line number of the corresponding item in the originating requisition (ItemOnReq)."
+        },
+        "serviceStartDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Service period start date for service line items."
+        },
+        "serviceEndDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Service period end date for service line items."
+        },
+        "lineText": {
+          "type": "array",
+          "description": "Structured text elements for the line item (SAPOrderInfo). Used for SAP-specific text types.",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        },
+        "scheduleLines": {
+          "type": "array",
+          "description": "Delivery schedule lines for the line item.",
+          "items": {
+            "$ref": "#/$defs/ScheduleLine"
+          }
+        },
+        "comments": {
+          "type": "string",
+          "description": "Additional comments or notes on the line item."
+        },
+        "customFields": {
+          "$ref": "#/$defs/CustomFields",
+          "description": "Custom field extensions for organization-specific line item data."
+        }
+      },
+      "additionalProperties": false
+    },
+    "TextElement": {
+      "type": "object",
+      "description": "Structured text element for SAP integration. Contains indexed text entries with type identifiers corresponding to SAPOrderInfo elements.",
+      "properties": {
+        "index": {
+          "type": "integer",
+          "description": "Text element index position."
+        },
+        "textId": {
+          "type": "string",
+          "description": "SAP text type identifier (TextID)."
+        },
+        "textObject": {
+          "type": "string",
+          "description": "SAP text object identifier (TextObject)."
+        },
+        "content": {
+          "type": "string",
+          "description": "Text content."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ScheduleLine": {
+      "type": "object",
+      "description": "Delivery schedule line specifying when partial quantities should be delivered.",
+      "properties": {
+        "scheduleLineNumber": {
+          "type": "string",
+          "description": "Schedule line number."
+        },
+        "deliveryDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Planned delivery date for this schedule line."
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Quantity to be delivered on this schedule line.",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "CustomFields": {
+      "type": "object",
+      "description": "Custom field extensions supporting organization-specific data requirements. SAP Ariba supports custom fields of various types (boolean, date, integer, money, string) that are configured per tenant. Not all fields are available by default; certain fields need to be added in the Ariba system configuration.",
+      "properties": {
+        "customBoolean": {
+          "type": "array",
+          "description": "Custom boolean field values.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Custom field name."
+              },
+              "value": {
+                "type": "boolean",
+                "description": "Boolean field value."
+              }
+            }
+          }
+        },
+        "customDate": {
+          "type": "array",
+          "description": "Custom date field values.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Custom field name."
+              },
+              "value": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Date field value."
+              }
+            }
+          }
+        },
+        "customInteger": {
+          "type": "array",
+          "description": "Custom integer field values.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Custom field name."
+              },
+              "value": {
+                "type": "integer",
+                "description": "Integer field value."
+              }
+            }
+          }
+        },
+        "customMoney": {
+          "type": "array",
+          "description": "Custom money field values.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Custom field name."
+              },
+              "value": {
+                "$ref": "#/$defs/Money"
+              }
+            }
+          }
+        },
+        "customString": {
+          "type": "array",
+          "description": "Custom string field values.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Custom field name."
+              },
+              "value": {
+                "type": "string",
+                "description": "String field value."
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "examples": [
+    {
+      "orderId": "PO4500012345-1",
+      "erpPONumber": "4500012345",
+      "versionNumber": 1,
+      "orderDate": "2025-06-15T10:30:00Z",
+      "status": "Ordered",
+      "orderMethodCategory": "Automatic",
+      "supplier": {
+        "supplierId": "AN01000000001",
+        "name": "Acme Industrial Supplies GmbH",
+        "erpSupplierId": "SUP-10001"
+      },
+      "buyer": {
+        "buyerId": "AN02000000001",
+        "name": "Global Manufacturing Corp",
+        "erpBuyerId": "BUY-2000"
+      },
+      "currency": "EUR",
+      "totalAmount": {
+        "amount": 15750.0,
+        "currencyCode": "EUR"
+      },
+      "taxAmount": {
+        "amount": 2992.5,
+        "currencyCode": "EUR"
+      },
+      "paymentTerms": {
+        "code": "NET30",
+        "description": "Net 30 days",
+        "netDays": 30
+      },
+      "purchaseOrg": "PO-1000",
+      "purchaseGroup": "PG-001",
+      "companyCode": "1000",
+      "shipTo": {
+        "name": "Global Manufacturing Corp - Plant 1",
+        "lines": "123 Industrial Park Drive",
+        "city": "Stuttgart",
+        "state": "Baden-Wuerttemberg",
+        "postalCode": "70173",
+        "country": "DE"
+      },
+      "billTo": {
+        "name": "Global Manufacturing Corp - Finance",
+        "lines": "456 Corporate Center Blvd",
+        "city": "Stuttgart",
+        "state": "Baden-Wuerttemberg",
+        "postalCode": "70174",
+        "country": "DE"
+      },
+      "lineItems": [
+        {
+          "numberOnPO": "1",
+          "description": "Industrial Safety Gloves - Heat Resistant",
+          "quantity": 500,
+          "unitPrice": {
+            "amount": 12.5,
+            "currencyCode": "EUR"
+          },
+          "unitOfMeasure": {
+            "code": "PR",
+            "description": "Pair"
+          },
+          "netAmount": {
+            "amount": 6250.0,
+            "currencyCode": "EUR"
+          },
+          "commodityCode": {
+            "code": "46181504",
+            "description": "Safety gloves",
+            "domain": "UNSPSC"
+          },
+          "buyerPartNumber": "MAT-GLV-001",
+          "supplierPartNumber": "SG-HR-500",
+          "itemCategory": "Material",
+          "needByDate": "2025-07-15",
+          "shipTo": {
+            "name": "Global Manufacturing Corp - Plant 1",
+            "lines": "123 Industrial Park Drive",
+            "city": "Stuttgart",
+            "postalCode": "70173",
+            "country": "DE"
+          },
+          "accountings": [
+            {
+              "costCenter": "CC-4100",
+              "generalLedger": "400000",
+              "percentage": 100,
+              "accountCategory": "K"
+            }
+          ],
+          "taxCode": "V1"
+        },
+        {
+          "numberOnPO": "2",
+          "description": "Precision Measurement Tool Calibration Service",
+          "quantity": 25,
+          "unitPrice": {
+            "amount": 380.0,
+            "currencyCode": "EUR"
+          },
+          "unitOfMeasure": {
+            "code": "EA",
+            "description": "Each"
+          },
+          "netAmount": {
+            "amount": 9500.0,
+            "currencyCode": "EUR"
+          },
+          "commodityCode": {
+            "code": "72101500",
+            "description": "Building maintenance and repair services",
+            "domain": "UNSPSC"
+          },
+          "itemCategory": "Service",
+          "serviceStartDate": "2025-07-01",
+          "serviceEndDate": "2025-09-30",
+          "accountings": [
+            {
+              "costCenter": "CC-4200",
+              "generalLedger": "410000",
+              "percentage": 60
+            },
+            {
+              "costCenter": "CC-4300",
+              "generalLedger": "410000",
+              "percentage": 40
+            }
+          ],
+          "taxCode": "V1"
+        }
+      ],
+      "requisitionId": "PR-2025-005678",
+      "comments": "Urgent order for Q3 production requirements",
+      "createdDate": "2025-06-15T10:30:00Z",
+      "lastModifiedDate": "2025-06-15T10:30:00Z"
+    }
+  ]
+}
