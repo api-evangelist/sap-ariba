@@ -1,20 +1,17 @@
 name: SAP Ariba
-description: SAP Ariba is a cloud-based procurement and supply chain 
-  collaboration platform that connects buyers and suppliers. It offers APIs for 
-  procurement, sourcing, contract management, supplier management, and spend 
-  analysis.
+description: SAP Ariba is a cloud-based procurement and supply chain collaboration platform that connects buyers and suppliers. It offers APIs for procurement, sourcing, contract management, supplier management, and spend analysis.
 image: https://www.ariba.com/ariba-logo.png
 url: https://www.ariba.com
 created: '2024'
 modified: '2026-03-03'
 tags:
-  - Procurement
-  - Supply Chain
   - B2B
-  - Sourcing
-  - Supplier Management
   - Contract Management
+  - Procurement
+  - Sourcing
   - Spend Analysis
+  - Supplier Management
+  - Supply Chain
 apis:
   - name: SAP Ariba Procurement API
     description: >-
@@ -24,11 +21,11 @@ apis:
     humanURL: https://developer.ariba.com/api/procurement
     baseURL: https://openapi.ariba.com/api/procurement
     tags:
+      - Invoices
       - Procurement
       - Purchase Orders
-      - Invoices
-      - Suppliers
       - Requisitions
+      - Suppliers
     properties:
       - type: Documentation
         url: https://developer.ariba.com/api/apis/procurement/overview
@@ -51,10 +48,10 @@ apis:
     humanURL: https://developer.ariba.com/api/sourcing
     baseURL: https://openapi.ariba.com/api/sourcing
     tags:
-      - Sourcing
-      - RFx
       - Auctions
       - Bidding
+      - RFx
+      - Sourcing
     properties:
       - type: Documentation
         url: https://developer.ariba.com/api/apis/sourcing/overview
@@ -72,10 +69,10 @@ apis:
     humanURL: https://developer.ariba.com/api/supplier
     baseURL: https://openapi.ariba.com/api/supplier
     tags:
-      - Suppliers
       - Onboarding
-      - Risk Management
       - Performance
+      - Risk Management
+      - Suppliers
     properties:
       - type: Documentation
         url: https://developer.ariba.com/api/apis/supplier/overview
@@ -92,9 +89,9 @@ apis:
     humanURL: https://developer.ariba.com/api/contracts
     baseURL: https://openapi.ariba.com/api/contracts
     tags:
-      - Contracts
-      - Compliance
       - CLM
+      - Compliance
+      - Contracts
     properties:
       - type: Documentation
         url: https://developer.ariba.com/api/apis/contracts/overview
@@ -111,9 +108,9 @@ apis:
     baseURL: https://openapi.ariba.com/api/analytics
     tags:
       - Analytics
+      - Business Intelligence
       - Reporting
       - Spend Analysis
-      - Business Intelligence
     properties:
       - type: Documentation
         url: https://developer.ariba.com/api/apis/analytics/overview
@@ -130,9 +127,9 @@ apis:
     humanURL: https://developer.ariba.com/api/invoices
     baseURL: https://openapi.ariba.com/api/invoices
     tags:
+      - AP Automation
       - Invoices
       - Payments
-      - AP Automation
     properties:
       - type: Documentation
         url: https://developer.ariba.com/api/apis/invoices/overview
@@ -148,9 +145,9 @@ apis:
     humanURL: https://api.sap.com/api/purchase_orders/overview
     baseURL: https://openapi.ariba.com/api/purchase-orders-buyer
     tags:
-      - Purchase Orders
-      - Buyers
       - Ariba Network
+      - Buyers
+      - Purchase Orders
     properties:
       - type: Documentation
         url: https://api.sap.com/api/purchase_orders/overview
@@ -164,15 +161,14 @@ apis:
     humanURL: https://api.sap.com/api/purchase_orders_supplier/overview
     baseURL: https://openapi.ariba.com/api/purchase-orders-supplier
     tags:
+      - Ariba Network
       - Purchase Orders
       - Suppliers
-      - Ariba Network
     properties:
       - type: Documentation
         url: https://api.sap.com/api/purchase_orders_supplier/overview
       - type: SAP Help
-        url: 
-          https://help.sap.com/doc/3b0b2f4faaa242dda9004b9f337592bf/cloud/en-US/purchase_order_supplier_api.pdf
+        url: https://help.sap.com/doc/3b0b2f4faaa242dda9004b9f337592bf/cloud/en-US/purchase_order_supplier_api.pdf
       - type: SAP Business Accelerator Hub
         url: https://api.sap.com/api/purchase_orders_supplier/overview
   - name: Ariba Network Supplier Profile API
@@ -182,9 +178,9 @@ apis:
     humanURL: https://api.sap.com/api/supplier_management/overview
     baseURL: https://openapi.ariba.com/api/supplier-profile
     tags:
-      - Suppliers
-      - Profiles
       - Ariba Network
+      - Profiles
+      - Suppliers
     properties:
       - type: Documentation
         url: https://api.sap.com/api/supplier_management/overview
@@ -198,9 +194,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/invoice-extraction
     tags:
-      - Invoices
-      - Data Extraction
       - Ariba Network
+      - Data Extraction
+      - Invoices
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -214,8 +210,8 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/contract-compliance
     tags:
-      - Contracts
       - Compliance
+      - Contracts
       - Procurement
     properties:
       - type: Documentation
@@ -230,9 +226,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/supplier-data
     tags:
-      - Suppliers
       - Data
       - Master Data
+      - Suppliers
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -245,9 +241,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/supplier-data-paginated
     tags:
-      - Suppliers
       - Data
       - Pagination
+      - Suppliers
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -261,9 +257,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/supplier-data-extraction
     tags:
-      - Suppliers
       - Data Extraction
       - Integration
+      - Suppliers
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -277,9 +273,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/supplier-information
     tags:
-      - Suppliers
-      - Profiles
       - Lifecycle
+      - Profiles
+      - Suppliers
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -292,9 +288,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/supplier-invite
     tags:
-      - Suppliers
       - Invitations
       - Onboarding
+      - Suppliers
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -322,9 +318,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/supplier-risk-engagements
     tags:
+      - Assessments
       - Risk Management
       - Suppliers
-      - Assessments
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -338,9 +334,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/risk-category
     tags:
-      - Risk Management
       - Categories
       - Classification
+      - Risk Management
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -355,8 +351,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/document-approval
     tags:
       - Approvals
-      - Workflows
       - Documents
+      - Workflows
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -418,8 +414,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/internal-catalogs
     tags:
       - Catalogs
-      - Shopping
       - Internal
+      - Shopping
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -433,8 +429,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/public-catalogs
     tags:
       - Catalogs
-      - Shopping
       - Marketplace
+      - Shopping
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -447,9 +443,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/contract-workspace-retrieval
     tags:
+      - CLM
       - Contracts
       - Workspaces
-      - CLM
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -464,8 +460,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/contract-workspace-management
     tags:
       - Contracts
-      - Workspaces
       - Management
+      - Workspaces
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -478,9 +474,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/contract-terms
     tags:
+      - Clauses
       - Contracts
       - Terms
-      - Clauses
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -490,17 +486,15 @@ apis:
     description: >-
       Delivers operational metrics and reporting data for procurement activities.
     image: https://api.ariba.com/ops-reporting-procurement-icon.png
-    humanURL: 
-      https://help.sap.com/docs/ariba-apis/operational-reporting-api-for-procurement/operational-reporting-api-for-procurement
+    humanURL: https://help.sap.com/docs/ariba-apis/operational-reporting-api-for-procurement/operational-reporting-api-for-procurement
     baseURL: https://openapi.ariba.com/api/operational-reporting-procurement
     tags:
-      - Reporting
       - Operations
       - Procurement
+      - Reporting
     properties:
       - type: Documentation
-        url: 
-          https://help.sap.com/docs/ariba-apis/operational-reporting-api-for-procurement/operational-reporting-api-for-procurement
+        url: https://help.sap.com/docs/ariba-apis/operational-reporting-api-for-procurement/operational-reporting-api-for-procurement
       - type: SAP Business Accelerator Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Operational Reporting API for Strategic Sourcing
@@ -510,16 +504,15 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/operational-reporting-sourcing
     tags:
-      - Reporting
       - Operations
+      - Reporting
       - Sourcing
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
       - type: SAP Business Accelerator Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
-  - name: SAP Ariba Analytical Reporting API for Strategic and Operational 
-      Procurement
+  - name: SAP Ariba Analytical Reporting API for Strategic and Operational Procurement
     description: >-
       Delivers analytics across strategic and operational procurement domains including
       contracts, sourcing, spend analysis, and buying.
@@ -528,9 +521,9 @@ apis:
     baseURL: https://openapi.ariba.com/api/analytical-reporting
     tags:
       - Analytics
+      - Operational Procurement
       - Reporting
       - Strategic Procurement
-      - Operational Procurement
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -544,8 +537,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/master-data-sourcing
     tags:
       - Master Data
-      - Sourcing
       - Reference Data
+      - Sourcing
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -574,9 +567,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/sourcing-project
     tags:
-      - Sourcing
-      - Projects
       - Events
+      - Projects
+      - Sourcing
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -589,10 +582,10 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/event-management
     tags:
-      - Events
-      - Sourcing
-      - RFx
       - Auctions
+      - Events
+      - RFx
+      - Sourcing
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -606,8 +599,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/surrogate-bid
     tags:
       - Bidding
-      - Sourcing
       - Proxy
+      - Sourcing
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -620,9 +613,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/order-change-buyer
     tags:
-      - Purchase Orders
-      - Change Requests
       - Buyers
+      - Change Requests
+      - Purchase Orders
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -635,8 +628,8 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/order-change-supplier
     tags:
-      - Purchase Orders
       - Change Requests
+      - Purchase Orders
       - Suppliers
     properties:
       - type: Documentation
@@ -650,9 +643,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/ship-notice-buyer
     tags:
-      - Shipping
-      - Notifications
       - Buyers
+      - Notifications
+      - Shipping
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -665,8 +658,8 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/ship-notice-supplier
     tags:
-      - Shipping
       - Notifications
+      - Shipping
       - Suppliers
     properties:
       - type: Documentation
@@ -680,9 +673,8 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/proof-of-service-buyer
     tags:
-      - Services
-      - Proof of Service
       - Buyers
+      - Proof of Service
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -695,7 +687,6 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/proof-of-service-supplier
     tags:
-      - Services
       - Proof of Service
       - Suppliers
     properties:
@@ -710,10 +701,10 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/planning-collaboration-buyer
     tags:
-      - Planning
-      - Collaboration
       - Buyers
+      - Collaboration
       - Forecasting
+      - Planning
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -726,10 +717,10 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/planning-collaboration-supplier
     tags:
-      - Planning
       - Collaboration
-      - Suppliers
       - Forecasting
+      - Planning
+      - Suppliers
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -743,8 +734,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/item-volume-import
     tags:
       - Import
-      - Volume
       - Planning
+      - Volume
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -772,9 +763,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/product-hierarchy
     tags:
-      - Products
-      - Hierarchy
       - Classification
+      - Hierarchy
+      - Products
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -817,9 +808,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/content-lookup
     tags:
-      - Search
       - Content
       - Lookup
+      - Search
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -833,8 +824,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/audit-search
     tags:
       - Audit
-      - Search
       - Compliance
+      - Search
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -847,9 +838,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/procurement-workspace
     tags:
+      - Collaboration
       - Procurement
       - Workspaces
-      - Collaboration
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -863,9 +854,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/flow-extension
     tags:
-      - Workflows
-      - Extensions
       - Customization
+      - Extensions
+      - Workflows
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -879,8 +870,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/async-requests
     tags:
       - Async
-      - Operations
       - Management
+      - Operations
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -893,9 +884,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/integration-event-monitoring
     tags:
+      - Events
       - Integration
       - Monitoring
-      - Events
       - Procurement
     properties:
       - type: Documentation
@@ -940,8 +931,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/transaction-monitoring
     tags:
       - Monitoring
-      - Transactions
       - Operations
+      - Transactions
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -954,9 +945,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/nda-export
     tags:
-      - NDA
-      - Export
       - Compliance
+      - Export
+      - NDA
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -984,9 +975,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/trading-partner-certification
     tags:
-      - Trading Partners
       - Certification
       - Compliance
+      - Trading Partners
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -999,9 +990,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/user-qualification
     tags:
-      - Users
-      - Qualifications
       - Access
+      - Qualifications
+      - Users
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -1016,9 +1007,9 @@ apis:
     baseURL: https://openapi.ariba.com/api/scim
     tags:
       - Identity
+      - Provisioning
       - SCIM
       - User Management
-      - Provisioning
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -1031,8 +1022,8 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/custom-forms
     tags:
-      - Forms
       - Customization
+      - Forms
       - Workflows
     properties:
       - type: Documentation
@@ -1061,8 +1052,8 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/guided-buying
     tags:
-      - Guided Buying
       - Documents
+      - Guided Buying
       - Procurement
     properties:
       - type: Documentation
@@ -1091,9 +1082,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/configuration-review
     tags:
+      - Administration
       - Configuration
       - Parameters
-      - Administration
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -1108,8 +1099,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/project-documents
     tags:
       - Documents
-      - Projects
       - Management
+      - Projects
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -1122,8 +1113,8 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/public-procurement-notices
     tags:
-      - Public Procurement
       - Notices
+      - Public Procurement
       - Tenders
     properties:
       - type: Documentation
@@ -1153,8 +1144,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/discovery-rfx-to-external
     tags:
       - Discovery
-      - RFx
       - Marketplace
+      - RFx
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -1168,8 +1159,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/discovery-rfx-from-external
     tags:
       - Discovery
-      - RFx
       - Marketplace
+      - RFx
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -1182,10 +1173,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/materials-bom-tags
     tags:
-      - Materials
       - BOM
-      - Tags
       - Classification
+      - Materials
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -1199,8 +1189,8 @@ apis:
     baseURL: https://openapi.ariba.com/api/data-replication-status
     tags:
       - Integration
-      - Replication
       - Multi-ERP
+      - Replication
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -1213,9 +1203,9 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/master-data-job-status
     tags:
-      - Master Data
       - Integration
       - Jobs
+      - Master Data
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -1228,25 +1218,24 @@ apis:
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/risk-assessment-import
     tags:
-      - Risk Management
       - Assessments
       - Import
+      - Risk Management
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
       - type: SAP Business Accelerator Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
-  - name: SAP Ariba Finding and Event Collaboration Integration API for Supplier
-      Risk
+  - name: SAP Ariba Finding and Event Collaboration Integration API for Supplier Risk
     description: >-
       Integrates risk findings and event collaboration for supplier risk management.
     image: https://api.ariba.com/risk-collaboration-icon.png
     humanURL: https://help.sap.com/docs/ariba-apis
     baseURL: https://openapi.ariba.com/api/risk-collaboration
     tags:
-      - Risk Management
       - Collaboration
       - Findings
+      - Risk Management
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
@@ -1284,14 +1273,11 @@ common:
   - type: SAP Help Portal
     url: https://help.sap.com/docs/ariba-apis
   - type: Quick Start Guide
-    url: 
-      https://help.sap.com/docs/ariba-apis/help-for-sap-ariba-developer-portal/sap-ariba-developer-portal-quick-start-guide-for-developers
+    url: https://help.sap.com/docs/ariba-apis/help-for-sap-ariba-developer-portal/sap-ariba-developer-portal-quick-start-guide-for-developers
   - type: Steps to Start Using APIs
-    url: 
-      https://help.sap.com/docs/ariba-apis/help-for-sap-ariba-developer-portal/steps-to-start-using-sap-ariba-apis
+    url: https://help.sap.com/docs/ariba-apis/help-for-sap-ariba-developer-portal/steps-to-start-using-sap-ariba-apis
   - type: Authentication Guide
-    url: 
-      https://help.sap.com/docs/ariba-apis/help-for-sap-ariba-developer-portal/sap-ariba-developer-portal-authentication
+    url: https://help.sap.com/docs/ariba-apis/help-for-sap-ariba-developer-portal/sap-ariba-developer-portal-authentication
   - type: SAP Community
     url: https://community.sap.com
   - type: SAP Ariba Network
@@ -1299,8 +1285,7 @@ common:
   - type: GitHub Samples
     url: https://github.com/SAP-samples/ariba-extensibility-samples
   - type: Blog
-    url: 
-      https://community.sap.com/t5/spend-management-blog-posts-by-sap/sap-ariba-api-faq-and-best-practice-on-developer-portal-and-gateway/ba-p/13512565
+    url: https://community.sap.com/t5/spend-management-blog-posts-by-sap/sap-ariba-api-faq-and-best-practice-on-developer-portal-and-gateway/ba-p/13512565
 maintainers:
   - name: Kin Lane
     email: kin@apievangelist.com
