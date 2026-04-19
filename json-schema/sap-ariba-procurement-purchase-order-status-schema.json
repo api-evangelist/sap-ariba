@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PurchaseOrderStatus",
+  "type": "string",
+  "description": "Status of a purchase order in the procurement lifecycle"
+}

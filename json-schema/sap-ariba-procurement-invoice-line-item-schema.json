@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InvoiceLineItem",
+  "type": "object",
+  "description": "A line item on an invoice",
+  "properties": {
+    "lineNumber": {
+      "type": "string",
+      "description": "Line item number on the invoice"
+    },
+    "purchaseOrderReference": {
+      "type": "string",
+      "description": "Referenced purchase order number"
+    },
+    "poLineNumber": {
+      "type": "string",
+      "description": "Referenced purchase order line item number"
+    },
+    "description": {
+      "type": "string",
+      "description": "Item or service description"
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Invoiced quantity"
+    },
+    "buyerPartNumber": {
+      "type": "string",
+      "description": "Buyer part number"
+    },
+    "supplierPartNumber": {
+      "type": "string",
+      "description": "Supplier part number"
+    },
+    "serviceStartDate": {
+      "type": "string",
+      "description": "Service period start date"
+    },
+    "serviceEndDate": {
+      "type": "string",
+      "description": "Service period end date"
+    }
+  }
+}

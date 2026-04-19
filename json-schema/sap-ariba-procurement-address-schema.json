@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Address",
+  "type": "object",
+  "description": "Postal address structure used for shipping, billing, and company addresses",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Addressee name or attention line"
+    },
+    "lines": {
+      "type": "string",
+      "description": "Street address lines"
+    },
+    "city": {
+      "type": "string",
+      "description": "City name"
+    },
+    "state": {
+      "type": "string",
+      "description": "State or province"
+    },
+    "postalCode": {
+      "type": "string",
+      "description": "Postal or ZIP code"
+    },
+    "country": {
+      "type": "string",
+      "description": "Country code (ISO 3166-1 alpha-2)"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address"
+    }
+  }
+}

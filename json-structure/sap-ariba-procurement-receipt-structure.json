@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Receipt",
+  "type": "object",
+  "properties": {
+    "receiptId": {
+      "type": "string"
+    },
+    "purchaseOrderId": {
+      "type": "string"
+    },
+    "receiptDate": {
+      "type": "string"
+    },
+    "receiptType": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "lineItems": {
+      "type": "array"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "createdBy": {
+      "type": "string"
+    }
+  }
+}

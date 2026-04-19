@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Invoice",
+  "type": "object",
+  "properties": {
+    "invoiceId": {
+      "type": "string"
+    },
+    "invoiceNumber": {
+      "type": "string"
+    },
+    "invoiceDate": {
+      "type": "string"
+    },
+    "invoiceType": {
+      "type": "string"
+    },
+    "purchaseOrderReference": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "dueDate": {
+      "type": "string"
+    },
+    "lineItems": {
+      "type": "array"
+    },
+    "taxDetails": {
+      "type": "array"
+    },
+    "comments": {
+      "type": "string"
+    },
+    "approvalDate": {
+      "type": "string"
+    },
+    "paymentDate": {
+      "type": "string"
+    },
+    "paymentReference": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "lastModifiedDate": {
+      "type": "string"
+    }
+  }
+}

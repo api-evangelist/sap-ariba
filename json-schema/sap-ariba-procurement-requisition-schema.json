@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Requisition",
+  "type": "object",
+  "description": "A purchase requisition requesting procurement of goods or services",
+  "properties": {
+    "requisitionId": {
+      "type": "string",
+      "description": "Unique requisition identifier"
+    },
+    "title": {
+      "type": "string",
+      "description": "Requisition title or name"
+    },
+    "requestor": {
+      "type": "string",
+      "description": "User ID of the person who created the requisition"
+    },
+    "requestorName": {
+      "type": "string",
+      "description": "Full name of the requestor"
+    },
+    "department": {
+      "type": "string",
+      "description": "Department of the requestor"
+    },
+    "companyCode": {
+      "type": "string",
+      "description": "Company code"
+    },
+    "needByDate": {
+      "type": "string",
+      "description": "Desired delivery date"
+    },
+    "lineItems": {
+      "type": "array"
+    },
+    "purchaseOrderIds": {
+      "type": "array",
+      "description": "Purchase order IDs generated from this requisition after approval"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Requisition comments"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "lastModifiedDate": {
+      "type": "string"
+    },
+    "approvedDate": {
+      "type": "string"
+    }
+  }
+}

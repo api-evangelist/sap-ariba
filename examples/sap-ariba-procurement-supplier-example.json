@@ -1,0 +1,17 @@
+{
+  "supplierId": "500123",
+  "name": "Example Title",
+  "doingBusinessAs": "example_value",
+  "dunsNumber": "example_value",
+  "taxId": "500123",
+  "yearEstablished": 10,
+  "numberOfEmployees": "example_value",
+  "registrationStatus": "example_value",
+  "commodityCodes": [],
+  "certifications": [],
+  "diversityClassifications": [],
+  "website": "example_value",
+  "description": "A sample description.",
+  "createdDate": "example_value",
+  "lastModifiedDate": "example_value"
+}

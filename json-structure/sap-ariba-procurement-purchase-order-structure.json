@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PurchaseOrder",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "string"
+    },
+    "erpPONumber": {
+      "type": "string"
+    },
+    "versionNumber": {
+      "type": "integer"
+    },
+    "orderDate": {
+      "type": "string"
+    },
+    "orderMethodCategory": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "purchaseOrg": {
+      "type": "string"
+    },
+    "purchaseGroup": {
+      "type": "string"
+    },
+    "companyCode": {
+      "type": "string"
+    },
+    "lineItems": {
+      "type": "array"
+    },
+    "requisitionId": {
+      "type": "string"
+    },
+    "contractId": {
+      "type": "string"
+    },
+    "comments": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "lastModifiedDate": {
+      "type": "string"
+    },
+    "closedDate": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "InvoiceListResponse",
+  "type": "object",
+  "properties": {
+    "totalCount": {
+      "type": "integer"
+    },
+    "skip": {
+      "type": "integer"
+    },
+    "limit": {
+      "type": "integer"
+    },
+    "invoices": {
+      "type": "array"
+    }
+  }
+}

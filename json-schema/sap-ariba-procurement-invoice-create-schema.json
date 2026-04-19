@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InvoiceCreate",
+  "type": "object",
+  "description": "Request body for creating a new invoice",
+  "properties": {
+    "invoiceNumber": {
+      "type": "string",
+      "description": "Supplier-assigned invoice number"
+    },
+    "invoiceDate": {
+      "type": "string",
+      "description": "Invoice issue date"
+    },
+    "invoiceType": {
+      "type": "string"
+    },
+    "purchaseOrderReference": {
+      "type": "string",
+      "description": "Purchase order number"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "lineItems": {
+      "type": "array"
+    },
+    "comments": {
+      "type": "string"
+    }
+  }
+}

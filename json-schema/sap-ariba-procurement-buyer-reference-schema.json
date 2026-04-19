@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BuyerReference",
+  "type": "object",
+  "description": "Reference to a buyer organization",
+  "properties": {
+    "buyerId": {
+      "type": "string",
+      "description": "Buyer AN-ID on the SAP Ariba Network"
+    },
+    "name": {
+      "type": "string",
+      "description": "Buyer organization name"
+    },
+    "erpBuyerId": {
+      "type": "string",
+      "description": "Buyer identifier in the ERP system"
+    }
+  }
+}

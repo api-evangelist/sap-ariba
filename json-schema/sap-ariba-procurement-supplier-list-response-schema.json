@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SupplierListResponse",
+  "type": "object",
+  "description": "Paginated list of suppliers",
+  "properties": {
+    "totalCount": {
+      "type": "integer",
+      "description": "Total number of matching suppliers"
+    },
+    "skip": {
+      "type": "integer",
+      "description": "Number of records skipped"
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Maximum records per page"
+    },
+    "suppliers": {
+      "type": "array"
+    }
+  }
+}

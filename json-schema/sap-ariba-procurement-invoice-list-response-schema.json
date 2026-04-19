@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InvoiceListResponse",
+  "type": "object",
+  "description": "Paginated list of invoices",
+  "properties": {
+    "totalCount": {
+      "type": "integer",
+      "description": "Total number of matching invoices"
+    },
+    "skip": {
+      "type": "integer",
+      "description": "Number of records skipped"
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Maximum records per page"
+    },
+    "invoices": {
+      "type": "array"
+    }
+  }
+}

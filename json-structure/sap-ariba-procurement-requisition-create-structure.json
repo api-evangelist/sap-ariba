@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "RequisitionCreate",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "needByDate": {
+      "type": "string"
+    },
+    "companyCode": {
+      "type": "string"
+    },
+    "lineItems": {
+      "type": "array"
+    },
+    "comments": {
+      "type": "string"
+    }
+  }
+}

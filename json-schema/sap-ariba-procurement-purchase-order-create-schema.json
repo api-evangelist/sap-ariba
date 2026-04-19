@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PurchaseOrderCreate",
+  "type": "object",
+  "description": "Request body for creating a new purchase order",
+  "properties": {
+    "erpPONumber": {
+      "type": "string",
+      "description": "ERP system purchase order number"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code"
+    },
+    "purchaseOrg": {
+      "type": "string",
+      "description": "Purchasing organization identifier"
+    },
+    "purchaseGroup": {
+      "type": "string",
+      "description": "Purchasing group identifier"
+    },
+    "companyCode": {
+      "type": "string",
+      "description": "Company code"
+    },
+    "lineItems": {
+      "type": "array"
+    },
+    "requisitionId": {
+      "type": "string",
+      "description": "Reference to originating requisition"
+    },
+    "contractId": {
+      "type": "string",
+      "description": "Reference to master agreement"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Header-level comments"
+    }
+  }
+}

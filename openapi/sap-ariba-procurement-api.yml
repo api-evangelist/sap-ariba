@@ -21,113 +21,113 @@ info:
   x-sap-stateInfo:
     state: Active
   x-documentation:
-    - url: https://help.sap.com/docs/ariba-apis
-      description: SAP Help Portal - Ariba APIs
-    - url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
-      description: SAP Business Accelerator Hub
-    - url: >-
-        https://help.sap.com/docs/ariba-apis/operational-reporting-api-for-procurement/operational-reporting-api-for-procurement
-      description: Operational Reporting API for Procurement
+  - url: https://help.sap.com/docs/ariba-apis
+    description: SAP Help Portal - Ariba APIs
+  - url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
+    description: SAP Business Accelerator Hub
+  - url: >-
+      https://help.sap.com/docs/ariba-apis/operational-reporting-api-for-procurement/operational-reporting-api-for-procurement
+    description: Operational Reporting API for Procurement
 servers:
-  - url: https://openapi.ariba.com/api/procurement/v1
-    description: SAP Ariba Production API Server
-  - url: https://sandbox.ariba.com/api/procurement/v1
-    description: SAP Ariba Sandbox API Server
+- url: https://openapi.ariba.com/api/procurement/v1
+  description: SAP Ariba Production API Server
+- url: https://sandbox.ariba.com/api/procurement/v1
+  description: SAP Ariba Sandbox API Server
 security:
-  - oauth2: []
+- oauth2: []
 tags:
-  - name: Purchase Orders
-    description: >-
-      Create, retrieve, update, and manage purchase orders across the SAP Ariba
-      Network. Supports standard and service purchase orders including new,
-      change, cancel, and close operations.
-  - name: Purchase Order Line Items
-    description: >-
-      Manage individual line items within purchase orders including quantities,
-      pricing, delivery schedules, and accounting assignments.
-  - name: Invoices
-    description: >-
-      Process and manage invoices including creation, approval workflows, status
-      tracking, and payment reconciliation.
-  - name: Suppliers
-    description: >-
-      Access and manage supplier profiles, onboarding, qualifications,
-      performance, and risk assessments on the SAP Ariba Network.
-  - name: Requisitions
-    description: >-
-      Create and manage purchase requisitions that initiate the procurement
-      process and flow into purchase orders upon approval.
-  - name: Receipts
-    description: >-
-      Record goods receipts and service confirmations against purchase orders to
-      support three-way matching.
+- name: Purchase Orders
+  description: >-
+    Create, retrieve, update, and manage purchase orders across the SAP Ariba
+    Network. Supports standard and service purchase orders including new,
+    change, cancel, and close operations.
+- name: Purchase Order Line Items
+  description: >-
+    Manage individual line items within purchase orders including quantities,
+    pricing, delivery schedules, and accounting assignments.
+- name: Invoices
+  description: >-
+    Process and manage invoices including creation, approval workflows, status
+    tracking, and payment reconciliation.
+- name: Suppliers
+  description: >-
+    Access and manage supplier profiles, onboarding, qualifications,
+    performance, and risk assessments on the SAP Ariba Network.
+- name: Requisitions
+  description: >-
+    Create and manage purchase requisitions that initiate the procurement
+    process and flow into purchase orders upon approval.
+- name: Receipts
+  description: >-
+    Record goods receipts and service confirmations against purchase orders to
+    support three-way matching.
 paths:
   /orders:
     get:
       operationId: listPurchaseOrders
-      summary: List purchase orders
+      summary: List Purchase Orders
       description: >-
         Retrieves a paginated list of purchase order headers matching the
         specified filter criteria. Supports filtering by buyer, supplier, date
         range, status, and other order attributes. Results are returned with
         pagination support using skip and limit parameters.
       tags:
-        - Purchase Orders
+      - Purchase Orders
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - $ref: '#/components/parameters/SkipParam'
-        - $ref: '#/components/parameters/LimitParam'
-        - name: filter
-          in: query
-          description: >-
-            OData-style filter expression to narrow results. Supports operators
-            eq, ne, gt, lt, ge, le with the case-sensitive 'and' operator.
-            Example: orderDate ge '2025-01-01' and status eq 'Ordered'
-          required: false
-          schema:
-            type: string
-        - name: orderBy
-          in: query
-          description: Field name to sort results by, with optional asc or desc direction
-          required: false
-          schema:
-            type: string
-        - name: supplierId
-          in: query
-          description: Filter by supplier AN-ID on the SAP Ariba Network
-          required: false
-          schema:
-            type: string
-        - name: buyerId
-          in: query
-          description: Filter by buyer AN-ID on the SAP Ariba Network
-          required: false
-          schema:
-            type: string
-        - name: status
-          in: query
-          description: Filter by purchase order status
-          required: false
-          schema:
-            $ref: '#/components/schemas/PurchaseOrderStatus'
-        - name: fromDate
-          in: query
-          description: >-
-            Filter orders created on or after this date (ISO 8601 format
-            YYYY-MM-DD)
-          required: false
-          schema:
-            type: string
-            format: date
-        - name: toDate
-          in: query
-          description: >-
-            Filter orders created on or before this date (ISO 8601 format
-            YYYY-MM-DD)
-          required: false
-          schema:
-            type: string
-            format: date
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/LimitParam'
+      - name: filter
+        in: query
+        description: >-
+          OData-style filter expression to narrow results. Supports operators
+          eq, ne, gt, lt, ge, le with the case-sensitive 'and' operator.
+          Example: orderDate ge '2025-01-01' and status eq 'Ordered'
+        required: false
+        schema:
+          type: string
+      - name: orderBy
+        in: query
+        description: Field name to sort results by, with optional asc or desc direction
+        required: false
+        schema:
+          type: string
+      - name: supplierId
+        in: query
+        description: Filter by supplier AN-ID on the SAP Ariba Network
+        required: false
+        schema:
+          type: string
+      - name: buyerId
+        in: query
+        description: Filter by buyer AN-ID on the SAP Ariba Network
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Filter by purchase order status
+        required: false
+        schema:
+          $ref: '#/components/schemas/PurchaseOrderStatus'
+      - name: fromDate
+        in: query
+        description: >-
+          Filter orders created on or after this date (ISO 8601 format
+          YYYY-MM-DD)
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: toDate
+        in: query
+        description: >-
+          Filter orders created on or before this date (ISO 8601 format
+          YYYY-MM-DD)
+        required: false
+        schema:
+          type: string
+          format: date
       responses:
         '200':
           description: Successfully retrieved list of purchase orders
@@ -145,18 +145,21 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createPurchaseOrder
-      summary: Create a purchase order
+      summary: Create a Purchase Order
       description: >-
         Creates a new purchase order in the SAP Ariba system. The order must
         include header information, at least one line item, supplier details,
         and shipping address. Upon successful creation, the purchase order is
         transmitted through the Ariba Network to the designated supplier.
       tags:
-        - Purchase Orders
+      - Purchase Orders
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/RealmParam'
       requestBody:
         required: true
         content:
@@ -198,20 +201,23 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /orders/{orderId}:
     get:
       operationId: getPurchaseOrder
-      summary: Get a purchase order
+      summary: Get a Purchase Order
       description: >-
         Retrieves the complete details of a specific purchase order including
         header information, all line items, accounting assignments, shipping
         addresses, and current status. The orderId corresponds to the unique
         purchase order identifier (UniqueName) in SAP Ariba.
       tags:
-        - Purchase Orders
+      - Purchase Orders
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - $ref: '#/components/parameters/OrderIdParam'
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/OrderIdParam'
       responses:
         '200':
           description: Successfully retrieved purchase order details
@@ -229,9 +235,12 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: updatePurchaseOrder
-      summary: Update a purchase order
+      summary: Update a Purchase Order
       description: >-
         Updates an existing purchase order with change request information.
         Supports modifications to line items, quantities, prices, delivery
@@ -239,10 +248,10 @@ paths:
         order and increments the version number. Change requests are transmitted
         to the supplier through the Ariba Network.
       tags:
-        - Purchase Orders
+      - Purchase Orders
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - $ref: '#/components/parameters/OrderIdParam'
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/OrderIdParam'
       requestBody:
         required: true
         content:
@@ -280,19 +289,22 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /orders/{orderId}/cancel:
     post:
       operationId: cancelPurchaseOrder
-      summary: Cancel a purchase order
+      summary: Cancel a Purchase Order
       description: >-
         Cancels an existing purchase order and notifies the supplier through the
         Ariba Network. Only orders in Ordered or Confirmed status can be
         cancelled. Cancellation creates a new version with cancelled status.
       tags:
-        - Purchase Orders
+      - Purchase Orders
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - $ref: '#/components/parameters/OrderIdParam'
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/OrderIdParam'
       requestBody:
         required: false
         content:
@@ -330,21 +342,24 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /orders/{orderId}/lineItems:
     get:
       operationId: listPurchaseOrderLineItems
-      summary: List line items for a purchase order
+      summary: List Line Items for a Purchase Order
       description: >-
         Retrieves all line items associated with a specific purchase order
         including item details, quantities, pricing, delivery schedules,
         commodity codes, and accounting assignments.
       tags:
-        - Purchase Order Line Items
+      - Purchase Order Line Items
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - $ref: '#/components/parameters/OrderIdParam'
-        - $ref: '#/components/parameters/SkipParam'
-        - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/OrderIdParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/LimitParam'
       responses:
         '200':
           description: Successfully retrieved line items
@@ -362,25 +377,28 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /orders/{orderId}/lineItems/{lineItemNumber}:
     get:
       operationId: getPurchaseOrderLineItem
-      summary: Get a specific line item
+      summary: Get a Specific Line Item
       description: >-
         Retrieves details for a specific line item within a purchase order
         identified by its line number (NumberOnPO).
       tags:
-        - Purchase Order Line Items
+      - Purchase Order Line Items
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - $ref: '#/components/parameters/OrderIdParam'
-        - name: lineItemNumber
-          in: path
-          description: >-
-            The line item number within the purchase order (NumberOnPO)
-          required: true
-          schema:
-            type: string
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/OrderIdParam'
+      - name: lineItemNumber
+        in: path
+        description: >-
+          The line item number within the purchase order (NumberOnPO)
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successfully retrieved line item details
@@ -398,63 +416,66 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /invoices:
     get:
       operationId: listInvoices
-      summary: List invoices
+      summary: List Invoices
       description: >-
         Retrieves a paginated list of invoices. Supports filtering by supplier,
         buyer, purchase order reference, date range, status, and payment status.
       tags:
-        - Invoices
+      - Invoices
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - $ref: '#/components/parameters/SkipParam'
-        - $ref: '#/components/parameters/LimitParam'
-        - name: filter
-          in: query
-          description: OData-style filter expression
-          required: false
-          schema:
-            type: string
-        - name: supplierId
-          in: query
-          description: Filter by supplier AN-ID
-          required: false
-          schema:
-            type: string
-        - name: buyerId
-          in: query
-          description: Filter by buyer AN-ID
-          required: false
-          schema:
-            type: string
-        - name: status
-          in: query
-          description: Filter by invoice processing status
-          required: false
-          schema:
-            $ref: '#/components/schemas/InvoiceStatus'
-        - name: purchaseOrderId
-          in: query
-          description: Filter invoices referencing a specific purchase order
-          required: false
-          schema:
-            type: string
-        - name: fromDate
-          in: query
-          description: Filter invoices created on or after this date
-          required: false
-          schema:
-            type: string
-            format: date
-        - name: toDate
-          in: query
-          description: Filter invoices created on or before this date
-          required: false
-          schema:
-            type: string
-            format: date
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/LimitParam'
+      - name: filter
+        in: query
+        description: OData-style filter expression
+        required: false
+        schema:
+          type: string
+      - name: supplierId
+        in: query
+        description: Filter by supplier AN-ID
+        required: false
+        schema:
+          type: string
+      - name: buyerId
+        in: query
+        description: Filter by buyer AN-ID
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Filter by invoice processing status
+        required: false
+        schema:
+          $ref: '#/components/schemas/InvoiceStatus'
+      - name: purchaseOrderId
+        in: query
+        description: Filter invoices referencing a specific purchase order
+        required: false
+        schema:
+          type: string
+      - name: fromDate
+        in: query
+        description: Filter invoices created on or after this date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: toDate
+        in: query
+        description: Filter invoices created on or before this date
+        required: false
+        schema:
+          type: string
+          format: date
       responses:
         '200':
           description: Successfully retrieved list of invoices
@@ -472,17 +493,20 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createInvoice
-      summary: Create an invoice
+      summary: Create an Invoice
       description: >-
         Creates a new invoice in the SAP Ariba system. The invoice must
         reference a purchase order and include line item details, amounts, tax
         information, and supplier banking details for payment processing.
       tags:
-        - Invoices
+      - Invoices
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/RealmParam'
       requestBody:
         required: true
         content:
@@ -524,24 +548,27 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /invoices/{invoiceId}:
     get:
       operationId: getInvoice
-      summary: Get an invoice
+      summary: Get an Invoice
       description: >-
         Retrieves the complete details of a specific invoice including header
         information, line items, tax details, payment terms, and approval
         status.
       tags:
-        - Invoices
+      - Invoices
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - name: invoiceId
-          in: path
-          description: Unique identifier for the invoice
-          required: true
-          schema:
-            type: string
+      - $ref: '#/components/parameters/RealmParam'
+      - name: invoiceId
+        in: path
+        description: Unique identifier for the invoice
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successfully retrieved invoice details
@@ -559,23 +586,26 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /invoices/{invoiceId}/approve:
     post:
       operationId: approveInvoice
-      summary: Approve an invoice
+      summary: Approve an Invoice
       description: >-
         Approves an invoice for payment processing. The invoice must be in
         Pending Approval status. Triggers downstream payment workflows.
       tags:
-        - Invoices
+      - Invoices
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - name: invoiceId
-          in: path
-          description: Unique identifier for the invoice
-          required: true
-          schema:
-            type: string
+      - $ref: '#/components/parameters/RealmParam'
+      - name: invoiceId
+        in: path
+        description: Unique identifier for the invoice
+        required: true
+        schema:
+          type: string
       requestBody:
         required: false
         content:
@@ -610,23 +640,26 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /invoices/{invoiceId}/reject:
     post:
       operationId: rejectInvoice
-      summary: Reject an invoice
+      summary: Reject an Invoice
       description: >-
         Rejects an invoice and returns it to the supplier with a reason for
         rejection. The supplier is notified through the Ariba Network.
       tags:
-        - Invoices
+      - Invoices
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - name: invoiceId
-          in: path
-          description: Unique identifier for the invoice
-          required: true
-          schema:
-            type: string
+      - $ref: '#/components/parameters/RealmParam'
+      - name: invoiceId
+        in: path
+        description: Unique identifier for the invoice
+        required: true
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -634,7 +667,7 @@ paths:
             schema:
               type: object
               required:
-                - reason
+              - reason
               properties:
                 reason:
                   type: string
@@ -663,50 +696,53 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /suppliers:
     get:
       operationId: listSuppliers
-      summary: List suppliers
+      summary: List Suppliers
       description: >-
         Retrieves a paginated list of supplier profiles from the SAP Ariba
         Network. Supports filtering by supplier name, AN-ID, qualification
         status, commodity codes, and location.
       tags:
-        - Suppliers
+      - Suppliers
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - $ref: '#/components/parameters/SkipParam'
-        - $ref: '#/components/parameters/LimitParam'
-        - name: filter
-          in: query
-          description: OData-style filter expression
-          required: false
-          schema:
-            type: string
-        - name: name
-          in: query
-          description: Search suppliers by name (partial match supported)
-          required: false
-          schema:
-            type: string
-        - name: qualificationStatus
-          in: query
-          description: Filter by supplier qualification status
-          required: false
-          schema:
-            $ref: '#/components/schemas/SupplierQualificationStatus'
-        - name: commodityCode
-          in: query
-          description: Filter by UNSPSC commodity code
-          required: false
-          schema:
-            type: string
-        - name: country
-          in: query
-          description: Filter by supplier country (ISO 3166-1 alpha-2)
-          required: false
-          schema:
-            type: string
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/LimitParam'
+      - name: filter
+        in: query
+        description: OData-style filter expression
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Search suppliers by name (partial match supported)
+        required: false
+        schema:
+          type: string
+      - name: qualificationStatus
+        in: query
+        description: Filter by supplier qualification status
+        required: false
+        schema:
+          $ref: '#/components/schemas/SupplierQualificationStatus'
+      - name: commodityCode
+        in: query
+        description: Filter by UNSPSC commodity code
+        required: false
+        schema:
+          type: string
+      - name: country
+        in: query
+        description: Filter by supplier country (ISO 3166-1 alpha-2)
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           description: Successfully retrieved list of suppliers
@@ -724,25 +760,28 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /suppliers/{supplierId}:
     get:
       operationId: getSupplier
-      summary: Get a supplier profile
+      summary: Get a Supplier Profile
       description: >-
         Retrieves the complete profile details of a specific supplier including
         company information, contact details, addresses, certifications,
         commodity classifications, and qualification status.
       tags:
-        - Suppliers
+      - Suppliers
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - name: supplierId
-          in: path
-          description: >-
-            Supplier AN-ID (Ariba Network ID) or internal supplier identifier
-          required: true
-          schema:
-            type: string
+      - $ref: '#/components/parameters/RealmParam'
+      - name: supplierId
+        in: path
+        description: >-
+          Supplier AN-ID (Ariba Network ID) or internal supplier identifier
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successfully retrieved supplier profile
@@ -760,38 +799,41 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /requisitions:
     get:
       operationId: listRequisitions
-      summary: List requisitions
+      summary: List Requisitions
       description: >-
         Retrieves a paginated list of purchase requisitions. Requisitions are
         the starting point of the procurement process and flow into purchase
         orders upon approval.
       tags:
-        - Requisitions
+      - Requisitions
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - $ref: '#/components/parameters/SkipParam'
-        - $ref: '#/components/parameters/LimitParam'
-        - name: filter
-          in: query
-          description: OData-style filter expression
-          required: false
-          schema:
-            type: string
-        - name: status
-          in: query
-          description: Filter by requisition status
-          required: false
-          schema:
-            $ref: '#/components/schemas/RequisitionStatus'
-        - name: requestor
-          in: query
-          description: Filter by requestor user ID
-          required: false
-          schema:
-            type: string
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/LimitParam'
+      - name: filter
+        in: query
+        description: OData-style filter expression
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Filter by requisition status
+        required: false
+        schema:
+          $ref: '#/components/schemas/RequisitionStatus'
+      - name: requestor
+        in: query
+        description: Filter by requestor user ID
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           description: Successfully retrieved list of requisitions
@@ -809,17 +851,20 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createRequisition
-      summary: Create a requisition
+      summary: Create a Requisition
       description: >-
         Creates a new purchase requisition. The requisition enters the
         approval workflow and upon approval generates one or more purchase
         orders.
       tags:
-        - Requisitions
+      - Requisitions
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/RealmParam'
       requestBody:
         required: true
         content:
@@ -855,23 +900,26 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /requisitions/{requisitionId}:
     get:
       operationId: getRequisition
-      summary: Get a requisition
+      summary: Get a Requisition
       description: >-
         Retrieves the complete details of a specific purchase requisition
         including line items, approval status, and linked purchase orders.
       tags:
-        - Requisitions
+      - Requisitions
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - name: requisitionId
-          in: path
-          description: Unique identifier for the requisition
-          required: true
-          schema:
-            type: string
+      - $ref: '#/components/parameters/RealmParam'
+      - name: requisitionId
+        in: path
+        description: Unique identifier for the requisition
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successfully retrieved requisition details
@@ -889,20 +937,23 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /orders/{orderId}/receipts:
     get:
       operationId: listReceipts
-      summary: List receipts for a purchase order
+      summary: List Receipts for a Purchase Order
       description: >-
         Retrieves goods receipts and service confirmations recorded against
         a specific purchase order to support three-way matching.
       tags:
-        - Receipts
+      - Receipts
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - $ref: '#/components/parameters/OrderIdParam'
-        - $ref: '#/components/parameters/SkipParam'
-        - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/OrderIdParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/LimitParam'
       responses:
         '200':
           description: Successfully retrieved receipts
@@ -920,18 +971,21 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createReceipt
-      summary: Create a receipt
+      summary: Create a Receipt
       description: >-
         Records a goods receipt or service confirmation against a purchase
         order. Receipts are used in the three-way matching process with
         purchase orders and invoices.
       tags:
-        - Receipts
+      - Receipts
       parameters:
-        - $ref: '#/components/parameters/RealmParam'
-        - $ref: '#/components/parameters/OrderIdParam'
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/OrderIdParam'
       requestBody:
         required: true
         content:
@@ -969,6 +1023,9 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     oauth2:
@@ -1067,71 +1124,71 @@ components:
       type: string
       description: Status of a purchase order in the procurement lifecycle
       enum:
-        - Draft
-        - Submitted
-        - Ordered
-        - Confirmed
-        - PartiallyReceived
-        - Received
-        - PartiallyInvoiced
-        - Invoiced
-        - Cancelled
-        - Closed
-        - Rejected
+      - Draft
+      - Submitted
+      - Ordered
+      - Confirmed
+      - PartiallyReceived
+      - Received
+      - PartiallyInvoiced
+      - Invoiced
+      - Cancelled
+      - Closed
+      - Rejected
     InvoiceStatus:
       type: string
       description: Status of an invoice in the processing lifecycle
       enum:
-        - Draft
-        - Submitted
-        - PendingApproval
-        - Approved
-        - Rejected
-        - Paid
-        - PartiallyPaid
-        - Cancelled
-        - Failed
+      - Draft
+      - Submitted
+      - PendingApproval
+      - Approved
+      - Rejected
+      - Paid
+      - PartiallyPaid
+      - Cancelled
+      - Failed
     RequisitionStatus:
       type: string
       description: Status of a purchase requisition
       enum:
-        - Composing
-        - Submitted
-        - PendingApproval
-        - Approved
-        - Denied
-        - Ordered
-        - Cancelled
+      - Composing
+      - Submitted
+      - PendingApproval
+      - Approved
+      - Denied
+      - Ordered
+      - Cancelled
     SupplierQualificationStatus:
       type: string
       description: Supplier qualification status on the Ariba Network
       enum:
-        - Qualified
-        - Conditional
-        - NotQualified
-        - PendingReview
-        - Expired
+      - Qualified
+      - Conditional
+      - NotQualified
+      - PendingReview
+      - Expired
     Money:
       type: object
       description: Monetary amount with currency code following ISO 4217
       required:
-        - amount
-        - currencyCode
+      - amount
+      - currencyCode
       properties:
         amount:
           type: number
           format: double
           description: The monetary value
           examples:
-            - 1250.00
+          - 1250.00
         currencyCode:
           type: string
           description: ISO 4217 currency code
           pattern: ^[A-Z]{3}$
           examples:
-            - USD
-            - EUR
-            - GBP
+          - USD
+          - EUR
+          - GBP
     Address:
       type: object
       description: >-
@@ -1141,29 +1198,37 @@ components:
         name:
           type: string
           description: Addressee name or attention line
+          example: Example Title
         lines:
           type: string
           description: Street address lines
+          example: example_value
         city:
           type: string
           description: City name
+          example: example_value
         state:
           type: string
           description: State or province
+          example: example_value
         postalCode:
           type: string
           description: Postal or ZIP code
+          example: example_value
         country:
           type: string
           description: Country code (ISO 3166-1 alpha-2)
           pattern: ^[A-Z]{2}$
+          example: example_value
         phone:
           type: string
           description: Phone number
+          example: example_value
         email:
           type: string
           format: email
           description: Email address
+          example: user@example.com
     ContactInfo:
       type: object
       description: Contact information for a person or department
@@ -1171,64 +1236,70 @@ components:
         name:
           type: string
           description: Contact person name
+          example: Example Title
         email:
           type: string
           format: email
           description: Contact email address
+          example: user@example.com
         phone:
           type: string
           description: Contact phone number
+          example: example_value
         fax:
           type: string
           description: Contact fax number
+          example: example_value
         department:
           type: string
           description: Department name
+          example: example_value
     UnitOfMeasure:
       type: object
       description: >-
         Unit of measure specification following UN/ECE Recommendation 20
         standard codes
       required:
-        - code
+      - code
       properties:
         code:
           type: string
           description: >-
             Unit of measure code (UN/ECE Rec 20 or SAP Ariba internal code)
           examples:
-            - EA
-            - KG
-            - PC
-            - HR
+          - EA
+          - KG
+          - PC
+          - HR
         description:
           type: string
           description: Human-readable description of the unit
           examples:
-            - Each
-            - Kilogram
-            - Piece
-            - Hour
+          - Each
+          - Kilogram
+          - Piece
+          - Hour
     CommodityCode:
       type: object
       description: UNSPSC commodity classification code
       required:
-        - code
+      - code
       properties:
         code:
           type: string
           description: UNSPSC commodity code
           examples:
-            - '43211500'
+          - '43211500'
         description:
           type: string
           description: Commodity description
           examples:
-            - Computers
+          - Computers
         domain:
           type: string
           description: Classification domain identifier
           default: UNSPSC
+          example: example_value
     AccountingInfo:
       type: object
       description: >-
@@ -1238,18 +1309,23 @@ components:
         costCenter:
           type: string
           description: Cost center identifier for expenditure allocation
+          example: example_value
         generalLedger:
           type: string
           description: General ledger account number
+          example: example_value
         asset:
           type: string
           description: Fixed asset number
+          example: example_value
         internalOrder:
           type: string
           description: Internal order number
+          example: example_value
         wbsElement:
           type: string
           description: Work Breakdown Structure element
+          example: example_value
         amount:
           $ref: '#/components/schemas/Money'
         percentage:
@@ -1260,13 +1336,16 @@ components:
             assignment
           minimum: 0
           maximum: 100
+          example: 42.5
         sapDistributionFlag:
           type: string
           description: SAP distribution indicator flag
+          example: example_value
         accountCategory:
           type: string
           description: >-
             Account assignment category code for the line item expenditure
+          example: example_value
     TaxDetail:
       type: object
       description: Tax calculation details for an invoice or line item
@@ -1274,14 +1353,17 @@ components:
         taxCode:
           type: string
           description: Tax code identifier
+          example: example_value
         taxCategory:
           type: string
           description: Tax category (e.g., VAT, GST, Sales Tax)
+          example: example_value
         taxRate:
           type: number
           format: double
           description: Tax rate as a percentage
           minimum: 0
+          example: 42.5
         taxAmount:
           $ref: '#/components/schemas/Money'
         taxableAmount:
@@ -1289,6 +1371,7 @@ components:
         description:
           type: string
           description: Description of the tax
+          example: A sample description.
     PaymentTerms:
       type: object
       description: Payment terms governing when and how invoices should be paid
@@ -1297,47 +1380,54 @@ components:
           type: string
           description: Payment terms code
           examples:
-            - NET30
-            - NET60
-            - '2/10NET30'
+          - NET30
+          - NET60
+          - '2/10NET30'
         description:
           type: string
           description: Human-readable payment terms description
+          example: A sample description.
         netDays:
           type: integer
           description: Number of days until payment is due
+          example: 10
         discountPercent:
           type: number
           format: double
           description: Early payment discount percentage
+          example: 42.5
         discountDays:
           type: integer
           description: Number of days within which discount applies
+          example: 10
     PurchaseOrderLineItem:
       type: object
       description: >-
         A line item within a purchase order representing a specific good or
         service being procured
       required:
-        - numberOnPO
-        - description
-        - quantity
-        - unitPrice
-        - unitOfMeasure
+      - numberOnPO
+      - description
+      - quantity
+      - unitPrice
+      - unitOfMeasure
       properties:
         numberOnPO:
           type: string
           description: >-
             Line item number within the purchase order. Unique within the
             order.
+          example: example_value
         description:
           type: string
           description: Description of the item or service being purchased
+          example: A sample description.
         quantity:
           type: number
           format: double
           description: Quantity to purchase
           minimum: 0
+          example: 42.5
         unitPrice:
           $ref: '#/components/schemas/Money'
         unitOfMeasure:
@@ -1349,28 +1439,35 @@ components:
         buyerPartNumber:
           type: string
           description: Buyer-assigned part or material number
+          example: example_value
         supplierPartNumber:
           type: string
           description: Supplier-assigned part or catalog number
+          example: example_value
         manufacturerPartId:
           type: string
           description: Manufacturer part identifier
+          example: '500123'
         manufacturerName:
           type: string
           description: Name of the manufacturer
+          example: example_value
         itemCategory:
           type: string
           description: >-
             Item category code distinguishing material, service, or other
             item types
+          example: example_value
         accountCategory:
           type: string
           description: Account assignment category for the line item expenditure
+          example: example_value
         needByDate:
           type: string
           format: date
           description: >-
             Requested delivery date for the line item (ISO 8601 YYYY-MM-DD)
+          example: '2026-01-15'
         shipTo:
           $ref: '#/components/schemas/Address'
         accountings:
@@ -1380,15 +1477,18 @@ components:
             multiple cost objects
           items:
             $ref: '#/components/schemas/AccountingInfo'
+          example: []
         receivingType:
           type: integer
           description: >-
             Receiving type value indicating how receipts should be processed
             for this line item
+          example: 10
         taxCode:
           type: string
           description: >-
             Tax code per evaluated receipt settlement agreements
+          example: example_value
         taxDetail:
           $ref: '#/components/schemas/TaxDetail'
         itemOnRequisition:
@@ -1396,17 +1496,21 @@ components:
           description: >-
             Line number of the corresponding item in the originating
             requisition
+          example: example_value
         serviceStartDate:
           type: string
           format: date
           description: Service period start date (for service line items)
+          example: '2026-01-15'
         serviceEndDate:
           type: string
           format: date
           description: Service period end date (for service line items)
+          example: '2026-01-15'
         comments:
           type: string
           description: Additional comments or notes on the line item
+          example: example_value
     PurchaseOrder:
       type: object
       description: >-
@@ -1414,33 +1518,36 @@ components:
         to purchase goods or services from a supplier through the SAP Ariba
         Network
       required:
-        - orderId
-        - orderDate
-        - supplier
-        - currency
-        - lineItems
+      - orderId
+      - orderDate
+      - supplier
+      - currency
+      - lineItems
       properties:
         orderId:
           type: string
           description: >-
             Unique purchase order identifier (UniqueName) including version
           examples:
-            - PO-2025-001234
+          - PO-2025-001234
         erpPONumber:
           type: string
           description: >-
             ERP system purchase order number. Unique ID for every version of
             the purchase order in the backend ERP system.
+          example: example_value
         versionNumber:
           type: integer
           description: >-
             Supplemental version number of the order. Incremented with each
             change request.
           minimum: 1
+          example: 10
         orderDate:
           type: string
           format: date-time
           description: Date and time when the purchase order was created
+          example: '2026-01-15T10:30:00Z'
         status:
           $ref: '#/components/schemas/PurchaseOrderStatus'
         orderMethodCategory:
@@ -1448,6 +1555,7 @@ components:
           description: >-
             Ordering method category indicating how the order was generated
             (e.g., manual, automatic, blanket release)
+          example: example_value
         supplier:
           $ref: '#/components/schemas/SupplierReference'
         buyer:
@@ -1456,6 +1564,7 @@ components:
           type: string
           description: ISO 4217 currency code for the order
           pattern: ^[A-Z]{3}$
+          example: example_value
         totalAmount:
           $ref: '#/components/schemas/Money'
         taxAmount:
@@ -1467,12 +1576,15 @@ components:
         purchaseOrg:
           type: string
           description: Purchasing organization identifier
+          example: example_value
         purchaseGroup:
           type: string
           description: Purchasing group identifier
+          example: example_value
         companyCode:
           type: string
           description: Company code for the buying entity
+          example: example_value
         shipTo:
           $ref: '#/components/schemas/Address'
         billTo:
@@ -1483,55 +1595,67 @@ components:
           items:
             $ref: '#/components/schemas/PurchaseOrderLineItem'
           minItems: 1
+          example: []
         requisitionId:
           type: string
           description: Reference to the originating purchase requisition
+          example: '500123'
         contractId:
           type: string
           description: Reference to a master agreement or contract
+          example: '500123'
         comments:
           type: string
           description: Header-level comments on the purchase order
+          example: example_value
         createdDate:
           type: string
           format: date-time
           description: Timestamp when the order was first created
+          example: '2026-01-15T10:30:00Z'
         lastModifiedDate:
           type: string
           format: date-time
           description: Timestamp of the most recent modification
+          example: '2026-01-15T10:30:00Z'
         closedDate:
           type: string
           format: date-time
           description: Timestamp when the order was closed
+          example: '2026-01-15T10:30:00Z'
     PurchaseOrderCreate:
       type: object
       description: Request body for creating a new purchase order
       required:
-        - supplier
-        - currency
-        - lineItems
+      - supplier
+      - currency
+      - lineItems
       properties:
         erpPONumber:
           type: string
           description: ERP system purchase order number
+          example: example_value
         supplier:
           $ref: '#/components/schemas/SupplierReference'
         currency:
           type: string
           description: ISO 4217 currency code
           pattern: ^[A-Z]{3}$
+          example: example_value
         paymentTerms:
           $ref: '#/components/schemas/PaymentTerms'
         purchaseOrg:
           type: string
           description: Purchasing organization identifier
+          example: example_value
         purchaseGroup:
           type: string
           description: Purchasing group identifier
+          example: example_value
         companyCode:
           type: string
           description: Company code
+          example: example_value
         shipTo:
           $ref: '#/components/schemas/Address'
         billTo:
@@ -1541,15 +1665,19 @@ components:
           items:
             $ref: '#/components/schemas/PurchaseOrderLineItem'
           minItems: 1
+          example: []
         requisitionId:
           type: string
           description: Reference to originating requisition
+          example: '500123'
         contractId:
           type: string
           description: Reference to master agreement
+          example: '500123'
         comments:
           type: string
           description: Header-level comments
+          example: example_value
     PurchaseOrderUpdate:
       type: object
       description: >-
@@ -1561,6 +1689,7 @@ components:
           description: Updated line items
           items:
             $ref: '#/components/schemas/PurchaseOrderLineItem'
+          example: []
         shipTo:
           $ref: '#/components/schemas/Address'
         paymentTerms:
@@ -1568,6 +1697,7 @@ components:
         comments:
           type: string
           description: Change request comments
+          example: example_value
     PurchaseOrderListResponse:
       type: object
       description: Paginated list of purchase orders
@@ -1575,16 +1705,20 @@ components:
         totalCount:
           type: integer
           description: Total number of matching records
+          example: 10
         skip:
           type: integer
           description: Number of records skipped
+          example: 10
         limit:
           type: integer
           description: Maximum records per page
+          example: 10
         orders:
           type: array
           items:
             $ref: '#/components/schemas/PurchaseOrder'
+          example: []
     LineItemListResponse:
       type: object
       description: Paginated list of purchase order line items
@@ -1592,22 +1726,26 @@ components:
         totalCount:
           type: integer
           description: Total number of line items
+          example: 10
         skip:
           type: integer
           description: Number of records skipped
+          example: 10
         limit:
           type: integer
           description: Maximum records per page
+          example: 10
         lineItems:
           type: array
           items:
             $ref: '#/components/schemas/PurchaseOrderLineItem'
+          example: []
     SupplierReference:
       type: object
       description: >-
         Reference to a supplier on the SAP Ariba Network
       required:
-        - supplierId
+      - supplierId
       properties:
         supplierId:
           type: string
@@ -1615,13 +1753,15 @@ components:
             Supplier unique identifier (AN-ID on the Ariba Network or
             internal supplier number)
           examples:
-            - AN01000000001
+          - AN01000000001
         name:
           type: string
           description: Supplier company name
+          example: Example Title
         erpSupplierId:
           type: string
           description: Supplier number in the ERP system
+          example: '500123'
     BuyerReference:
       type: object
       description: Reference to a buyer organization
@@ -1629,53 +1769,62 @@ components:
         buyerId:
           type: string
           description: Buyer AN-ID on the SAP Ariba Network
+          example: '500123'
         name:
           type: string
           description: Buyer organization name
+          example: Example Title
         erpBuyerId:
           type: string
           description: Buyer identifier in the ERP system
+          example: '500123'
     Supplier:
       type: object
       description: >-
         Complete supplier profile on the SAP Ariba Network including company
         information, classifications, and qualification details
       required:
-        - supplierId
-        - name
+      - supplierId
+      - name
       properties:
         supplierId:
           type: string
           description: Unique supplier identifier (AN-ID)
           examples:
-            - AN01000000001
+          - AN01000000001
         name:
           type: string
           description: Legal company name
+          example: Example Title
         doingBusinessAs:
           type: string
           description: Trade name or DBA name
+          example: example_value
         dunsNumber:
           type: string
           description: Dun and Bradstreet DUNS number
           pattern: ^\d{9}$
+          example: example_value
         taxId:
           type: string
           description: Tax identification number
+          example: '500123'
         yearEstablished:
           type: integer
           description: Year the company was established
+          example: 10
         numberOfEmployees:
           type: string
           description: Employee count range
           enum:
-            - 1-50
-            - 51-200
-            - 201-500
-            - 501-1000
-            - 1001-5000
-            - 5001-10000
-            - '10000+'
+          - 1-50
+          - 51-200
+          - 201-500
+          - 501-1000
+          - 1001-5000
+          - 5001-10000
+          - '10000+'
+          example: 1-50
         annualRevenue:
           $ref: '#/components/schemas/Money'
         qualificationStatus:
@@ -1684,10 +1833,11 @@ components:
           type: string
           description: Registration status on the Ariba Network
           enum:
-            - Active
-            - Pending
-            - Suspended
-            - Inactive
+          - Active
+          - Pending
+          - Suspended
+          - Inactive
+          example: Active
         address:
           $ref: '#/components/schemas/Address'
         primaryContact:
@@ -1697,6 +1847,7 @@ components:
           description: UNSPSC commodity codes the supplier serves
           items:
             $ref: '#/components/schemas/CommodityCode'
+          example: []
         certifications:
           type: array
           description: Supplier certifications and compliance credentials
@@ -1707,11 +1858,11 @@ components:
                 type: string
                 description: Certification type
                 examples:
-                  - ISO9001
-                  - ISO14001
-                  - MBE
-                  - WBE
-                  - SDVOSB
+                - ISO9001
+                - ISO14001
+                - MBE
+                - WBE
+                - SDVOSB
               name:
                 type: string
                 description: Full certification name
@@ -1725,29 +1876,35 @@ components:
               status:
                 type: string
                 enum:
-                  - Active
-                  - Expired
-                  - Pending
+                - Active
+                - Expired
+                - Pending
+          example: []
         diversityClassifications:
           type: array
           description: Supplier diversity classifications
           items:
             type: string
+          example: []
         website:
           type: string
           format: uri
           description: Company website URL
+          example: https://www.example.com
         description:
           type: string
           description: Company description
+          example: A sample description.
         createdDate:
           type: string
           format: date-time
           description: Date the supplier profile was created
+          example: '2026-01-15T10:30:00Z'
         lastModifiedDate:
           type: string
           format: date-time
           description: Date of last profile update
+          example: '2026-01-15T10:30:00Z'
     SupplierListResponse:
       type: object
       description: Paginated list of suppliers
@@ -1755,42 +1912,51 @@ components:
         totalCount:
           type: integer
           description: Total number of matching suppliers
+          example: 10
         skip:
           type: integer
           description: Number of records skipped
+          example: 10
         limit:
           type: integer
           description: Maximum records per page
+          example: 10
         suppliers:
           type: array
           items:
             $ref: '#/components/schemas/Supplier'
+          example: []
     InvoiceLineItem:
       type: object
       description: A line item on an invoice
       required:
-        - lineNumber
-        - description
-        - quantity
-        - unitPrice
-        - netAmount
+      - lineNumber
+      - description
+      - quantity
+      - unitPrice
+      - netAmount
       properties:
         lineNumber:
           type: string
           description: Line item number on the invoice
+          example: example_value
         purchaseOrderReference:
           type: string
           description: Referenced purchase order number
+          example: example_value
         poLineNumber:
           type: string
           description: Referenced purchase order line item number
+          example: example_value
         description:
           type: string
           description: Item or service description
+          example: A sample description.
         quantity:
           type: number
           format: double
           description: Invoiced quantity
+          example: 42.5
         unitPrice:
           $ref: '#/components/schemas/Money'
         unitOfMeasure:
@@ -1804,50 +1970,58 @@ components:
         buyerPartNumber:
           type: string
           description: Buyer part number
+          example: example_value
         supplierPartNumber:
           type: string
           description: Supplier part number
+          example: example_value
         serviceStartDate:
           type: string
           format: date
           description: Service period start date
+          example: '2026-01-15'
         serviceEndDate:
           type: string
           format: date
           description: Service period end date
+          example: '2026-01-15'
     Invoice:
       type: object
       description: >-
         An invoice document submitted by a supplier for goods or services
         delivered against a purchase order
       required:
-        - invoiceId
-        - invoiceNumber
-        - invoiceDate
-        - supplier
-        - totalAmount
-        - lineItems
+      - invoiceId
+      - invoiceNumber
+      - invoiceDate
+      - supplier
+      - totalAmount
+      - lineItems
       properties:
         invoiceId:
           type: string
           description: Internal unique invoice identifier
+          example: '500123'
         invoiceNumber:
           type: string
           description: Supplier-assigned invoice number
+          example: example_value
         invoiceDate:
           type: string
           format: date
           description: Date the invoice was issued
+          example: '2026-01-15'
         status:
           $ref: '#/components/schemas/InvoiceStatus'
         invoiceType:
           type: string
           description: Type of invoice document
           enum:
-            - Standard
-            - CreditMemo
-            - DebitMemo
-            - SelfBilling
+          - Standard
+          - CreditMemo
+          - DebitMemo
+          - SelfBilling
+          example: Standard
         supplier:
           $ref: '#/components/schemas/SupplierReference'
         buyer:
@@ -1855,10 +2029,12 @@ components:
         purchaseOrderReference:
           type: string
           description: Primary purchase order number this invoice relates to
+          example: example_value
         currency:
           type: string
           description: ISO 4217 currency code
           pattern: ^[A-Z]{3}$
+          example: example_value
         subtotalAmount:
           $ref: '#/components/schemas/Money'
         taxAmount:
@@ -1873,6 +2049,7 @@ components:
           type: string
           format: date
           description: Payment due date
+          example: '2026-01-15'
         remitTo:
           $ref: '#/components/schemas/Address'
         lineItems:
@@ -1881,67 +2058,80 @@ components:
           items:
             $ref: '#/components/schemas/InvoiceLineItem'
           minItems: 1
+          example: []
         taxDetails:
           type: array
           description: Header-level tax summary
           items:
             $ref: '#/components/schemas/TaxDetail'
+          example: []
         comments:
           type: string
           description: Invoice comments or notes
+          example: example_value
         approvalDate:
           type: string
           format: date-time
           description: Date the invoice was approved
+          example: '2026-01-15T10:30:00Z'
         paymentDate:
           type: string
           format: date
           description: Date payment was made
+          example: '2026-01-15'
         paymentReference:
           type: string
           description: Payment transaction reference number
+          example: example_value
         createdDate:
           type: string
           format: date-time
           description: Timestamp when the invoice was created in the system
+          example: '2026-01-15T10:30:00Z'
         lastModifiedDate:
           type: string
           format: date-time
           description: Timestamp of the last modification
+          example: '2026-01-15T10:30:00Z'
     InvoiceCreate:
       type: object
       description: Request body for creating a new invoice
       required:
-        - invoiceNumber
-        - invoiceDate
-        - supplier
-        - currency
-        - totalAmount
-        - lineItems
+      - invoiceNumber
+      - invoiceDate
+      - supplier
+      - currency
+      - totalAmount
+      - lineItems
       properties:
         invoiceNumber:
           type: string
           description: Supplier-assigned invoice number
+          example: example_value
         invoiceDate:
           type: string
           format: date
           description: Invoice issue date
+          example: '2026-01-15'
         invoiceType:
           type: string
           enum:
-            - Standard
-            - CreditMemo
-            - DebitMemo
-            - SelfBilling
+          - Standard
+          - CreditMemo
+          - DebitMemo
+          - SelfBilling
           default: Standard
+          example: Standard
         supplier:
           $ref: '#/components/schemas/SupplierReference'
         purchaseOrderReference:
           type: string
           description: Purchase order number
+          example: example_value
         currency:
           type: string
           pattern: ^[A-Z]{3}$
+          example: example_value
         subtotalAmount:
           $ref: '#/components/schemas/Money'
         taxAmount:
@@ -1959,8 +2149,10 @@ components:
           items:
             $ref: '#/components/schemas/InvoiceLineItem'
           minItems: 1
+          example: []
         comments:
           type: string
+          example: example_value
     InvoiceListResponse:
       type: object
       description: Paginated list of invoices
@@ -1968,55 +2160,67 @@ components:
         totalCount:
           type: integer
           description: Total number of matching invoices
+          example: 10
         skip:
           type: integer
           description: Number of records skipped
+          example: 10
         limit:
           type: integer
           description: Maximum records per page
+          example: 10
         invoices:
           type: array
           items:
             $ref: '#/components/schemas/Invoice'
+          example: []
     Requisition:
       type: object
       description: >-
         A purchase requisition requesting procurement of goods or services
       required:
-        - requisitionId
-        - title
-        - requestor
-        - lineItems
+      - requisitionId
+      - title
+      - requestor
+      - lineItems
       properties:
         requisitionId:
           type: string
           description: Unique requisition identifier
+          example: '500123'
         title:
           type: string
           description: Requisition title or name
+          example: Example Title
         status:
           $ref: '#/components/schemas/RequisitionStatus'
         requestor:
           type: string
           description: User ID of the person who created the requisition
+          example: example_value
         requestorName:
           type: string
           description: Full name of the requestor
+          example: example_value
         department:
           type: string
           description: Department of the requestor
+          example: example_value
         companyCode:
           type: string
           description: Company code
+          example: example_value
         needByDate:
           type: string
           format: date
           description: Desired delivery date
+          example: '2026-01-15'
         lineItems:
           type: array
           items:
             $ref: '#/components/schemas/PurchaseOrderLineItem'
           minItems: 1
+          example: []
         totalAmount:
           $ref: '#/components/schemas/Money'
         purchaseOrderIds:
@@ -2025,94 +2229,113 @@ components:
             Purchase order IDs generated from this requisition after approval
           items:
             type: string
+          example: []
         comments:
           type: string
           description: Requisition comments
+          example: example_value
         createdDate:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         lastModifiedDate:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         approvedDate:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
     RequisitionCreate:
       type: object
       description: Request body for creating a new requisition
       required:
-        - title
-        - lineItems
+      - title
+      - lineItems
       properties:
         title:
           type: string
+          example: Example Title
         needByDate:
           type: string
           format: date
+          example: '2026-01-15'
         companyCode:
           type: string
+          example: example_value
         lineItems:
           type: array
           items:
             $ref: '#/components/schemas/PurchaseOrderLineItem'
           minItems: 1
+          example: []
         comments:
           type: string
+          example: example_value
     RequisitionListResponse:
       type: object
       description: Paginated list of requisitions
       properties:
         totalCount:
           type: integer
+          example: 10
         skip:
           type: integer
+          example: 10
         limit:
           type: integer
+          example: 10
         requisitions:
           type: array
           items:
             $ref: '#/components/schemas/Requisition'
+          example: []
     Receipt:
       type: object
       description: >-
         A goods receipt or service confirmation recorded against a purchase
         order
       required:
-        - receiptId
-        - purchaseOrderId
-        - receiptDate
-        - lineItems
+      - receiptId
+      - purchaseOrderId
+      - receiptDate
+      - lineItems
       properties:
         receiptId:
           type: string
           description: Unique receipt identifier
+          example: '500123'
         purchaseOrderId:
           type: string
           description: Reference to the purchase order
+          example: '500123'
         receiptDate:
           type: string
           format: date
           description: Date goods were received or services confirmed
+          example: '2026-01-15'
         receiptType:
           type: string
           description: Type of receipt
           enum:
-            - GoodsReceipt
-            - ServiceConfirmation
-            - ReturnDelivery
+          - GoodsReceipt
+          - ServiceConfirmation
+          - ReturnDelivery
+          example: GoodsReceipt
         status:
           type: string
           enum:
-            - Draft
-            - Posted
-            - Reversed
+          - Draft
+          - Posted
+          - Reversed
+          example: Draft
         lineItems:
           type: array
           items:
             type: object
             required:
-              - poLineNumber
-              - quantityReceived
+            - poLineNumber
+            - quantityReceived
             properties:
               poLineNumber:
                 type: string
@@ -2133,36 +2356,41 @@ components:
                 type: string
                 description: Receipt comments
           minItems: 1
+          example: []
         createdDate:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         createdBy:
           type: string
           description: User who created the receipt
+          example: example_value
     ReceiptCreate:
       type: object
       description: Request body for creating a receipt
       required:
-        - receiptDate
-        - lineItems
+      - receiptDate
+      - lineItems
       properties:
         receiptDate:
           type: string
           format: date
+          example: '2026-01-15'
         receiptType:
           type: string
           enum:
-            - GoodsReceipt
-            - ServiceConfirmation
-            - ReturnDelivery
+          - GoodsReceipt
+          - ServiceConfirmation
+          - ReturnDelivery
           default: GoodsReceipt
+          example: GoodsReceipt
         lineItems:
           type: array
           items:
             type: object
             required:
-              - poLineNumber
-              - quantityReceived
+            - poLineNumber
+            - quantityReceived
             properties:
               poLineNumber:
                 type: string
@@ -2172,39 +2400,44 @@ components:
               comments:
                 type: string
           minItems: 1
+          example: []
     ReceiptListResponse:
       type: object
       description: Paginated list of receipts
       properties:
         totalCount:
           type: integer
+          example: 10
         skip:
           type: integer
+          example: 10
         limit:
           type: integer
+          example: 10
         receipts:
           type: array
           items:
             $ref: '#/components/schemas/Receipt'
+          example: []
     ErrorResponse:
       type: object
       description: Standard error response structure
       required:
-        - error
+      - error
       properties:
         error:
           type: object
           required:
-            - code
-            - message
+          - code
+          - message
           properties:
             code:
               type: string
               description: Machine-readable error code
               examples:
-                - INVALID_REQUEST
-                - RESOURCE_NOT_FOUND
-                - UNAUTHORIZED
+              - INVALID_REQUEST
+              - RESOURCE_NOT_FOUND
+              - UNAUTHORIZED
             message:
               type: string
               description: Human-readable error message
@@ -2228,3 +2461,4 @@ components:
                   errorModule:
                     type: string
                     description: SAP module where the error originated
+          example: example_value

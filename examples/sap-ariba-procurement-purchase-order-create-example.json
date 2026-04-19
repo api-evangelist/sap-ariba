@@ -1,0 +1,11 @@
+{
+  "erpPONumber": "example_value",
+  "currency": "example_value",
+  "purchaseOrg": "example_value",
+  "purchaseGroup": "example_value",
+  "companyCode": "example_value",
+  "lineItems": [],
+  "requisitionId": "500123",
+  "contractId": "500123",
+  "comments": "example_value"
+}

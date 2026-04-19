@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Invoice",
+  "type": "object",
+  "description": "An invoice document submitted by a supplier for goods or services delivered against a purchase order",
+  "properties": {
+    "invoiceId": {
+      "type": "string",
+      "description": "Internal unique invoice identifier"
+    },
+    "invoiceNumber": {
+      "type": "string",
+      "description": "Supplier-assigned invoice number"
+    },
+    "invoiceDate": {
+      "type": "string",
+      "description": "Date the invoice was issued"
+    },
+    "invoiceType": {
+      "type": "string",
+      "description": "Type of invoice document"
+    },
+    "purchaseOrderReference": {
+      "type": "string",
+      "description": "Primary purchase order number this invoice relates to"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code"
+    },
+    "dueDate": {
+      "type": "string",
+      "description": "Payment due date"
+    },
+    "lineItems": {
+      "type": "array",
+      "description": "Invoice line items"
+    },
+    "taxDetails": {
+      "type": "array",
+      "description": "Header-level tax summary"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Invoice comments or notes"
+    },
+    "approvalDate": {
+      "type": "string",
+      "description": "Date the invoice was approved"
+    },
+    "paymentDate": {
+      "type": "string",
+      "description": "Date payment was made"
+    },
+    "paymentReference": {
+      "type": "string",
+      "description": "Payment transaction reference number"
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "Timestamp when the invoice was created in the system"
+    },
+    "lastModifiedDate": {
+      "type": "string",
+      "description": "Timestamp of the last modification"
+    }
+  }
+}

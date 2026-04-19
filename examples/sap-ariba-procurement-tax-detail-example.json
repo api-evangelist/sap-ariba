@@ -1,0 +1,6 @@
+{
+  "taxCode": "example_value",
+  "taxCategory": "example_value",
+  "taxRate": 42.5,
+  "description": "A sample description."
+}

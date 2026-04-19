@@ -3,7 +3,7 @@ description: SAP Ariba is a cloud-based procurement and supply chain collaborati
 image: https://www.ariba.com/ariba-logo.png
 url: https://www.ariba.com
 created: '2024'
-modified: '2026-03-03'
+modified: '2026-04-18'
 tags:
   - B2B
   - Contract Management
@@ -31,15 +31,15 @@ apis:
         url: https://developer.ariba.com/api/apis/procurement/overview
       - type: OpenAPI
         url: openapi/sap-ariba-procurement-api.yml
-      - type: JSON Schema
+      - type: JSONSchema
         url: json-schema/sap-ariba-purchase-order-schema.json
-      - type: JSON-LD Context
+      - type: JSONLD
         url: json-ld/sap-ariba-context.jsonld
       - type: Authentication
         url: https://developer.ariba.com/api/authentication
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
-      - type: SAP Help Portal
+      - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
   - name: SAP Ariba Sourcing API
     description: >-
@@ -59,7 +59,7 @@ apis:
         url: https://developer.ariba.com/api/sourcing/openapi.json
       - type: Sandbox
         url: https://sandbox.ariba.com/api/sourcing
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Supplier Management API
     description: >-
@@ -78,9 +78,9 @@ apis:
         url: https://developer.ariba.com/api/apis/supplier/overview
       - type: OpenAPI
         url: https://developer.ariba.com/api/supplier/openapi.json
-      - type: Postman Collection
+      - type: PostmanCollection
         url: https://developer.ariba.com/api/supplier/postman
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/api/supplier_management/overview
   - name: SAP Ariba Contract Management API
     description: >-
@@ -97,7 +97,7 @@ apis:
         url: https://developer.ariba.com/api/apis/contracts/overview
       - type: OpenAPI
         url: https://developer.ariba.com/api/contracts/openapi.json
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Analytical Reporting API
     description: >-
@@ -116,9 +116,9 @@ apis:
         url: https://developer.ariba.com/api/apis/analytics/overview
       - type: OpenAPI
         url: https://developer.ariba.com/api/analytics/openapi.json
-      - type: Query Guide
+      - type: Documentation
         url: https://developer.ariba.com/api/analytics/query-guide
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Invoice Management API
     description: >-
@@ -135,7 +135,7 @@ apis:
         url: https://developer.ariba.com/api/apis/invoices/overview
       - type: OpenAPI
         url: https://developer.ariba.com/api/invoices/openapi.json
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: Ariba Network Purchase Orders Buyer API
     description: >-
@@ -151,7 +151,7 @@ apis:
     properties:
       - type: Documentation
         url: https://api.sap.com/api/purchase_orders/overview
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/api/purchase_orders/overview
   - name: Ariba Network Purchase Orders Supplier API
     description: >-
@@ -167,9 +167,9 @@ apis:
     properties:
       - type: Documentation
         url: https://api.sap.com/api/purchase_orders_supplier/overview
-      - type: SAP Help
+      - type: Documentation
         url: https://help.sap.com/doc/3b0b2f4faaa242dda9004b9f337592bf/cloud/en-US/purchase_order_supplier_api.pdf
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/api/purchase_orders_supplier/overview
   - name: Ariba Network Supplier Profile API
     description: >-
@@ -184,7 +184,7 @@ apis:
     properties:
       - type: Documentation
         url: https://api.sap.com/api/supplier_management/overview
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/api/supplier_management/overview
   - name: Ariba Network Invoice Header Data Extraction API
     description: >-
@@ -200,7 +200,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Contract Compliance API
     description: >-
@@ -216,7 +216,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Supplier Data API
     description: >-
@@ -232,7 +232,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Supplier Data API with Pagination
     description: >-
@@ -247,7 +247,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Supplier Data Extraction API
     description: >-
@@ -263,7 +263,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Supplier Information API
     description: >-
@@ -279,7 +279,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Supplier Invite API
     description: >-
@@ -294,7 +294,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Risk Exposure API
     description: >-
@@ -309,7 +309,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Supplier Risk Engagements API
     description: >-
@@ -324,7 +324,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Risk Category Information API
     description: >-
@@ -340,7 +340,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Document Approval API
     description: >-
@@ -356,7 +356,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba External Approval API for Sourcing and Supplier Management
     description: >-
@@ -372,7 +372,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Catalog Content API
     description: >-
@@ -388,7 +388,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Network Catalog Management API
     description: >-
@@ -404,7 +404,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Internal Catalogs Shop API
     description: >-
@@ -419,7 +419,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Public Catalogs Shop API
     description: >-
@@ -434,7 +434,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Contract Workspace Retrieval API
     description: >-
@@ -449,7 +449,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Contract Workspace Management API
     description: >-
@@ -465,7 +465,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Contract Terms Management API
     description: >-
@@ -480,7 +480,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Operational Reporting API for Procurement
     description: >-
@@ -495,7 +495,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis/operational-reporting-api-for-procurement/operational-reporting-api-for-procurement
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Operational Reporting API for Strategic Sourcing
     description: >-
@@ -510,7 +510,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Analytical Reporting API for Strategic and Operational Procurement
     description: >-
@@ -527,7 +527,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Master Data Retrieval API for Sourcing
     description: >-
@@ -542,7 +542,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Master Data Retrieval API for Procurement
     description: >-
@@ -558,7 +558,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Sourcing Project Management API
     description: >-
@@ -573,7 +573,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Event Management API
     description: >-
@@ -589,7 +589,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Surrogate Bid API
     description: >-
@@ -604,7 +604,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Order Change Requests API for Buyers
     description: >-
@@ -619,7 +619,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Order Change Requests API for Suppliers
     description: >-
@@ -634,7 +634,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Ship Notice API for Buyers
     description: >-
@@ -649,7 +649,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Ship Notice API for Suppliers
     description: >-
@@ -664,7 +664,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Proof of Service API for Buyers
     description: >-
@@ -678,7 +678,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Proof of Service API for Suppliers
     description: >-
@@ -692,7 +692,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Planning Collaboration Buyer API
     description: >-
@@ -708,7 +708,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Planning Collaboration Supplier API
     description: >-
@@ -724,7 +724,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Item Volume Import API
     description: >-
@@ -739,7 +739,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Bill of Materials Import API
     description: >-
@@ -754,7 +754,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Product Hierarchy Management API
     description: >-
@@ -769,7 +769,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Pricing API for Product Sourcing
     description: >-
@@ -784,7 +784,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Cost Breakdown Data Extraction API
     description: >-
@@ -799,7 +799,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Content Lookup API
     description: >-
@@ -814,7 +814,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Audit Search API
     description: >-
@@ -829,7 +829,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Create Procurement Workspace API
     description: >-
@@ -844,7 +844,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Flow Extension API
     description: >-
@@ -860,7 +860,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Asynchronous Requests Management API
     description: >-
@@ -875,7 +875,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Integration Event Monitoring Query API for Procurement
     description: >-
@@ -891,7 +891,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Integration Monitoring API for Procurement
     description: >-
@@ -906,7 +906,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Integration Monitoring API for Strategic Sourcing
     description: >-
@@ -921,7 +921,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Transaction Monitoring API
     description: >-
@@ -936,7 +936,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba NDA Data Export API
     description: >-
@@ -951,7 +951,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Catalog Connectivity Service API
     description: >-
@@ -966,7 +966,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Trading Partner Profile Certification API
     description: >-
@@ -981,7 +981,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba User Qualification API
     description: >-
@@ -996,7 +996,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba SCIM API
     description: >-
@@ -1013,7 +1013,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Custom Forms API
     description: >-
@@ -1028,7 +1028,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Dynamic Lookup Table API
     description: >-
@@ -1043,7 +1043,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Guided Buying Functional Documents API
     description: >-
@@ -1058,7 +1058,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Asset Management API
     description: >-
@@ -1073,7 +1073,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Configuration Parameter Review API
     description: >-
@@ -1088,7 +1088,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Project Document Management API
     description: >-
@@ -1104,7 +1104,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Public Procurement Notices Export API
     description: >-
@@ -1119,7 +1119,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba ETendering Notice Management API
     description: >-
@@ -1134,7 +1134,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Discovery RFx Publication TO External Marketplace API
     description: >-
@@ -1149,7 +1149,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Discovery RFx Publication FROM External Marketplace API
     description: >-
@@ -1164,7 +1164,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Materials and BOM Tag Management API
     description: >-
@@ -1179,7 +1179,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Data Replication Status API
     description: >-
@@ -1194,7 +1194,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Master Data Integration Job Status API
     description: >-
@@ -1209,7 +1209,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Engagement Risk Assessment External Response Import API
     description: >-
@@ -1224,7 +1224,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
   - name: SAP Ariba Finding and Event Collaboration Integration API for Supplier Risk
     description: >-
@@ -1239,53 +1239,87 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/ariba-apis
-      - type: SAP Business Accelerator Hub
+      - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
 common:
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.ariba.com
   - type: Authentication
     url: https://developer.ariba.com/api/authentication
-  - type: Getting Started
+  - type: GettingStarted
     url: https://developer.ariba.com/api/getting-started
-  - type: API Status
+  - type: StatusPage
     url: https://status.ariba.com
   - type: Support
     url: https://help.sap.com/ariba
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.ariba.com/legal/terms-of-use
-  - type: Rate Limits
+  - type: RateLimits
     url: https://developer.ariba.com/api/rate-limits
-  - type: SDKs
+  - type: SDK
     url: https://developer.ariba.com/tools/sdks
   - type: Community
     url: https://community.ariba.com
-  - type: Release Notes
+  - type: ReleaseNotes
     url: https://developer.ariba.com/api/release-notes
-  - type: SAP Business Accelerator Hub
+  - type: Hub
     url: https://api.sap.com/package/SAPAribaOpenAPIs/overview
-  - type: SAP Business Accelerator Hub REST APIs
+  - type: Hub
     url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
-  - type: SAP Business Accelerator Hub Documents
+    title: REST APIs
+  - type: Hub
     url: https://api.sap.com/package/SAPAribaOpenAPIs/documents
-  - type: SAP Ariba Product Page
+    title: Documents
+  - type: Portal
     url: https://api.sap.com/products/SAPAriba/apis/packages
-  - type: SAP Help Portal
+  - type: Documentation
     url: https://help.sap.com/docs/ariba-apis
-  - type: Quick Start Guide
+  - type: Quickstart
     url: https://help.sap.com/docs/ariba-apis/help-for-sap-ariba-developer-portal/sap-ariba-developer-portal-quick-start-guide-for-developers
-  - type: Steps to Start Using APIs
+  - type: GettingStarted
     url: https://help.sap.com/docs/ariba-apis/help-for-sap-ariba-developer-portal/steps-to-start-using-sap-ariba-apis
-  - type: Authentication Guide
+    title: Steps to Start Using APIs
+  - type: Authentication
     url: https://help.sap.com/docs/ariba-apis/help-for-sap-ariba-developer-portal/sap-ariba-developer-portal-authentication
-  - type: SAP Community
+  - type: Resources
     url: https://community.sap.com
-  - type: SAP Ariba Network
+    title: SAP Community
+  - type: Marketplace
     url: https://www.sap.com/products/spend-management/ariba-network.html
-  - type: GitHub Samples
+  - type: CodeExamples
     url: https://github.com/SAP-samples/ariba-extensibility-samples
   - type: Blog
     url: https://community.sap.com/t5/spend-management-blog-posts-by-sap/sap-ariba-api-faq-and-best-practice-on-developer-portal-and-gateway/ba-p/13512565
+  - type: Features
+    data:
+      - name: Procure-to-Pay Automation
+        description: End-to-end automation from requisition through purchase order, receipt, and invoice processing.
+      - name: Supplier Network
+        description: Access to millions of suppliers on the SAP Business Network for discovery and collaboration.
+      - name: Three-Way Matching
+        description: Automated matching of purchase orders, receipts, and invoices for payment approval.
+      - name: Contract Lifecycle Management
+        description: Full contract creation, compliance tracking, and renewal workflow management.
+      - name: Spend Analytics
+        description: Comprehensive reporting and analytics across procurement, sourcing, and supplier management.
+  - type: UseCases
+    data:
+      - name: Strategic Sourcing
+        description: Run RFx events, auctions, and supplier evaluations to optimize procurement decisions.
+      - name: Invoice Automation
+        description: Automate invoice submission, approval workflows, and payment reconciliation.
+      - name: Supplier Risk Management
+        description: Monitor supplier risk exposure and manage risk assessment engagements.
+      - name: Catalog Management
+        description: Manage internal and external catalogs for guided buying experiences.
+  - type: Integrations
+    data:
+      - name: SAP S/4HANA
+        description: Native integration with SAP ERP for purchase order, invoice, and master data synchronization.
+      - name: SAP Business Network
+        description: Connect buyers and suppliers for electronic document exchange across the network.
+      - name: External ERP Systems
+        description: Integration with non-SAP ERP systems through standardized APIs and data replication.
 maintainers:
   - name: Kin Lane
     email: kin@apievangelist.com

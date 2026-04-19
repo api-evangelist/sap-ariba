@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaxDetail",
+  "type": "object",
+  "description": "Tax calculation details for an invoice or line item",
+  "properties": {
+    "taxCode": {
+      "type": "string",
+      "description": "Tax code identifier"
+    },
+    "taxCategory": {
+      "type": "string",
+      "description": "Tax category (e.g., VAT, GST, Sales Tax)"
+    },
+    "taxRate": {
+      "type": "number",
+      "description": "Tax rate as a percentage"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the tax"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "SupplierReference",
+  "type": "object",
+  "properties": {
+    "supplierId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "erpSupplierId": {
+      "type": "string"
+    }
+  }
+}

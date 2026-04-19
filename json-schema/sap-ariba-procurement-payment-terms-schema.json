@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PaymentTerms",
+  "type": "object",
+  "description": "Payment terms governing when and how invoices should be paid",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Payment terms code"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable payment terms description"
+    },
+    "netDays": {
+      "type": "integer",
+      "description": "Number of days until payment is due"
+    },
+    "discountPercent": {
+      "type": "number",
+      "description": "Early payment discount percentage"
+    },
+    "discountDays": {
+      "type": "integer",
+      "description": "Number of days within which discount applies"
+    }
+  }
+}

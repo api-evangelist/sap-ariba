@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PurchaseOrderLineItem",
+  "type": "object",
+  "description": "A line item within a purchase order representing a specific good or service being procured",
+  "properties": {
+    "numberOnPO": {
+      "type": "string",
+      "description": "Line item number within the purchase order. Unique within the order."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the item or service being purchased"
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Quantity to purchase"
+    },
+    "buyerPartNumber": {
+      "type": "string",
+      "description": "Buyer-assigned part or material number"
+    },
+    "supplierPartNumber": {
+      "type": "string",
+      "description": "Supplier-assigned part or catalog number"
+    },
+    "manufacturerPartId": {
+      "type": "string",
+      "description": "Manufacturer part identifier"
+    },
+    "manufacturerName": {
+      "type": "string",
+      "description": "Name of the manufacturer"
+    },
+    "itemCategory": {
+      "type": "string",
+      "description": "Item category code distinguishing material, service, or other item types"
+    },
+    "accountCategory": {
+      "type": "string",
+      "description": "Account assignment category for the line item expenditure"
+    },
+    "needByDate": {
+      "type": "string",
+      "description": "Requested delivery date for the line item (ISO 8601 YYYY-MM-DD)"
+    },
+    "accountings": {
+      "type": "array",
+      "description": "Split accounting assignments for distributing costs across multiple cost objects"
+    },
+    "receivingType": {
+      "type": "integer",
+      "description": "Receiving type value indicating how receipts should be processed for this line item"
+    },
+    "taxCode": {
+      "type": "string",
+      "description": "Tax code per evaluated receipt settlement agreements"
+    },
+    "itemOnRequisition": {
+      "type": "string",
+      "description": "Line number of the corresponding item in the originating requisition"
+    },
+    "serviceStartDate": {
+      "type": "string",
+      "description": "Service period start date (for service line items)"
+    },
+    "serviceEndDate": {
+      "type": "string",
+      "description": "Service period end date (for service line items)"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Additional comments or notes on the line item"
+    }
+  }
+}

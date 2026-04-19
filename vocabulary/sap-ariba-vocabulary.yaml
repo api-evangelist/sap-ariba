@@ -1,0 +1,13 @@
+name: sap-ariba API Vocabulary
+provider: sap-ariba
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 19
+schemas: 33
+tags:
+- Invoices
+- Purchase Order Line Items
+- Purchase Orders
+- Receipts
+- Requisitions
+- Suppliers

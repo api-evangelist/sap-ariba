@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PurchaseOrder",
+  "type": "object",
+  "description": "A complete purchase order document representing a buyer's commitment to purchase goods or services from a supplier through the SAP Ariba Network",
+  "properties": {
+    "orderId": {
+      "type": "string",
+      "description": "Unique purchase order identifier (UniqueName) including version"
+    },
+    "erpPONumber": {
+      "type": "string",
+      "description": "ERP system purchase order number. Unique ID for every version of the purchase order in the backend ERP system."
+    },
+    "versionNumber": {
+      "type": "integer",
+      "description": "Supplemental version number of the order. Incremented with each change request."
+    },
+    "orderDate": {
+      "type": "string",
+      "description": "Date and time when the purchase order was created"
+    },
+    "orderMethodCategory": {
+      "type": "string",
+      "description": "Ordering method category indicating how the order was generated (e.g., manual, automatic, blanket release)"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code for the order"
+    },
+    "purchaseOrg": {
+      "type": "string",
+      "description": "Purchasing organization identifier"
+    },
+    "purchaseGroup": {
+      "type": "string",
+      "description": "Purchasing group identifier"
+    },
+    "companyCode": {
+      "type": "string",
+      "description": "Company code for the buying entity"
+    },
+    "lineItems": {
+      "type": "array",
+      "description": "Line items contained in the purchase order"
+    },
+    "requisitionId": {
+      "type": "string",
+      "description": "Reference to the originating purchase requisition"
+    },
+    "contractId": {
+      "type": "string",
+      "description": "Reference to a master agreement or contract"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Header-level comments on the purchase order"
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "Timestamp when the order was first created"
+    },
+    "lastModifiedDate": {
+      "type": "string",
+      "description": "Timestamp of the most recent modification"
+    },
+    "closedDate": {
+      "type": "string",
+      "description": "Timestamp when the order was closed"
+    }
+  }
+}

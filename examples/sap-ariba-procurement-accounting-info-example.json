@@ -1,0 +1,10 @@
+{
+  "costCenter": "example_value",
+  "generalLedger": "example_value",
+  "asset": "example_value",
+  "internalOrder": "example_value",
+  "wbsElement": "example_value",
+  "percentage": 42.5,
+  "sapDistributionFlag": "example_value",
+  "accountCategory": "example_value"
+}

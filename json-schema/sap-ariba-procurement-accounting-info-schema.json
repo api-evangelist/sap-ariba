@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AccountingInfo",
+  "type": "object",
+  "description": "Accounting assignment information for cost allocation on purchase order line items",
+  "properties": {
+    "costCenter": {
+      "type": "string",
+      "description": "Cost center identifier for expenditure allocation"
+    },
+    "generalLedger": {
+      "type": "string",
+      "description": "General ledger account number"
+    },
+    "asset": {
+      "type": "string",
+      "description": "Fixed asset number"
+    },
+    "internalOrder": {
+      "type": "string",
+      "description": "Internal order number"
+    },
+    "wbsElement": {
+      "type": "string",
+      "description": "Work Breakdown Structure element"
+    },
+    "percentage": {
+      "type": "number",
+      "description": "Percentage of line item amount allocated to this accounting assignment"
+    },
+    "sapDistributionFlag": {
+      "type": "string",
+      "description": "SAP distribution indicator flag"
+    },
+    "accountCategory": {
+      "type": "string",
+      "description": "Account assignment category code for the line item expenditure"
+    }
+  }
+}

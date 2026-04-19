@@ -1,0 +1,10 @@
+{
+  "name": "Example Title",
+  "lines": "example_value",
+  "city": "example_value",
+  "state": "example_value",
+  "postalCode": "example_value",
+  "country": "example_value",
+  "phone": "example_value",
+  "email": "user@example.com"
+}

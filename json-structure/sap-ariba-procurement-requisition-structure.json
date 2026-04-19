@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Requisition",
+  "type": "object",
+  "properties": {
+    "requisitionId": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "requestor": {
+      "type": "string"
+    },
+    "requestorName": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "companyCode": {
+      "type": "string"
+    },
+    "needByDate": {
+      "type": "string"
+    },
+    "lineItems": {
+      "type": "array"
+    },
+    "purchaseOrderIds": {
+      "type": "array"
+    },
+    "comments": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "lastModifiedDate": {
+      "type": "string"
+    },
+    "approvedDate": {
+      "type": "string"
+    }
+  }
+}

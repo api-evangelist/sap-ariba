@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RequisitionStatus",
+  "type": "string",
+  "description": "Status of a purchase requisition"
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "AccountingInfo",
+  "type": "object",
+  "properties": {
+    "costCenter": {
+      "type": "string"
+    },
+    "generalLedger": {
+      "type": "string"
+    },
+    "asset": {
+      "type": "string"
+    },
+    "internalOrder": {
+      "type": "string"
+    },
+    "wbsElement": {
+      "type": "string"
+    },
+    "percentage": {
+      "type": "number"
+    },
+    "sapDistributionFlag": {
+      "type": "string"
+    },
+    "accountCategory": {
+      "type": "string"
+    }
+  }
+}

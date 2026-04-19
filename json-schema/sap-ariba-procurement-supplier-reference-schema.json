@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SupplierReference",
+  "type": "object",
+  "description": "Reference to a supplier on the SAP Ariba Network",
+  "properties": {
+    "supplierId": {
+      "type": "string",
+      "description": "Supplier unique identifier (AN-ID on the Ariba Network or internal supplier number)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Supplier company name"
+    },
+    "erpSupplierId": {
+      "type": "string",
+      "description": "Supplier number in the ERP system"
+    }
+  }
+}

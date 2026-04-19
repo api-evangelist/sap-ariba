@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PaymentTerms",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "netDays": {
+      "type": "integer"
+    },
+    "discountPercent": {
+      "type": "number"
+    },
+    "discountDays": {
+      "type": "integer"
+    }
+  }
+}

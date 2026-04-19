@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "InvoiceCreate",
+  "type": "object",
+  "properties": {
+    "invoiceNumber": {
+      "type": "string"
+    },
+    "invoiceDate": {
+      "type": "string"
+    },
+    "invoiceType": {
+      "type": "string"
+    },
+    "purchaseOrderReference": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "lineItems": {
+      "type": "array"
+    },
+    "comments": {
+      "type": "string"
+    }
+  }
+}

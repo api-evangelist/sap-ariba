@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "InvoiceLineItem",
+  "type": "object",
+  "properties": {
+    "lineNumber": {
+      "type": "string"
+    },
+    "purchaseOrderReference": {
+      "type": "string"
+    },
+    "poLineNumber": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number"
+    },
+    "buyerPartNumber": {
+      "type": "string"
+    },
+    "supplierPartNumber": {
+      "type": "string"
+    },
+    "serviceStartDate": {
+      "type": "string"
+    },
+    "serviceEndDate": {
+      "type": "string"
+    }
+  }
+}

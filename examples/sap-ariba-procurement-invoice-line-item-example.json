@@ -1,0 +1,11 @@
+{
+  "lineNumber": "example_value",
+  "purchaseOrderReference": "example_value",
+  "poLineNumber": "example_value",
+  "description": "A sample description.",
+  "quantity": 42.5,
+  "buyerPartNumber": "example_value",
+  "supplierPartNumber": "example_value",
+  "serviceStartDate": "example_value",
+  "serviceEndDate": "example_value"
+}

@@ -1,0 +1,19 @@
+{
+  "numberOnPO": "example_value",
+  "description": "A sample description.",
+  "quantity": 42.5,
+  "buyerPartNumber": "example_value",
+  "supplierPartNumber": "example_value",
+  "manufacturerPartId": "500123",
+  "manufacturerName": "example_value",
+  "itemCategory": "example_value",
+  "accountCategory": "example_value",
+  "needByDate": "example_value",
+  "accountings": [],
+  "receivingType": 10,
+  "taxCode": "example_value",
+  "itemOnRequisition": "example_value",
+  "serviceStartDate": "example_value",
+  "serviceEndDate": "example_value",
+  "comments": "example_value"
+}

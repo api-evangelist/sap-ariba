@@ -1,0 +1,17 @@
+{
+  "invoiceId": "500123",
+  "invoiceNumber": "example_value",
+  "invoiceDate": "example_value",
+  "invoiceType": "example_value",
+  "purchaseOrderReference": "example_value",
+  "currency": "example_value",
+  "dueDate": "example_value",
+  "lineItems": [],
+  "taxDetails": [],
+  "comments": "example_value",
+  "approvalDate": "example_value",
+  "paymentDate": "example_value",
+  "paymentReference": "example_value",
+  "createdDate": "example_value",
+  "lastModifiedDate": "example_value"
+}

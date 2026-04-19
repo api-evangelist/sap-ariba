@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Supplier",
+  "type": "object",
+  "description": "Complete supplier profile on the SAP Ariba Network including company information, classifications, and qualification details",
+  "properties": {
+    "supplierId": {
+      "type": "string",
+      "description": "Unique supplier identifier (AN-ID)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Legal company name"
+    },
+    "doingBusinessAs": {
+      "type": "string",
+      "description": "Trade name or DBA name"
+    },
+    "dunsNumber": {
+      "type": "string",
+      "description": "Dun and Bradstreet DUNS number"
+    },
+    "taxId": {
+      "type": "string",
+      "description": "Tax identification number"
+    },
+    "yearEstablished": {
+      "type": "integer",
+      "description": "Year the company was established"
+    },
+    "numberOfEmployees": {
+      "type": "string",
+      "description": "Employee count range"
+    },
+    "registrationStatus": {
+      "type": "string",
+      "description": "Registration status on the Ariba Network"
+    },
+    "commodityCodes": {
+      "type": "array",
+      "description": "UNSPSC commodity codes the supplier serves"
+    },
+    "certifications": {
+      "type": "array",
+      "description": "Supplier certifications and compliance credentials"
+    },
+    "diversityClassifications": {
+      "type": "array",
+      "description": "Supplier diversity classifications"
+    },
+    "website": {
+      "type": "string",
+      "description": "Company website URL"
+    },
+    "description": {
+      "type": "string",
+      "description": "Company description"
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "Date the supplier profile was created"
+    },
+    "lastModifiedDate": {
+      "type": "string",
+      "description": "Date of last profile update"
+    }
+  }
+}

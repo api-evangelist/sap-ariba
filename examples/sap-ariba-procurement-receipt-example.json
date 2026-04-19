@@ -1,0 +1,10 @@
+{
+  "receiptId": "500123",
+  "purchaseOrderId": "500123",
+  "receiptDate": "example_value",
+  "receiptType": "example_value",
+  "status": "example_value",
+  "lineItems": [],
+  "createdDate": "example_value",
+  "createdBy": "example_value"
+}

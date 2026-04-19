@@ -1,0 +1,15 @@
+{
+  "requisitionId": "500123",
+  "title": "Example Title",
+  "requestor": "example_value",
+  "requestorName": "example_value",
+  "department": "example_value",
+  "companyCode": "example_value",
+  "needByDate": "example_value",
+  "lineItems": [],
+  "purchaseOrderIds": [],
+  "comments": "example_value",
+  "createdDate": "example_value",
+  "lastModifiedDate": "example_value",
+  "approvedDate": "example_value"
+}

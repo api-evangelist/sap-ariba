@@ -1,0 +1,7 @@
+{
+  "code": "example_value",
+  "description": "A sample description.",
+  "netDays": 10,
+  "discountPercent": 42.5,
+  "discountDays": 10
+}

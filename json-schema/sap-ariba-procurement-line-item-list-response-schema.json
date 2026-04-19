@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LineItemListResponse",
+  "type": "object",
+  "description": "Paginated list of purchase order line items",
+  "properties": {
+    "totalCount": {
+      "type": "integer",
+      "description": "Total number of line items"
+    },
+    "skip": {
+      "type": "integer",
+      "description": "Number of records skipped"
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Maximum records per page"
+    },
+    "lineItems": {
+      "type": "array"
+    }
+  }
+}

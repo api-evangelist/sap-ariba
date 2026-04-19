@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CommodityCode",
+  "type": "object",
+  "description": "UNSPSC commodity classification code",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "UNSPSC commodity code"
+    },
+    "description": {
+      "type": "string",
+      "description": "Commodity description"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Classification domain identifier"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PurchaseOrderLineItem",
+  "type": "object",
+  "properties": {
+    "numberOnPO": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number"
+    },
+    "buyerPartNumber": {
+      "type": "string"
+    },
+    "supplierPartNumber": {
+      "type": "string"
+    },
+    "manufacturerPartId": {
+      "type": "string"
+    },
+    "manufacturerName": {
+      "type": "string"
+    },
+    "itemCategory": {
+      "type": "string"
+    },
+    "accountCategory": {
+      "type": "string"
+    },
+    "needByDate": {
+      "type": "string"
+    },
+    "accountings": {
+      "type": "array"
+    },
+    "receivingType": {
+      "type": "integer"
+    },
+    "taxCode": {
+      "type": "string"
+    },
+    "itemOnRequisition": {
+      "type": "string"
+    },
+    "serviceStartDate": {
+      "type": "string"
+    },
+    "serviceEndDate": {
+      "type": "string"
+    },
+    "comments": {
+      "type": "string"
+    }
+  }
+}

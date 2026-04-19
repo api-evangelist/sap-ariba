@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Supplier",
+  "type": "object",
+  "properties": {
+    "supplierId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "doingBusinessAs": {
+      "type": "string"
+    },
+    "dunsNumber": {
+      "type": "string"
+    },
+    "taxId": {
+      "type": "string"
+    },
+    "yearEstablished": {
+      "type": "integer"
+    },
+    "numberOfEmployees": {
+      "type": "string"
+    },
+    "registrationStatus": {
+      "type": "string"
+    },
+    "commodityCodes": {
+      "type": "array"
+    },
+    "certifications": {
+      "type": "array"
+    },
+    "diversityClassifications": {
+      "type": "array"
+    },
+    "website": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "lastModifiedDate": {
+      "type": "string"
+    }
+  }
+}

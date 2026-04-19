@@ -1,0 +1,60 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "SAP Ariba Procurement API"
+  description: "REST API for SAP Ariba procurement including purchase orders, invoices, requisitions, suppliers, and receipts."
+  tags: [SAP, Ariba, Procurement, Supply Chain]
+  created: "2026-04-18"
+  modified: "2026-04-18"
+binds:
+  - namespace: env
+    keys:
+      ARIBA_OAUTH_TOKEN: ARIBA_OAUTH_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: procurement
+      baseUri: https://openapi.ariba.com/api/procurement/v1
+      description: "SAP Ariba Procurement API for procure-to-pay lifecycle."
+      authentication:
+        type: bearer
+        token: "{{ARIBA_OAUTH_TOKEN}}"
+      resources:
+        - name: orders
+          path: /orders
+          description: "Purchase order operations"
+          operations:
+            - { name: list-purchase-orders, method: GET, description: "List purchase orders", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: create-purchase-order, method: POST, description: "Create a purchase order", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: get-purchase-order, method: GET, description: "Get purchase order details", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: update-purchase-order, method: PATCH, description: "Update a purchase order", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: cancel-purchase-order, method: POST, description: "Cancel a purchase order", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: list-line-items, method: GET, description: "List line items for an order", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: get-line-item, method: GET, description: "Get a specific line item", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+        - name: invoices
+          path: /invoices
+          description: "Invoice operations"
+          operations:
+            - { name: list-invoices, method: GET, description: "List invoices", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: create-invoice, method: POST, description: "Create an invoice", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: get-invoice, method: GET, description: "Get invoice details", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: approve-invoice, method: POST, description: "Approve an invoice", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: reject-invoice, method: POST, description: "Reject an invoice", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+        - name: suppliers
+          path: /suppliers
+          description: "Supplier management"
+          operations:
+            - { name: list-suppliers, method: GET, description: "List suppliers", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: get-supplier, method: GET, description: "Get supplier profile", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+        - name: requisitions
+          path: /requisitions
+          description: "Requisition management"
+          operations:
+            - { name: list-requisitions, method: GET, description: "List requisitions", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: create-requisition, method: POST, description: "Create a requisition", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: get-requisition, method: GET, description: "Get requisition details", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+        - name: receipts
+          path: /orders/{orderId}/receipts
+          description: "Receipt operations"
+          operations:
+            - { name: list-receipts, method: GET, description: "List receipts for an order", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: create-receipt, method: POST, description: "Create a receipt", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }

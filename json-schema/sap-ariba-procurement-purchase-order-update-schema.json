@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PurchaseOrderUpdate",
+  "type": "object",
+  "description": "Request body for updating an existing purchase order. Only provided fields will be modified.",
+  "properties": {
+    "lineItems": {
+      "type": "array",
+      "description": "Updated line items"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Change request comments"
+    }
+  }
+}
