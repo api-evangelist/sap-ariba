@@ -1,0 +1,13 @@
+{
+  "repo": "sap-ariba",
+  "feeds": [
+    {
+      "source": "https://community.sap.com/t5/spend-management-blog-posts-by-sap/sap-ariba-api-faq-and-best-practice-on-developer-portal-and-gateway/ba-p/13512565",
+      "feed_url": "https://community.sap.com/khhcw49343/rss/message?board.id=spend-management-blog-sap&message.id=1514",
+      "saved": 2,
+      "title": "article SAP Ariba API - FAQ and Best Practice on Developer portal and Gateway in Spend Management Blog Posts by SAP"
+    }
+  ],
+  "post_count": 2,
+  "fetched": "2026-05-03T23:35:23Z"
+}
