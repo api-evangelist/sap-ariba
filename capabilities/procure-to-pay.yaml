@@ -1,51 +1,361 @@
-naftiko: "1.0.0-alpha1"
+naftiko: 1.0.0-alpha2
 info:
-  label: "SAP Ariba Procure-to-Pay"
-  description: "Unified procure-to-pay capability combining purchase orders, invoices, requisitions, suppliers, and receipts. Used by procurement teams and AP automation workflows."
-  tags: [SAP, Ariba, Procurement, Procure-to-Pay]
-  created: "2026-04-18"
-  modified: "2026-04-18"
+  label: SAP Ariba Procure-to-Pay
+  description: Unified procure-to-pay capability combining purchase orders, invoices, requisitions, suppliers, and receipts.
+    Used by procurement teams and AP automation workflows.
+  tags:
+  - SAP
+  - Ariba
+  - Procurement
+  - Procure-to-Pay
+  created: '2026-04-18'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      ARIBA_OAUTH_TOKEN: ARIBA_OAUTH_TOKEN
+- namespace: env
+  keys:
+    ARIBA_OAUTH_TOKEN: ARIBA_OAUTH_TOKEN
 capability:
   consumes:
-    - import: procurement
-      location: ./shared/procurement.yaml
+  - type: http
+    namespace: procurement
+    baseUri: https://openapi.ariba.com/api/procurement/v1
+    description: SAP Ariba Procurement API for procure-to-pay lifecycle.
+    authentication:
+      type: bearer
+      token: '{{ARIBA_OAUTH_TOKEN}}'
+    resources:
+    - name: orders
+      path: /orders
+      description: Purchase order operations
+      operations:
+      - name: list-purchase-orders
+        method: GET
+        description: List purchase orders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-purchase-order
+        method: POST
+        description: Create a purchase order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-purchase-order
+        method: GET
+        description: Get purchase order details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-purchase-order
+        method: PATCH
+        description: Update a purchase order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: cancel-purchase-order
+        method: POST
+        description: Cancel a purchase order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: list-line-items
+        method: GET
+        description: List line items for an order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-line-item
+        method: GET
+        description: Get a specific line item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: invoices
+      path: /invoices
+      description: Invoice operations
+      operations:
+      - name: list-invoices
+        method: GET
+        description: List invoices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-invoice
+        method: POST
+        description: Create an invoice
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-invoice
+        method: GET
+        description: Get invoice details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: approve-invoice
+        method: POST
+        description: Approve an invoice
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reject-invoice
+        method: POST
+        description: Reject an invoice
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: suppliers
+      path: /suppliers
+      description: Supplier management
+      operations:
+      - name: list-suppliers
+        method: GET
+        description: List suppliers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-supplier
+        method: GET
+        description: Get supplier profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: requisitions
+      path: /requisitions
+      description: Requisition management
+      operations:
+      - name: list-requisitions
+        method: GET
+        description: List requisitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-requisition
+        method: POST
+        description: Create a requisition
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-requisition
+        method: GET
+        description: Get requisition details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: receipts
+      path: /orders/{orderId}/receipts
+      description: Receipt operations
+      operations:
+      - name: list-receipts
+        method: GET
+        description: List receipts for an order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-receipt
+        method: POST
+        description: Create a receipt
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: procure-to-pay-api
-      description: "Unified REST API for SAP Ariba procure-to-pay operations."
-      resources:
-        - path: /v1/purchase-orders
-          name: purchase-orders
-          description: "Purchase order management"
-          operations:
-            - { method: GET, name: list-purchase-orders, description: "List purchase orders", call: "procurement.list-purchase-orders", outputParameters: [{ type: object, mapping: "$." }] }
-            - { method: POST, name: create-purchase-order, description: "Create a purchase order", call: "procurement.create-purchase-order", outputParameters: [{ type: object, mapping: "$." }] }
-    - type: mcp
-      port: 9090
-      namespace: procure-to-pay-mcp
-      transport: http
-      description: "MCP server for AI-assisted SAP Ariba procure-to-pay operations."
-      tools:
-        - { name: list-purchase-orders, description: "List purchase orders", hints: { readOnly: true, openWorld: true }, call: "procurement.list-purchase-orders", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: get-purchase-order, description: "Get purchase order details", hints: { readOnly: true }, call: "procurement.get-purchase-order", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: create-purchase-order, description: "Create a purchase order", call: "procurement.create-purchase-order", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: update-purchase-order, description: "Update a purchase order", call: "procurement.update-purchase-order", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: cancel-purchase-order, description: "Cancel a purchase order", hints: { destructive: true }, call: "procurement.cancel-purchase-order", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: list-line-items, description: "List line items for an order", hints: { readOnly: true }, call: "procurement.list-line-items", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: list-invoices, description: "List invoices", hints: { readOnly: true, openWorld: true }, call: "procurement.list-invoices", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: get-invoice, description: "Get invoice details", hints: { readOnly: true }, call: "procurement.get-invoice", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: create-invoice, description: "Create an invoice", call: "procurement.create-invoice", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: approve-invoice, description: "Approve an invoice for payment", call: "procurement.approve-invoice", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: reject-invoice, description: "Reject an invoice", call: "procurement.reject-invoice", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: list-suppliers, description: "List suppliers", hints: { readOnly: true, openWorld: true }, call: "procurement.list-suppliers", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: get-supplier, description: "Get supplier profile", hints: { readOnly: true }, call: "procurement.get-supplier", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: list-requisitions, description: "List requisitions", hints: { readOnly: true }, call: "procurement.list-requisitions", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: create-requisition, description: "Create a requisition", call: "procurement.create-requisition", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: get-requisition, description: "Get requisition details", hints: { readOnly: true }, call: "procurement.get-requisition", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: list-receipts, description: "List receipts for an order", hints: { readOnly: true }, call: "procurement.list-receipts", outputParameters: [{ type: object, mapping: "$." }] }
-        - { name: create-receipt, description: "Create a receipt", call: "procurement.create-receipt", outputParameters: [{ type: object, mapping: "$." }] }
+  - type: rest
+    port: 8080
+    namespace: procure-to-pay-api
+    description: Unified REST API for SAP Ariba procure-to-pay operations.
+    resources:
+    - path: /v1/purchase-orders
+      name: purchase-orders
+      description: Purchase order management
+      operations:
+      - method: GET
+        name: list-purchase-orders
+        description: List purchase orders
+        call: procurement.list-purchase-orders
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-purchase-order
+        description: Create a purchase order
+        call: procurement.create-purchase-order
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: procure-to-pay-mcp
+    transport: http
+    description: MCP server for AI-assisted SAP Ariba procure-to-pay operations.
+    tools:
+    - name: list-purchase-orders
+      description: List purchase orders
+      hints:
+        readOnly: true
+        openWorld: true
+      call: procurement.list-purchase-orders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-purchase-order
+      description: Get purchase order details
+      hints:
+        readOnly: true
+      call: procurement.get-purchase-order
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-purchase-order
+      description: Create a purchase order
+      call: procurement.create-purchase-order
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-purchase-order
+      description: Update a purchase order
+      call: procurement.update-purchase-order
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancel-purchase-order
+      description: Cancel a purchase order
+      hints:
+        destructive: true
+      call: procurement.cancel-purchase-order
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-line-items
+      description: List line items for an order
+      hints:
+        readOnly: true
+      call: procurement.list-line-items
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-invoices
+      description: List invoices
+      hints:
+        readOnly: true
+        openWorld: true
+      call: procurement.list-invoices
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-invoice
+      description: Get invoice details
+      hints:
+        readOnly: true
+      call: procurement.get-invoice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-invoice
+      description: Create an invoice
+      call: procurement.create-invoice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: approve-invoice
+      description: Approve an invoice for payment
+      call: procurement.approve-invoice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reject-invoice
+      description: Reject an invoice
+      call: procurement.reject-invoice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-suppliers
+      description: List suppliers
+      hints:
+        readOnly: true
+        openWorld: true
+      call: procurement.list-suppliers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-supplier
+      description: Get supplier profile
+      hints:
+        readOnly: true
+      call: procurement.get-supplier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-requisitions
+      description: List requisitions
+      hints:
+        readOnly: true
+      call: procurement.list-requisitions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-requisition
+      description: Create a requisition
+      call: procurement.create-requisition
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-requisition
+      description: Get requisition details
+      hints:
+        readOnly: true
+      call: procurement.get-requisition
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-receipts
+      description: List receipts for an order
+      hints:
+        readOnly: true
+      call: procurement.list-receipts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-receipt
+      description: Create a receipt
+      call: procurement.create-receipt
+      outputParameters:
+      - type: object
+        mapping: $.
