@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Ariba Procurement API — Purchase Order Line Items
+  description: 'SAP Ariba Procurement API — Purchase Order Line Items. 2 operations. Lead operation: List Line Items for a
+    Purchase Order. Self-contained Naftiko capability covering one Sap Ariba business surface.'
+  tags:
+  - Sap Ariba
+  - Purchase Order Line Items
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_ARIBA_API_KEY: SAP_ARIBA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: procurement-purchase-order-line-items
+    baseUri: https://openapi.ariba.com/api/procurement/v1
+    description: SAP Ariba Procurement API — Purchase Order Line Items business capability. Self-contained, no shared references.
+    resources:
+    - name: orders-orderId-lineItems
+      path: /orders/{orderId}/lineItems
+      operations:
+      - name: listpurchaseorderlineitems
+        method: GET
+        description: List Line Items for a Purchase Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: orders-orderId-lineItems-lineItemNumber
+      path: /orders/{orderId}/lineItems/{lineItemNumber}
+      operations:
+      - name: getpurchaseorderlineitem
+        method: GET
+        description: Get a Specific Line Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: lineItemNumber
+          in: path
+          type: string
+          description: The line item number within the purchase order (NumberOnPO)
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_ARIBA_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: procurement-purchase-order-line-items-rest
+    port: 8080
+    description: REST adapter for SAP Ariba Procurement API — Purchase Order Line Items. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/orders/{orderid}/lineitems
+      name: orders-orderid-lineitems
+      description: REST surface for orders-orderId-lineItems.
+      operations:
+      - method: GET
+        name: listpurchaseorderlineitems
+        description: List Line Items for a Purchase Order
+        call: procurement-purchase-order-line-items.listpurchaseorderlineitems
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orders/{orderid}/lineitems/{lineitemnumber}
+      name: orders-orderid-lineitems-lineitemnumber
+      description: REST surface for orders-orderId-lineItems-lineItemNumber.
+      operations:
+      - method: GET
+        name: getpurchaseorderlineitem
+        description: Get a Specific Line Item
+        call: procurement-purchase-order-line-items.getpurchaseorderlineitem
+        with:
+          lineItemNumber: rest.lineItemNumber
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: procurement-purchase-order-line-items-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Ariba Procurement API — Purchase Order Line Items. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-line-items-purchase-order
+      description: List Line Items for a Purchase Order
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: procurement-purchase-order-line-items.listpurchaseorderlineitems
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-line-item
+      description: Get a Specific Line Item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: procurement-purchase-order-line-items.getpurchaseorderlineitem
+      with:
+        lineItemNumber: tools.lineItemNumber
+      outputParameters:
+      - type: object
+        mapping: $.

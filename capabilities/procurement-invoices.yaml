@@ -1,0 +1,290 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Ariba Procurement API — Invoices
+  description: 'SAP Ariba Procurement API — Invoices. 5 operations. Lead operation: List Invoices. Self-contained Naftiko
+    capability covering one Sap Ariba business surface.'
+  tags:
+  - Sap Ariba
+  - Invoices
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_ARIBA_API_KEY: SAP_ARIBA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: procurement-invoices
+    baseUri: https://openapi.ariba.com/api/procurement/v1
+    description: SAP Ariba Procurement API — Invoices business capability. Self-contained, no shared references.
+    resources:
+    - name: invoices
+      path: /invoices
+      operations:
+      - name: listinvoices
+        method: GET
+        description: List Invoices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter
+          in: query
+          type: string
+          description: OData-style filter expression
+        - name: supplierId
+          in: query
+          type: string
+          description: Filter by supplier AN-ID
+        - name: buyerId
+          in: query
+          type: string
+          description: Filter by buyer AN-ID
+        - name: status
+          in: query
+          type: string
+          description: Filter by invoice processing status
+        - name: purchaseOrderId
+          in: query
+          type: string
+          description: Filter invoices referencing a specific purchase order
+        - name: fromDate
+          in: query
+          type: string
+          description: Filter invoices created on or after this date
+        - name: toDate
+          in: query
+          type: string
+          description: Filter invoices created on or before this date
+      - name: createinvoice
+        method: POST
+        description: Create an Invoice
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: invoices-invoiceId
+      path: /invoices/{invoiceId}
+      operations:
+      - name: getinvoice
+        method: GET
+        description: Get an Invoice
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: invoiceId
+          in: path
+          type: string
+          description: Unique identifier for the invoice
+          required: true
+    - name: invoices-invoiceId-approve
+      path: /invoices/{invoiceId}/approve
+      operations:
+      - name: approveinvoice
+        method: POST
+        description: Approve an Invoice
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: invoiceId
+          in: path
+          type: string
+          description: Unique identifier for the invoice
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: invoices-invoiceId-reject
+      path: /invoices/{invoiceId}/reject
+      operations:
+      - name: rejectinvoice
+        method: POST
+        description: Reject an Invoice
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: invoiceId
+          in: path
+          type: string
+          description: Unique identifier for the invoice
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_ARIBA_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: procurement-invoices-rest
+    port: 8080
+    description: REST adapter for SAP Ariba Procurement API — Invoices. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/invoices
+      name: invoices
+      description: REST surface for invoices.
+      operations:
+      - method: GET
+        name: listinvoices
+        description: List Invoices
+        call: procurement-invoices.listinvoices
+        with:
+          filter: rest.filter
+          supplierId: rest.supplierId
+          buyerId: rest.buyerId
+          status: rest.status
+          purchaseOrderId: rest.purchaseOrderId
+          fromDate: rest.fromDate
+          toDate: rest.toDate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createinvoice
+        description: Create an Invoice
+        call: procurement-invoices.createinvoice
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoices/{invoiceid}
+      name: invoices-invoiceid
+      description: REST surface for invoices-invoiceId.
+      operations:
+      - method: GET
+        name: getinvoice
+        description: Get an Invoice
+        call: procurement-invoices.getinvoice
+        with:
+          invoiceId: rest.invoiceId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoices/{invoiceid}/approve
+      name: invoices-invoiceid-approve
+      description: REST surface for invoices-invoiceId-approve.
+      operations:
+      - method: POST
+        name: approveinvoice
+        description: Approve an Invoice
+        call: procurement-invoices.approveinvoice
+        with:
+          invoiceId: rest.invoiceId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoices/{invoiceid}/reject
+      name: invoices-invoiceid-reject
+      description: REST surface for invoices-invoiceId-reject.
+      operations:
+      - method: POST
+        name: rejectinvoice
+        description: Reject an Invoice
+        call: procurement-invoices.rejectinvoice
+        with:
+          invoiceId: rest.invoiceId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: procurement-invoices-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Ariba Procurement API — Invoices. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-invoices
+      description: List Invoices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: procurement-invoices.listinvoices
+      with:
+        filter: tools.filter
+        supplierId: tools.supplierId
+        buyerId: tools.buyerId
+        status: tools.status
+        purchaseOrderId: tools.purchaseOrderId
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-invoice
+      description: Create an Invoice
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: procurement-invoices.createinvoice
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-invoice
+      description: Get an Invoice
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: procurement-invoices.getinvoice
+      with:
+        invoiceId: tools.invoiceId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: approve-invoice
+      description: Approve an Invoice
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: procurement-invoices.approveinvoice
+      with:
+        invoiceId: tools.invoiceId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reject-invoice
+      description: Reject an Invoice
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: procurement-invoices.rejectinvoice
+      with:
+        invoiceId: tools.invoiceId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
