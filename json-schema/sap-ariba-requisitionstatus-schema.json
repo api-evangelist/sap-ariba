@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RequisitionStatus",
+  "title": "RequisitionStatus",
+  "type": "string",
+  "description": "Status of a purchase requisition",
+  "enum": [
+    "Composing",
+    "Submitted",
+    "PendingApproval",
+    "Approved",
+    "Denied",
+    "Ordered",
+    "Cancelled"
+  ]
+}

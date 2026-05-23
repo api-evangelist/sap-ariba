@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SupplierListResponse",
+  "title": "SupplierListResponse",
+  "type": "object",
+  "description": "Paginated list of suppliers",
+  "properties": {
+    "totalCount": {
+      "type": "integer",
+      "description": "Total number of matching suppliers",
+      "example": 10
+    },
+    "skip": {
+      "type": "integer",
+      "description": "Number of records skipped",
+      "example": 10
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Maximum records per page",
+      "example": 10
+    },
+    "suppliers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Supplier"
+      },
+      "example": []
+    }
+  }
+}

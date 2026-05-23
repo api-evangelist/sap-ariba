@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PurchaseOrderCreate",
+  "title": "PurchaseOrderCreate",
+  "type": "object",
+  "description": "Request body for creating a new purchase order",
+  "required": [
+    "supplier",
+    "currency",
+    "lineItems"
+  ],
+  "properties": {
+    "erpPONumber": {
+      "type": "string",
+      "description": "ERP system purchase order number",
+      "example": "example_value"
+    },
+    "supplier": {
+      "$ref": "#/components/schemas/SupplierReference"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code",
+      "pattern": "^[A-Z]{3}$",
+      "example": "example_value"
+    },
+    "paymentTerms": {
+      "$ref": "#/components/schemas/PaymentTerms"
+    },
+    "purchaseOrg": {
+      "type": "string",
+      "description": "Purchasing organization identifier",
+      "example": "example_value"
+    },
+    "purchaseGroup": {
+      "type": "string",
+      "description": "Purchasing group identifier",
+      "example": "example_value"
+    },
+    "companyCode": {
+      "type": "string",
+      "description": "Company code",
+      "example": "example_value"
+    },
+    "shipTo": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "billTo": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PurchaseOrderLineItem"
+      },
+      "minItems": 1,
+      "example": []
+    },
+    "requisitionId": {
+      "type": "string",
+      "description": "Reference to originating requisition",
+      "example": "500123"
+    },
+    "contractId": {
+      "type": "string",
+      "description": "Reference to master agreement",
+      "example": "500123"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Header-level comments",
+      "example": "example_value"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UnitOfMeasure",
+  "title": "UnitOfMeasure",
+  "type": "object",
+  "description": "Unit of measure specification following UN/ECE Recommendation 20 standard codes",
+  "required": [
+    "code"
+  ],
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Unit of measure code (UN/ECE Rec 20 or SAP Ariba internal code)",
+      "examples": [
+        "EA",
+        "KG",
+        "PC",
+        "HR"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the unit",
+      "examples": [
+        "Each",
+        "Kilogram",
+        "Piece",
+        "Hour"
+      ]
+    }
+  }
+}

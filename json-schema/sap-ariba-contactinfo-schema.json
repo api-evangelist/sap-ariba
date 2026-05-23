@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContactInfo",
+  "title": "ContactInfo",
+  "type": "object",
+  "description": "Contact information for a person or department",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Contact person name",
+      "example": "Example Title"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Contact email address",
+      "example": "user@example.com"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Contact phone number",
+      "example": "example_value"
+    },
+    "fax": {
+      "type": "string",
+      "description": "Contact fax number",
+      "example": "example_value"
+    },
+    "department": {
+      "type": "string",
+      "description": "Department name",
+      "example": "example_value"
+    }
+  }
+}

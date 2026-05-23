@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReceiptCreate",
+  "title": "ReceiptCreate",
+  "type": "object",
+  "description": "Request body for creating a receipt",
+  "required": [
+    "receiptDate",
+    "lineItems"
+  ],
+  "properties": {
+    "receiptDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "receiptType": {
+      "type": "string",
+      "enum": [
+        "GoodsReceipt",
+        "ServiceConfirmation",
+        "ReturnDelivery"
+      ],
+      "default": "GoodsReceipt",
+      "example": "GoodsReceipt"
+    },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "poLineNumber",
+          "quantityReceived"
+        ],
+        "properties": {
+          "poLineNumber": {
+            "type": "string"
+          },
+          "quantityReceived": {
+            "type": "number",
+            "format": "double"
+          },
+          "comments": {
+            "type": "string"
+          }
+        }
+      },
+      "minItems": 1,
+      "example": []
+    }
+  }
+}

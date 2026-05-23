@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReceiptListResponse",
+  "title": "ReceiptListResponse",
+  "type": "object",
+  "description": "Paginated list of receipts",
+  "properties": {
+    "totalCount": {
+      "type": "integer",
+      "example": 10
+    },
+    "skip": {
+      "type": "integer",
+      "example": 10
+    },
+    "limit": {
+      "type": "integer",
+      "example": 10
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Receipt"
+      },
+      "example": []
+    }
+  }
+}

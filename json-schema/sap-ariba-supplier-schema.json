@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Supplier",
+  "title": "Supplier",
+  "type": "object",
+  "description": "Complete supplier profile on the SAP Ariba Network including company information, classifications, and qualification details",
+  "required": [
+    "supplierId",
+    "name"
+  ],
+  "properties": {
+    "supplierId": {
+      "type": "string",
+      "description": "Unique supplier identifier (AN-ID)",
+      "examples": [
+        "AN01000000001"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Legal company name",
+      "example": "Example Title"
+    },
+    "doingBusinessAs": {
+      "type": "string",
+      "description": "Trade name or DBA name",
+      "example": "example_value"
+    },
+    "dunsNumber": {
+      "type": "string",
+      "description": "Dun and Bradstreet DUNS number",
+      "pattern": "^\\d{9}$",
+      "example": "example_value"
+    },
+    "taxId": {
+      "type": "string",
+      "description": "Tax identification number",
+      "example": "500123"
+    },
+    "yearEstablished": {
+      "type": "integer",
+      "description": "Year the company was established",
+      "example": 10
+    },
+    "numberOfEmployees": {
+      "type": "string",
+      "description": "Employee count range",
+      "enum": [
+        "1-50",
+        "51-200",
+        "201-500",
+        "501-1000",
+        "1001-5000",
+        "5001-10000",
+        "10000+"
+      ],
+      "example": "1-50"
+    },
+    "annualRevenue": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "qualificationStatus": {
+      "$ref": "#/components/schemas/SupplierQualificationStatus"
+    },
+    "registrationStatus": {
+      "type": "string",
+      "description": "Registration status on the Ariba Network",
+      "enum": [
+        "Active",
+        "Pending",
+        "Suspended",
+        "Inactive"
+      ],
+      "example": "Active"
+    },
+    "address": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "primaryContact": {
+      "$ref": "#/components/schemas/ContactInfo"
+    },
+    "commodityCodes": {
+      "type": "array",
+      "description": "UNSPSC commodity codes the supplier serves",
+      "items": {
+        "$ref": "#/components/schemas/CommodityCode"
+      },
+      "example": []
+    },
+    "certifications": {
+      "type": "array",
+      "description": "Supplier certifications and compliance credentials",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Certification type",
+            "examples": [
+              "ISO9001",
+              "ISO14001",
+              "MBE",
+              "WBE",
+              "SDVOSB"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Full certification name"
+          },
+          "issuingBody": {
+            "type": "string",
+            "description": "Organization that issued the certification"
+          },
+          "expirationDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Certification expiration date"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Active",
+              "Expired",
+              "Pending"
+            ]
+          }
+        }
+      },
+      "example": []
+    },
+    "diversityClassifications": {
+      "type": "array",
+      "description": "Supplier diversity classifications",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "description": "Company website URL",
+      "example": "https://www.example.com"
+    },
+    "description": {
+      "type": "string",
+      "description": "Company description",
+      "example": "A sample description."
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date the supplier profile was created",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "lastModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date of last profile update",
+      "example": "2026-01-15T10:30:00Z"
+    }
+  }
+}

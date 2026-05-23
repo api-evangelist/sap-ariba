@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SupplierQualificationStatus",
+  "title": "SupplierQualificationStatus",
+  "type": "string",
+  "description": "Supplier qualification status on the Ariba Network",
+  "enum": [
+    "Qualified",
+    "Conditional",
+    "NotQualified",
+    "PendingReview",
+    "Expired"
+  ]
+}

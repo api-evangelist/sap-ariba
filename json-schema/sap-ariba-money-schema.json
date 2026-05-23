@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Money",
+  "title": "Money",
+  "type": "object",
+  "description": "Monetary amount with currency code following ISO 4217",
+  "required": [
+    "amount",
+    "currencyCode"
+  ],
+  "properties": {
+    "amount": {
+      "type": "number",
+      "format": "double",
+      "description": "The monetary value",
+      "examples": [
+        1250.0
+      ]
+    },
+    "currencyCode": {
+      "type": "string",
+      "description": "ISO 4217 currency code",
+      "pattern": "^[A-Z]{3}$",
+      "examples": [
+        "USD",
+        "EUR",
+        "GBP"
+      ]
+    }
+  }
+}

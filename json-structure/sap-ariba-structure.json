@@ -1,0 +1,447 @@
+{
+  "provider": "SAP Ariba",
+  "providerId": "sap-ariba",
+  "kind": "json-structure",
+  "description": "Structural overview of the SAP Ariba API surface; extracted from openapi/.",
+  "schemaCount": 33,
+  "operationCount": 19,
+  "schemas": [
+    {
+      "name": "PurchaseOrderStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "InvoiceStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "RequisitionStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "SupplierQualificationStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Money",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "amount",
+        "currencyCode"
+      ]
+    },
+    {
+      "name": "Address",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "ContactInfo",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "UnitOfMeasure",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "code"
+      ]
+    },
+    {
+      "name": "CommodityCode",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "code"
+      ]
+    },
+    {
+      "name": "AccountingInfo",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "TaxDetail",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "PaymentTerms",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "PurchaseOrderLineItem",
+      "type": "object",
+      "propertyCount": 23,
+      "required": [
+        "numberOnPO",
+        "description",
+        "quantity",
+        "unitPrice",
+        "unitOfMeasure"
+      ]
+    },
+    {
+      "name": "PurchaseOrder",
+      "type": "object",
+      "propertyCount": 25,
+      "required": [
+        "orderId",
+        "orderDate",
+        "supplier",
+        "currency",
+        "lineItems"
+      ]
+    },
+    {
+      "name": "PurchaseOrderCreate",
+      "type": "object",
+      "propertyCount": 13,
+      "required": [
+        "supplier",
+        "currency",
+        "lineItems"
+      ]
+    },
+    {
+      "name": "PurchaseOrderUpdate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "PurchaseOrderListResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "LineItemListResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "SupplierReference",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "supplierId"
+      ]
+    },
+    {
+      "name": "BuyerReference",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Supplier",
+      "type": "object",
+      "propertyCount": 19,
+      "required": [
+        "supplierId",
+        "name"
+      ]
+    },
+    {
+      "name": "SupplierListResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "InvoiceLineItem",
+      "type": "object",
+      "propertyCount": 14,
+      "required": [
+        "lineNumber",
+        "description",
+        "quantity",
+        "unitPrice",
+        "netAmount"
+      ]
+    },
+    {
+      "name": "Invoice",
+      "type": "object",
+      "propertyCount": 24,
+      "required": [
+        "invoiceId",
+        "invoiceNumber",
+        "invoiceDate",
+        "supplier",
+        "totalAmount",
+        "lineItems"
+      ]
+    },
+    {
+      "name": "InvoiceCreate",
+      "type": "object",
+      "propertyCount": 14,
+      "required": [
+        "invoiceNumber",
+        "invoiceDate",
+        "supplier",
+        "currency",
+        "totalAmount",
+        "lineItems"
+      ]
+    },
+    {
+      "name": "InvoiceListResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Requisition",
+      "type": "object",
+      "propertyCount": 15,
+      "required": [
+        "requisitionId",
+        "title",
+        "requestor",
+        "lineItems"
+      ]
+    },
+    {
+      "name": "RequisitionCreate",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "title",
+        "lineItems"
+      ]
+    },
+    {
+      "name": "RequisitionListResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Receipt",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "receiptId",
+        "purchaseOrderId",
+        "receiptDate",
+        "lineItems"
+      ]
+    },
+    {
+      "name": "ReceiptCreate",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "receiptDate",
+        "lineItems"
+      ]
+    },
+    {
+      "name": "ReceiptListResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ErrorResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "error"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/orders",
+      "operationId": "listPurchaseOrders",
+      "summary": "List Purchase Orders",
+      "tags": [
+        "Purchase Orders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "operationId": "createPurchaseOrder",
+      "summary": "Create a Purchase Order",
+      "tags": [
+        "Purchase Orders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/orders/{orderId}",
+      "operationId": "getPurchaseOrder",
+      "summary": "Get a Purchase Order",
+      "tags": [
+        "Purchase Orders"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/orders/{orderId}",
+      "operationId": "updatePurchaseOrder",
+      "summary": "Update a Purchase Order",
+      "tags": [
+        "Purchase Orders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/orders/{orderId}/cancel",
+      "operationId": "cancelPurchaseOrder",
+      "summary": "Cancel a Purchase Order",
+      "tags": [
+        "Purchase Orders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/orders/{orderId}/lineItems",
+      "operationId": "listPurchaseOrderLineItems",
+      "summary": "List Line Items for a Purchase Order",
+      "tags": [
+        "Purchase Order Line Items"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/orders/{orderId}/lineItems/{lineItemNumber}",
+      "operationId": "getPurchaseOrderLineItem",
+      "summary": "Get a Specific Line Item",
+      "tags": [
+        "Purchase Order Line Items"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/invoices",
+      "operationId": "listInvoices",
+      "summary": "List Invoices",
+      "tags": [
+        "Invoices"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/invoices",
+      "operationId": "createInvoice",
+      "summary": "Create an Invoice",
+      "tags": [
+        "Invoices"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/invoices/{invoiceId}",
+      "operationId": "getInvoice",
+      "summary": "Get an Invoice",
+      "tags": [
+        "Invoices"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/invoices/{invoiceId}/approve",
+      "operationId": "approveInvoice",
+      "summary": "Approve an Invoice",
+      "tags": [
+        "Invoices"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/invoices/{invoiceId}/reject",
+      "operationId": "rejectInvoice",
+      "summary": "Reject an Invoice",
+      "tags": [
+        "Invoices"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/suppliers",
+      "operationId": "listSuppliers",
+      "summary": "List Suppliers",
+      "tags": [
+        "Suppliers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/suppliers/{supplierId}",
+      "operationId": "getSupplier",
+      "summary": "Get a Supplier Profile",
+      "tags": [
+        "Suppliers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/requisitions",
+      "operationId": "listRequisitions",
+      "summary": "List Requisitions",
+      "tags": [
+        "Requisitions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/requisitions",
+      "operationId": "createRequisition",
+      "summary": "Create a Requisition",
+      "tags": [
+        "Requisitions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/requisitions/{requisitionId}",
+      "operationId": "getRequisition",
+      "summary": "Get a Requisition",
+      "tags": [
+        "Requisitions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/orders/{orderId}/receipts",
+      "operationId": "listReceipts",
+      "summary": "List Receipts for a Purchase Order",
+      "tags": [
+        "Receipts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/orders/{orderId}/receipts",
+      "operationId": "createReceipt",
+      "summary": "Create a Receipt",
+      "tags": [
+        "Receipts"
+      ]
+    }
+  ]
+}

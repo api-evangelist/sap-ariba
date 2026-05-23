@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TaxDetail",
+  "title": "TaxDetail",
+  "type": "object",
+  "description": "Tax calculation details for an invoice or line item",
+  "properties": {
+    "taxCode": {
+      "type": "string",
+      "description": "Tax code identifier",
+      "example": "example_value"
+    },
+    "taxCategory": {
+      "type": "string",
+      "description": "Tax category (e.g., VAT, GST, Sales Tax)",
+      "example": "example_value"
+    },
+    "taxRate": {
+      "type": "number",
+      "format": "double",
+      "description": "Tax rate as a percentage",
+      "minimum": 0,
+      "example": 42.5
+    },
+    "taxAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "taxableAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the tax",
+      "example": "A sample description."
+    }
+  }
+}

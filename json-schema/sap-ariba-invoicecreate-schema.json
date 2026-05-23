@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InvoiceCreate",
+  "title": "InvoiceCreate",
+  "type": "object",
+  "description": "Request body for creating a new invoice",
+  "required": [
+    "invoiceNumber",
+    "invoiceDate",
+    "supplier",
+    "currency",
+    "totalAmount",
+    "lineItems"
+  ],
+  "properties": {
+    "invoiceNumber": {
+      "type": "string",
+      "description": "Supplier-assigned invoice number",
+      "example": "example_value"
+    },
+    "invoiceDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Invoice issue date",
+      "example": "2026-01-15"
+    },
+    "invoiceType": {
+      "type": "string",
+      "enum": [
+        "Standard",
+        "CreditMemo",
+        "DebitMemo",
+        "SelfBilling"
+      ],
+      "default": "Standard",
+      "example": "Standard"
+    },
+    "supplier": {
+      "$ref": "#/components/schemas/SupplierReference"
+    },
+    "purchaseOrderReference": {
+      "type": "string",
+      "description": "Purchase order number",
+      "example": "example_value"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "example": "example_value"
+    },
+    "subtotalAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "taxAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "shippingAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "totalAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "paymentTerms": {
+      "$ref": "#/components/schemas/PaymentTerms"
+    },
+    "remitTo": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InvoiceLineItem"
+      },
+      "minItems": 1,
+      "example": []
+    },
+    "comments": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

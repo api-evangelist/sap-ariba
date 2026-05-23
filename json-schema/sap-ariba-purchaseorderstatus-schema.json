@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PurchaseOrderStatus",
+  "title": "PurchaseOrderStatus",
+  "type": "string",
+  "description": "Status of a purchase order in the procurement lifecycle",
+  "enum": [
+    "Draft",
+    "Submitted",
+    "Ordered",
+    "Confirmed",
+    "PartiallyReceived",
+    "Received",
+    "PartiallyInvoiced",
+    "Invoiced",
+    "Cancelled",
+    "Closed",
+    "Rejected"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Receipt",
+  "title": "Receipt",
+  "type": "object",
+  "description": "A goods receipt or service confirmation recorded against a purchase order",
+  "required": [
+    "receiptId",
+    "purchaseOrderId",
+    "receiptDate",
+    "lineItems"
+  ],
+  "properties": {
+    "receiptId": {
+      "type": "string",
+      "description": "Unique receipt identifier",
+      "example": "500123"
+    },
+    "purchaseOrderId": {
+      "type": "string",
+      "description": "Reference to the purchase order",
+      "example": "500123"
+    },
+    "receiptDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date goods were received or services confirmed",
+      "example": "2026-01-15"
+    },
+    "receiptType": {
+      "type": "string",
+      "description": "Type of receipt",
+      "enum": [
+        "GoodsReceipt",
+        "ServiceConfirmation",
+        "ReturnDelivery"
+      ],
+      "example": "GoodsReceipt"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Draft",
+        "Posted",
+        "Reversed"
+      ],
+      "example": "Draft"
+    },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "poLineNumber",
+          "quantityReceived"
+        ],
+        "properties": {
+          "poLineNumber": {
+            "type": "string",
+            "description": "Purchase order line item number"
+          },
+          "description": {
+            "type": "string",
+            "description": "Item description"
+          },
+          "quantityReceived": {
+            "type": "number",
+            "format": "double",
+            "description": "Quantity received"
+          },
+          "unitOfMeasure": {
+            "$ref": "#/components/schemas/UnitOfMeasure"
+          },
+          "deliveryNote": {
+            "type": "string",
+            "description": "Delivery note or packing slip reference"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Receipt comments"
+          }
+        }
+      },
+      "minItems": 1,
+      "example": []
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "User who created the receipt",
+      "example": "example_value"
+    }
+  }
+}

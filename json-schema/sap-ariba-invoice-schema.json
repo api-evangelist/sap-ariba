@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Invoice",
+  "title": "Invoice",
+  "type": "object",
+  "description": "An invoice document submitted by a supplier for goods or services delivered against a purchase order",
+  "required": [
+    "invoiceId",
+    "invoiceNumber",
+    "invoiceDate",
+    "supplier",
+    "totalAmount",
+    "lineItems"
+  ],
+  "properties": {
+    "invoiceId": {
+      "type": "string",
+      "description": "Internal unique invoice identifier",
+      "example": "500123"
+    },
+    "invoiceNumber": {
+      "type": "string",
+      "description": "Supplier-assigned invoice number",
+      "example": "example_value"
+    },
+    "invoiceDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the invoice was issued",
+      "example": "2026-01-15"
+    },
+    "status": {
+      "$ref": "#/components/schemas/InvoiceStatus"
+    },
+    "invoiceType": {
+      "type": "string",
+      "description": "Type of invoice document",
+      "enum": [
+        "Standard",
+        "CreditMemo",
+        "DebitMemo",
+        "SelfBilling"
+      ],
+      "example": "Standard"
+    },
+    "supplier": {
+      "$ref": "#/components/schemas/SupplierReference"
+    },
+    "buyer": {
+      "$ref": "#/components/schemas/BuyerReference"
+    },
+    "purchaseOrderReference": {
+      "type": "string",
+      "description": "Primary purchase order number this invoice relates to",
+      "example": "example_value"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code",
+      "pattern": "^[A-Z]{3}$",
+      "example": "example_value"
+    },
+    "subtotalAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "taxAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "shippingAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "totalAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "paymentTerms": {
+      "$ref": "#/components/schemas/PaymentTerms"
+    },
+    "dueDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Payment due date",
+      "example": "2026-01-15"
+    },
+    "remitTo": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "lineItems": {
+      "type": "array",
+      "description": "Invoice line items",
+      "items": {
+        "$ref": "#/components/schemas/InvoiceLineItem"
+      },
+      "minItems": 1,
+      "example": []
+    },
+    "taxDetails": {
+      "type": "array",
+      "description": "Header-level tax summary",
+      "items": {
+        "$ref": "#/components/schemas/TaxDetail"
+      },
+      "example": []
+    },
+    "comments": {
+      "type": "string",
+      "description": "Invoice comments or notes",
+      "example": "example_value"
+    },
+    "approvalDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date the invoice was approved",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "paymentDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date payment was made",
+      "example": "2026-01-15"
+    },
+    "paymentReference": {
+      "type": "string",
+      "description": "Payment transaction reference number",
+      "example": "example_value"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the invoice was created in the system",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "lastModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last modification",
+      "example": "2026-01-15T10:30:00Z"
+    }
+  }
+}

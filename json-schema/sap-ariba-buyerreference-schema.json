@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BuyerReference",
+  "title": "BuyerReference",
+  "type": "object",
+  "description": "Reference to a buyer organization",
+  "properties": {
+    "buyerId": {
+      "type": "string",
+      "description": "Buyer AN-ID on the SAP Ariba Network",
+      "example": "500123"
+    },
+    "name": {
+      "type": "string",
+      "description": "Buyer organization name",
+      "example": "Example Title"
+    },
+    "erpBuyerId": {
+      "type": "string",
+      "description": "Buyer identifier in the ERP system",
+      "example": "500123"
+    }
+  }
+}

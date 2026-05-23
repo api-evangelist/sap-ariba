@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Requisition",
+  "title": "Requisition",
+  "type": "object",
+  "description": "A purchase requisition requesting procurement of goods or services",
+  "required": [
+    "requisitionId",
+    "title",
+    "requestor",
+    "lineItems"
+  ],
+  "properties": {
+    "requisitionId": {
+      "type": "string",
+      "description": "Unique requisition identifier",
+      "example": "500123"
+    },
+    "title": {
+      "type": "string",
+      "description": "Requisition title or name",
+      "example": "Example Title"
+    },
+    "status": {
+      "$ref": "#/components/schemas/RequisitionStatus"
+    },
+    "requestor": {
+      "type": "string",
+      "description": "User ID of the person who created the requisition",
+      "example": "example_value"
+    },
+    "requestorName": {
+      "type": "string",
+      "description": "Full name of the requestor",
+      "example": "example_value"
+    },
+    "department": {
+      "type": "string",
+      "description": "Department of the requestor",
+      "example": "example_value"
+    },
+    "companyCode": {
+      "type": "string",
+      "description": "Company code",
+      "example": "example_value"
+    },
+    "needByDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Desired delivery date",
+      "example": "2026-01-15"
+    },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PurchaseOrderLineItem"
+      },
+      "minItems": 1,
+      "example": []
+    },
+    "totalAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "purchaseOrderIds": {
+      "type": "array",
+      "description": "Purchase order IDs generated from this requisition after approval",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "comments": {
+      "type": "string",
+      "description": "Requisition comments",
+      "example": "example_value"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "lastModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "approvedDate": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PurchaseOrderLineItem",
+  "title": "PurchaseOrderLineItem",
+  "type": "object",
+  "description": "A line item within a purchase order representing a specific good or service being procured",
+  "required": [
+    "numberOnPO",
+    "description",
+    "quantity",
+    "unitPrice",
+    "unitOfMeasure"
+  ],
+  "properties": {
+    "numberOnPO": {
+      "type": "string",
+      "description": "Line item number within the purchase order. Unique within the order.",
+      "example": "example_value"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the item or service being purchased",
+      "example": "A sample description."
+    },
+    "quantity": {
+      "type": "number",
+      "format": "double",
+      "description": "Quantity to purchase",
+      "minimum": 0,
+      "example": 42.5
+    },
+    "unitPrice": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "unitOfMeasure": {
+      "$ref": "#/components/schemas/UnitOfMeasure"
+    },
+    "netAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "commodityCode": {
+      "$ref": "#/components/schemas/CommodityCode"
+    },
+    "buyerPartNumber": {
+      "type": "string",
+      "description": "Buyer-assigned part or material number",
+      "example": "example_value"
+    },
+    "supplierPartNumber": {
+      "type": "string",
+      "description": "Supplier-assigned part or catalog number",
+      "example": "example_value"
+    },
+    "manufacturerPartId": {
+      "type": "string",
+      "description": "Manufacturer part identifier",
+      "example": "500123"
+    },
+    "manufacturerName": {
+      "type": "string",
+      "description": "Name of the manufacturer",
+      "example": "example_value"
+    },
+    "itemCategory": {
+      "type": "string",
+      "description": "Item category code distinguishing material, service, or other item types",
+      "example": "example_value"
+    },
+    "accountCategory": {
+      "type": "string",
+      "description": "Account assignment category for the line item expenditure",
+      "example": "example_value"
+    },
+    "needByDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Requested delivery date for the line item (ISO 8601 YYYY-MM-DD)",
+      "example": "2026-01-15"
+    },
+    "shipTo": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "accountings": {
+      "type": "array",
+      "description": "Split accounting assignments for distributing costs across multiple cost objects",
+      "items": {
+        "$ref": "#/components/schemas/AccountingInfo"
+      },
+      "example": []
+    },
+    "receivingType": {
+      "type": "integer",
+      "description": "Receiving type value indicating how receipts should be processed for this line item",
+      "example": 10
+    },
+    "taxCode": {
+      "type": "string",
+      "description": "Tax code per evaluated receipt settlement agreements",
+      "example": "example_value"
+    },
+    "taxDetail": {
+      "$ref": "#/components/schemas/TaxDetail"
+    },
+    "itemOnRequisition": {
+      "type": "string",
+      "description": "Line number of the corresponding item in the originating requisition",
+      "example": "example_value"
+    },
+    "serviceStartDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Service period start date (for service line items)",
+      "example": "2026-01-15"
+    },
+    "serviceEndDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Service period end date (for service line items)",
+      "example": "2026-01-15"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Additional comments or notes on the line item",
+      "example": "example_value"
+    }
+  }
+}

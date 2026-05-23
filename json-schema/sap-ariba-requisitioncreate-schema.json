@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RequisitionCreate",
+  "title": "RequisitionCreate",
+  "type": "object",
+  "description": "Request body for creating a new requisition",
+  "required": [
+    "title",
+    "lineItems"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "example": "Example Title"
+    },
+    "needByDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "companyCode": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PurchaseOrderLineItem"
+      },
+      "minItems": 1,
+      "example": []
+    },
+    "comments": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

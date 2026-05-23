@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InvoiceLineItem",
+  "title": "InvoiceLineItem",
+  "type": "object",
+  "description": "A line item on an invoice",
+  "required": [
+    "lineNumber",
+    "description",
+    "quantity",
+    "unitPrice",
+    "netAmount"
+  ],
+  "properties": {
+    "lineNumber": {
+      "type": "string",
+      "description": "Line item number on the invoice",
+      "example": "example_value"
+    },
+    "purchaseOrderReference": {
+      "type": "string",
+      "description": "Referenced purchase order number",
+      "example": "example_value"
+    },
+    "poLineNumber": {
+      "type": "string",
+      "description": "Referenced purchase order line item number",
+      "example": "example_value"
+    },
+    "description": {
+      "type": "string",
+      "description": "Item or service description",
+      "example": "A sample description."
+    },
+    "quantity": {
+      "type": "number",
+      "format": "double",
+      "description": "Invoiced quantity",
+      "example": 42.5
+    },
+    "unitPrice": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "unitOfMeasure": {
+      "$ref": "#/components/schemas/UnitOfMeasure"
+    },
+    "netAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "taxDetail": {
+      "$ref": "#/components/schemas/TaxDetail"
+    },
+    "commodityCode": {
+      "$ref": "#/components/schemas/CommodityCode"
+    },
+    "buyerPartNumber": {
+      "type": "string",
+      "description": "Buyer part number",
+      "example": "example_value"
+    },
+    "supplierPartNumber": {
+      "type": "string",
+      "description": "Supplier part number",
+      "example": "example_value"
+    },
+    "serviceStartDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Service period start date",
+      "example": "2026-01-15"
+    },
+    "serviceEndDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Service period end date",
+      "example": "2026-01-15"
+    }
+  }
+}

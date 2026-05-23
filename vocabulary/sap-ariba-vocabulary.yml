@@ -1,0 +1,21 @@
+name: SAP Ariba Domain Vocabulary
+provider: SAP Ariba
+providerId: sap-ariba
+description: Tag-derived vocabulary for the SAP Ariba API surface; sourced from openapi/ tags.
+terms:
+- term: Purchase Orders
+  description: Create, retrieve, update, and manage purchase orders across the SAP Ariba Network. Supports standard and service
+    purchase orders including new, change, cancel, and close operations.
+- term: Purchase Order Line Items
+  description: Manage individual line items within purchase orders including quantities, pricing, delivery schedules, and
+    accounting assignments.
+- term: Invoices
+  description: Process and manage invoices including creation, approval workflows, status tracking, and payment reconciliation.
+- term: Suppliers
+  description: Access and manage supplier profiles, onboarding, qualifications, performance, and risk assessments on the SAP
+    Ariba Network.
+- term: Requisitions
+  description: Create and manage purchase requisitions that initiate the procurement process and flow into purchase orders
+    upon approval.
+- term: Receipts
+  description: Record goods receipts and service confirmations against purchase orders to support three-way matching.

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RequisitionListResponse",
+  "title": "RequisitionListResponse",
+  "type": "object",
+  "description": "Paginated list of requisitions",
+  "properties": {
+    "totalCount": {
+      "type": "integer",
+      "example": 10
+    },
+    "skip": {
+      "type": "integer",
+      "example": 10
+    },
+    "limit": {
+      "type": "integer",
+      "example": 10
+    },
+    "requisitions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Requisition"
+      },
+      "example": []
+    }
+  }
+}

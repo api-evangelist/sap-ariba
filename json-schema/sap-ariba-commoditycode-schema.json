@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CommodityCode",
+  "title": "CommodityCode",
+  "type": "object",
+  "description": "UNSPSC commodity classification code",
+  "required": [
+    "code"
+  ],
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "UNSPSC commodity code",
+      "examples": [
+        "43211500"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Commodity description",
+      "examples": [
+        "Computers"
+      ]
+    },
+    "domain": {
+      "type": "string",
+      "description": "Classification domain identifier",
+      "default": "UNSPSC",
+      "example": "example_value"
+    }
+  }
+}

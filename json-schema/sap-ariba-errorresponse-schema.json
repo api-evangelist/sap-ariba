@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ErrorResponse",
+  "title": "ErrorResponse",
+  "type": "object",
+  "description": "Standard error response structure",
+  "required": [
+    "error"
+  ],
+  "properties": {
+    "error": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Machine-readable error code",
+          "examples": [
+            "INVALID_REQUEST",
+            "RESOURCE_NOT_FOUND",
+            "UNAUTHORIZED"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "description": "Human-readable error message"
+        },
+        "details": {
+          "type": "array",
+          "description": "Additional error details",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string",
+                "description": "Field name that caused the error (for validation errors)"
+              },
+              "message": {
+                "type": "string",
+                "description": "Detail message for this specific issue"
+              },
+              "errorNumber": {
+                "type": "string",
+                "description": "SAP error number"
+              },
+              "errorModule": {
+                "type": "string",
+                "description": "SAP module where the error originated"
+              }
+            }
+          }
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}
