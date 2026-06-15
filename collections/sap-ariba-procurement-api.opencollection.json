@@ -1,0 +1,744 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Ariba Procurement API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.ariba.com/v2/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Purchase Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Purchase Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (default 10, max 100)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression to narrow results. Supports operators eq, ne, gt, lt, ge, le with the case-sensitive 'and' operator. Example: orderDate ge '2025-01-01' and status eq 'Ordered'"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "Field name to sort results by, with optional asc or desc direction"
+              },
+              {
+                "name": "supplierId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by supplier AN-ID on the SAP Ariba Network"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by buyer AN-ID on the SAP Ariba Network"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by purchase order status"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders created on or after this date (ISO 8601 format YYYY-MM-DD)"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders created on or before this date (ISO 8601 format YYYY-MM-DD)"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of purchase order headers matching the specified filter criteria. Supports filtering by buyer, supplier, date range, status, and other order attributes. Results are returned with pagination support using skip and limit parameters."
+        },
+        {
+          "info": {
+            "name": "Create a Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new purchase order in the SAP Ariba system. The order must include header information, at least one line item, supplier details, and shipping address. Upon successful creation, the purchase order is transmitted through the Ariba Network to the designated supplier."
+        },
+        {
+          "info": {
+            "name": "Get a Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              }
+            ]
+          },
+          "docs": "Retrieves the complete details of a specific purchase order including header information, all line items, accounting assignments, shipping addresses, and current status. The orderId corresponds to the unique purchase order identifier (UniqueName) in SAP Ariba."
+        },
+        {
+          "info": {
+            "name": "Update a Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing purchase order with change request information. Supports modifications to line items, quantities, prices, delivery dates, and shipping addresses. Creates a new version of the purchase order and increments the version number. Change requests are transmitted to the supplier through the Ariba Network."
+        },
+        {
+          "info": {
+            "name": "Cancel a Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId/cancel",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels an existing purchase order and notifies the supplier through the Ariba Network. Only orders in Ordered or Confirmed status can be cancelled. Cancellation creates a new version with cancelled status."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Purchase Order Line Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Line Items for a Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId/lineItems",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (default 10, max 100)"
+              }
+            ]
+          },
+          "docs": "Retrieves all line items associated with a specific purchase order including item details, quantities, pricing, delivery schedules, commodity codes, and accounting assignments."
+        },
+        {
+          "info": {
+            "name": "Get a Specific Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId/lineItems/:lineItemNumber",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              },
+              {
+                "name": "lineItemNumber",
+                "value": "",
+                "type": "path",
+                "description": "The line item number within the purchase order (NumberOnPO)"
+              }
+            ]
+          },
+          "docs": "Retrieves details for a specific line item within a purchase order identified by its line number (NumberOnPO)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/invoices",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (default 10, max 100)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression"
+              },
+              {
+                "name": "supplierId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by supplier AN-ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by buyer AN-ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by invoice processing status"
+              },
+              {
+                "name": "purchaseOrderId",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices referencing a specific purchase order"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices created on or after this date"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices created on or before this date"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of invoices. Supports filtering by supplier, buyer, purchase order reference, date range, status, and payment status."
+        },
+        {
+          "info": {
+            "name": "Create an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/invoices",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new invoice in the SAP Ariba system. The invoice must reference a purchase order and include line item details, amounts, tax information, and supplier banking details for payment processing."
+        },
+        {
+          "info": {
+            "name": "Get an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/invoices/:invoiceId",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the invoice"
+              }
+            ]
+          },
+          "docs": "Retrieves the complete details of a specific invoice including header information, line items, tax details, payment terms, and approval status."
+        },
+        {
+          "info": {
+            "name": "Approve an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/invoices/:invoiceId/approve",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the invoice"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approves an invoice for payment processing. The invoice must be in Pending Approval status. Triggers downstream payment workflows."
+        },
+        {
+          "info": {
+            "name": "Reject an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/invoices/:invoiceId/reject",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the invoice"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rejects an invoice and returns it to the supplier with a reason for rejection. The supplier is notified through the Ariba Network."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Suppliers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Suppliers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/suppliers",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (default 10, max 100)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Search suppliers by name (partial match supported)"
+              },
+              {
+                "name": "qualificationStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by supplier qualification status"
+              },
+              {
+                "name": "commodityCode",
+                "value": "",
+                "type": "query",
+                "description": "Filter by UNSPSC commodity code"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Filter by supplier country (ISO 3166-1 alpha-2)"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of supplier profiles from the SAP Ariba Network. Supports filtering by supplier name, AN-ID, qualification status, commodity codes, and location."
+        },
+        {
+          "info": {
+            "name": "Get a Supplier Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/suppliers/:supplierId",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "supplierId",
+                "value": "",
+                "type": "path",
+                "description": "Supplier AN-ID (Ariba Network ID) or internal supplier identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves the complete profile details of a specific supplier including company information, contact details, addresses, certifications, commodity classifications, and qualification status."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Requisitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Requisitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/requisitions",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (default 10, max 100)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by requisition status"
+              },
+              {
+                "name": "requestor",
+                "value": "",
+                "type": "query",
+                "description": "Filter by requestor user ID"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of purchase requisitions. Requisitions are the starting point of the procurement process and flow into purchase orders upon approval."
+        },
+        {
+          "info": {
+            "name": "Create a Requisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/requisitions",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new purchase requisition. The requisition enters the approval workflow and upon approval generates one or more purchase orders."
+        },
+        {
+          "info": {
+            "name": "Get a Requisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/requisitions/:requisitionId",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "requisitionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the requisition"
+              }
+            ]
+          },
+          "docs": "Retrieves the complete details of a specific purchase requisition including line items, approval status, and linked purchase orders."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Receipts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Receipts for a Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId/receipts",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (default 10, max 100)"
+              }
+            ]
+          },
+          "docs": "Retrieves goods receipts and service confirmations recorded against a specific purchase order to support three-way matching."
+        },
+        {
+          "info": {
+            "name": "Create a Receipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId/receipts",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records a goods receipt or service confirmation against a purchase order. Receipts are used in the three-way matching process with purchase orders and invoices."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
