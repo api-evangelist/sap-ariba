@@ -1167,7 +1167,7 @@ common:
     url: https://www.ariba.com/legal/terms-of-use
   - type: RateLimits
     url: https://developer.ariba.com/api/rate-limits
-  - type: SDK
+  - type: SDKs
     url: https://developer.ariba.com/tools/sdks
   - type: Community
     url: https://community.ariba.com
@@ -1185,7 +1185,7 @@ common:
     url: https://api.sap.com/products/SAPAriba/apis/packages
   - type: Documentation
     url: https://help.sap.com/docs/ariba-apis
-  - type: Quickstart
+  - type: GettingStarted
     url: >-
       https://help.sap.com/docs/ariba-apis/help-for-sap-ariba-developer-portal/sap-ariba-developer-portal-quick-start-guide-for-developers
   - type: GettingStarted
