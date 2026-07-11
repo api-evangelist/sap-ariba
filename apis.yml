@@ -1151,6 +1151,10 @@ apis:
       - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
 common:
+  - type: VulnerabilityDisclosure
+    url: security/sap-ariba-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/sap-ariba-domain-security.yml
   - type: Authentication
     url: authentication/sap-ariba-authentication.yml
   - type: OAuthScopes

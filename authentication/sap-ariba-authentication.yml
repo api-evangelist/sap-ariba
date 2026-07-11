@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sap-ariba-procurement-api.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.ariba.com/v2/oauth/token
+    scopes: 0
+  description: OAuth 2.0 Client Credentials flow for SAP Ariba API authentication. Obtain client
+    credentials from the SAP Ariba Developer Portal.
+  sources:
+  - openapi/sap-ariba-procurement-api.yml
