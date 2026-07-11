@@ -1151,6 +1151,10 @@ apis:
       - type: Hub
         url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
 common:
+  - type: Authentication
+    url: authentication/sap-ariba-authentication.yml
+  - type: OAuthScopes
+    url: scopes/sap-ariba-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/ariba
   - type: DeveloperPortal
