@@ -3,10 +3,7 @@
   "feeds": [
     {
       "source": "https://community.sap.com/khhcw49343/rss/message?board.id=spend-management-blog-sap&message.id=1514",
-      "feed_url": "https://community.sap.com/khhcw49343/rss/message?board.id=spend-management-blog-sap&message.id=1514",
-      "title": "",
-      "saved": 0,
-      "method": "feed"
+      "error": "HTTPError"
     },
     {
       "source": "https://github.com/SAP-samples/ariba-extensibility-samples",
@@ -17,5 +14,5 @@
     }
   ],
   "post_count": 4,
-  "fetched": "2026-06-27T12:03:07Z"
+  "fetched": "2026-07-11T11:50:51Z"
 }
