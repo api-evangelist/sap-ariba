@@ -1,0 +1,511 @@
+openapi: 3.1.0
+info:
+  title: SAP Ariba Procurement Invoices Purchase Order Line Items API
+  description: Enables integration with SAP Ariba procurement processes including purchase orders, invoices, requisitions, receipts, and supplier management across the SAP Business Network. This API supports the complete procure-to-pay lifecycle from requisition creation through invoice reconciliation and payment processing.
+  version: 1.0.0
+  contact:
+    name: SAP Ariba API Support
+    url: https://developer.ariba.com
+    email: support@ariba.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/legal/developer-license.html
+  termsOfService: https://www.ariba.com/legal/terms-of-use
+  x-sap-api-type: REST
+  x-sap-shortText: Procurement API for purchase orders, invoices, and suppliers
+  x-sap-stateInfo:
+    state: Active
+  x-documentation:
+  - url: https://help.sap.com/docs/ariba-apis
+    description: SAP Help Portal - Ariba APIs
+  - url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
+    description: SAP Business Accelerator Hub
+  - url: https://help.sap.com/docs/ariba-apis/operational-reporting-api-for-procurement/operational-reporting-api-for-procurement
+    description: Operational Reporting API for Procurement
+servers:
+- url: https://openapi.ariba.com/api/procurement/v1
+  description: SAP Ariba Production API Server
+- url: https://sandbox.ariba.com/api/procurement/v1
+  description: SAP Ariba Sandbox API Server
+security:
+- oauth2: []
+tags:
+- name: Purchase Order Line Items
+  description: Manage individual line items within purchase orders including quantities, pricing, delivery schedules, and accounting assignments.
+paths:
+  /orders/{orderId}/lineItems:
+    get:
+      operationId: listPurchaseOrderLineItems
+      summary: List Line Items for a Purchase Order
+      description: Retrieves all line items associated with a specific purchase order including item details, quantities, pricing, delivery schedules, commodity codes, and accounting assignments.
+      tags:
+      - Purchase Order Line Items
+      parameters:
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/OrderIdParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/LimitParam'
+      responses:
+        '200':
+          description: Successfully retrieved line items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItemListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /orders/{orderId}/lineItems/{lineItemNumber}:
+    get:
+      operationId: getPurchaseOrderLineItem
+      summary: Get a Specific Line Item
+      description: Retrieves details for a specific line item within a purchase order identified by its line number (NumberOnPO).
+      tags:
+      - Purchase Order Line Items
+      parameters:
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/OrderIdParam'
+      - name: lineItemNumber
+        in: path
+        description: The line item number within the purchase order (NumberOnPO)
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved line item details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseOrderLineItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    PurchaseOrderLineItem:
+      type: object
+      description: A line item within a purchase order representing a specific good or service being procured
+      required:
+      - numberOnPO
+      - description
+      - quantity
+      - unitPrice
+      - unitOfMeasure
+      properties:
+        numberOnPO:
+          type: string
+          description: Line item number within the purchase order. Unique within the order.
+          example: example_value
+        description:
+          type: string
+          description: Description of the item or service being purchased
+          example: A sample description.
+        quantity:
+          type: number
+          format: double
+          description: Quantity to purchase
+          minimum: 0
+          example: 42.5
+        unitPrice:
+          $ref: '#/components/schemas/Money'
+        unitOfMeasure:
+          $ref: '#/components/schemas/UnitOfMeasure'
+        netAmount:
+          $ref: '#/components/schemas/Money'
+        commodityCode:
+          $ref: '#/components/schemas/CommodityCode'
+        buyerPartNumber:
+          type: string
+          description: Buyer-assigned part or material number
+          example: example_value
+        supplierPartNumber:
+          type: string
+          description: Supplier-assigned part or catalog number
+          example: example_value
+        manufacturerPartId:
+          type: string
+          description: Manufacturer part identifier
+          example: '500123'
+        manufacturerName:
+          type: string
+          description: Name of the manufacturer
+          example: example_value
+        itemCategory:
+          type: string
+          description: Item category code distinguishing material, service, or other item types
+          example: example_value
+        accountCategory:
+          type: string
+          description: Account assignment category for the line item expenditure
+          example: example_value
+        needByDate:
+          type: string
+          format: date
+          description: Requested delivery date for the line item (ISO 8601 YYYY-MM-DD)
+          example: '2026-01-15'
+        shipTo:
+          $ref: '#/components/schemas/Address'
+        accountings:
+          type: array
+          description: Split accounting assignments for distributing costs across multiple cost objects
+          items:
+            $ref: '#/components/schemas/AccountingInfo'
+          example: []
+        receivingType:
+          type: integer
+          description: Receiving type value indicating how receipts should be processed for this line item
+          example: 10
+        taxCode:
+          type: string
+          description: Tax code per evaluated receipt settlement agreements
+          example: example_value
+        taxDetail:
+          $ref: '#/components/schemas/TaxDetail'
+        itemOnRequisition:
+          type: string
+          description: Line number of the corresponding item in the originating requisition
+          example: example_value
+        serviceStartDate:
+          type: string
+          format: date
+          description: Service period start date (for service line items)
+          example: '2026-01-15'
+        serviceEndDate:
+          type: string
+          format: date
+          description: Service period end date (for service line items)
+          example: '2026-01-15'
+        comments:
+          type: string
+          description: Additional comments or notes on the line item
+          example: example_value
+    AccountingInfo:
+      type: object
+      description: Accounting assignment information for cost allocation on purchase order line items
+      properties:
+        costCenter:
+          type: string
+          description: Cost center identifier for expenditure allocation
+          example: example_value
+        generalLedger:
+          type: string
+          description: General ledger account number
+          example: example_value
+        asset:
+          type: string
+          description: Fixed asset number
+          example: example_value
+        internalOrder:
+          type: string
+          description: Internal order number
+          example: example_value
+        wbsElement:
+          type: string
+          description: Work Breakdown Structure element
+          example: example_value
+        amount:
+          $ref: '#/components/schemas/Money'
+        percentage:
+          type: number
+          format: double
+          description: Percentage of line item amount allocated to this accounting assignment
+          minimum: 0
+          maximum: 100
+          example: 42.5
+        sapDistributionFlag:
+          type: string
+          description: SAP distribution indicator flag
+          example: example_value
+        accountCategory:
+          type: string
+          description: Account assignment category code for the line item expenditure
+          example: example_value
+    Money:
+      type: object
+      description: Monetary amount with currency code following ISO 4217
+      required:
+      - amount
+      - currencyCode
+      properties:
+        amount:
+          type: number
+          format: double
+          description: The monetary value
+          examples:
+          - 1250.0
+        currencyCode:
+          type: string
+          description: ISO 4217 currency code
+          pattern: ^[A-Z]{3}$
+          examples:
+          - USD
+          - EUR
+          - GBP
+    LineItemListResponse:
+      type: object
+      description: Paginated list of purchase order line items
+      properties:
+        totalCount:
+          type: integer
+          description: Total number of line items
+          example: 10
+        skip:
+          type: integer
+          description: Number of records skipped
+          example: 10
+        limit:
+          type: integer
+          description: Maximum records per page
+          example: 10
+        lineItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseOrderLineItem'
+          example: []
+    Address:
+      type: object
+      description: Postal address structure used for shipping, billing, and company addresses
+      properties:
+        name:
+          type: string
+          description: Addressee name or attention line
+          example: Example Title
+        lines:
+          type: string
+          description: Street address lines
+          example: example_value
+        city:
+          type: string
+          description: City name
+          example: example_value
+        state:
+          type: string
+          description: State or province
+          example: example_value
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+          example: example_value
+        country:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+          pattern: ^[A-Z]{2}$
+          example: example_value
+        phone:
+          type: string
+          description: Phone number
+          example: example_value
+        email:
+          type: string
+          format: email
+          description: Email address
+          example: user@example.com
+    UnitOfMeasure:
+      type: object
+      description: Unit of measure specification following UN/ECE Recommendation 20 standard codes
+      required:
+      - code
+      properties:
+        code:
+          type: string
+          description: Unit of measure code (UN/ECE Rec 20 or SAP Ariba internal code)
+          examples:
+          - EA
+          - KG
+          - PC
+          - HR
+        description:
+          type: string
+          description: Human-readable description of the unit
+          examples:
+          - Each
+          - Kilogram
+          - Piece
+          - Hour
+    TaxDetail:
+      type: object
+      description: Tax calculation details for an invoice or line item
+      properties:
+        taxCode:
+          type: string
+          description: Tax code identifier
+          example: example_value
+        taxCategory:
+          type: string
+          description: Tax category (e.g., VAT, GST, Sales Tax)
+          example: example_value
+        taxRate:
+          type: number
+          format: double
+          description: Tax rate as a percentage
+          minimum: 0
+          example: 42.5
+        taxAmount:
+          $ref: '#/components/schemas/Money'
+        taxableAmount:
+          $ref: '#/components/schemas/Money'
+        description:
+          type: string
+          description: Description of the tax
+          example: A sample description.
+    ErrorResponse:
+      type: object
+      description: Standard error response structure
+      required:
+      - error
+      properties:
+        error:
+          type: object
+          required:
+          - code
+          - message
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+              examples:
+              - INVALID_REQUEST
+              - RESOURCE_NOT_FOUND
+              - UNAUTHORIZED
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    description: Field name that caused the error (for validation errors)
+                  message:
+                    type: string
+                    description: Detail message for this specific issue
+                  errorNumber:
+                    type: string
+                    description: SAP error number
+                  errorModule:
+                    type: string
+                    description: SAP module where the error originated
+          example: example_value
+    CommodityCode:
+      type: object
+      description: UNSPSC commodity classification code
+      required:
+      - code
+      properties:
+        code:
+          type: string
+          description: UNSPSC commodity code
+          examples:
+          - '43211500'
+        description:
+          type: string
+          description: Commodity description
+          examples:
+          - Computers
+        domain:
+          type: string
+          description: Classification domain identifier
+          default: UNSPSC
+          example: example_value
+  parameters:
+    RealmParam:
+      name: realm
+      in: query
+      description: The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.
+      required: true
+      schema:
+        type: string
+    SkipParam:
+      name: skip
+      in: query
+      description: Number of records to skip for pagination (default 0)
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    OrderIdParam:
+      name: orderId
+      in: path
+      description: Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber).
+      required: true
+      schema:
+        type: string
+    LimitParam:
+      name: limit
+      in: query
+      description: Maximum number of records to return per page (default 10, max 100)
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  responses:
+    Forbidden:
+      description: Forbidden - insufficient permissions for the requested operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or missing authentication credentials
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Rate limit exceeded. Retry after the duration specified in the Retry-After header.
+      headers:
+        Retry-After:
+          description: Number of seconds to wait before retrying
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Client Credentials flow for SAP Ariba API authentication. Obtain client credentials from the SAP Ariba Developer Portal.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.ariba.com/v2/oauth/token
+          scopes: {}

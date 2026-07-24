@@ -1,0 +1,873 @@
+openapi: 3.1.0
+info:
+  title: SAP Ariba Procurement Invoices API
+  description: Enables integration with SAP Ariba procurement processes including purchase orders, invoices, requisitions, receipts, and supplier management across the SAP Business Network. This API supports the complete procure-to-pay lifecycle from requisition creation through invoice reconciliation and payment processing.
+  version: 1.0.0
+  contact:
+    name: SAP Ariba API Support
+    url: https://developer.ariba.com
+    email: support@ariba.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/legal/developer-license.html
+  termsOfService: https://www.ariba.com/legal/terms-of-use
+  x-sap-api-type: REST
+  x-sap-shortText: Procurement API for purchase orders, invoices, and suppliers
+  x-sap-stateInfo:
+    state: Active
+  x-documentation:
+  - url: https://help.sap.com/docs/ariba-apis
+    description: SAP Help Portal - Ariba APIs
+  - url: https://api.sap.com/package/SAPAribaOpenAPIs/rest
+    description: SAP Business Accelerator Hub
+  - url: https://help.sap.com/docs/ariba-apis/operational-reporting-api-for-procurement/operational-reporting-api-for-procurement
+    description: Operational Reporting API for Procurement
+servers:
+- url: https://openapi.ariba.com/api/procurement/v1
+  description: SAP Ariba Production API Server
+- url: https://sandbox.ariba.com/api/procurement/v1
+  description: SAP Ariba Sandbox API Server
+security:
+- oauth2: []
+tags:
+- name: Invoices
+  description: Process and manage invoices including creation, approval workflows, status tracking, and payment reconciliation.
+paths:
+  /invoices:
+    get:
+      operationId: listInvoices
+      summary: List Invoices
+      description: Retrieves a paginated list of invoices. Supports filtering by supplier, buyer, purchase order reference, date range, status, and payment status.
+      tags:
+      - Invoices
+      parameters:
+      - $ref: '#/components/parameters/RealmParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/LimitParam'
+      - name: filter
+        in: query
+        description: OData-style filter expression
+        required: false
+        schema:
+          type: string
+      - name: supplierId
+        in: query
+        description: Filter by supplier AN-ID
+        required: false
+        schema:
+          type: string
+      - name: buyerId
+        in: query
+        description: Filter by buyer AN-ID
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Filter by invoice processing status
+        required: false
+        schema:
+          $ref: '#/components/schemas/InvoiceStatus'
+      - name: purchaseOrderId
+        in: query
+        description: Filter invoices referencing a specific purchase order
+        required: false
+        schema:
+          type: string
+      - name: fromDate
+        in: query
+        description: Filter invoices created on or after this date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: toDate
+        in: query
+        description: Filter invoices created on or before this date
+        required: false
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: Successfully retrieved list of invoices
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createInvoice
+      summary: Create an Invoice
+      description: Creates a new invoice in the SAP Ariba system. The invoice must reference a purchase order and include line item details, amounts, tax information, and supplier banking details for payment processing.
+      tags:
+      - Invoices
+      parameters:
+      - $ref: '#/components/parameters/RealmParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceCreate'
+      responses:
+        '201':
+          description: Invoice created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+          headers:
+            Location:
+              description: URI of the newly created invoice
+              schema:
+                type: string
+                format: uri
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          description: Conflict - duplicate invoice number
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable entity - validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /invoices/{invoiceId}:
+    get:
+      operationId: getInvoice
+      summary: Get an Invoice
+      description: Retrieves the complete details of a specific invoice including header information, line items, tax details, payment terms, and approval status.
+      tags:
+      - Invoices
+      parameters:
+      - $ref: '#/components/parameters/RealmParam'
+      - name: invoiceId
+        in: path
+        description: Unique identifier for the invoice
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved invoice details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /invoices/{invoiceId}/approve:
+    post:
+      operationId: approveInvoice
+      summary: Approve an Invoice
+      description: Approves an invoice for payment processing. The invoice must be in Pending Approval status. Triggers downstream payment workflows.
+      tags:
+      - Invoices
+      parameters:
+      - $ref: '#/components/parameters/RealmParam'
+      - name: invoiceId
+        in: path
+        description: Unique identifier for the invoice
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  description: Optional approval comment
+                  maxLength: 2000
+      responses:
+        '200':
+          description: Invoice approved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Conflict - invoice not in approvable state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /invoices/{invoiceId}/reject:
+    post:
+      operationId: rejectInvoice
+      summary: Reject an Invoice
+      description: Rejects an invoice and returns it to the supplier with a reason for rejection. The supplier is notified through the Ariba Network.
+      tags:
+      - Invoices
+      parameters:
+      - $ref: '#/components/parameters/RealmParam'
+      - name: invoiceId
+        in: path
+        description: Unique identifier for the invoice
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - reason
+              properties:
+                reason:
+                  type: string
+                  description: Reason for rejection
+                  maxLength: 2000
+      responses:
+        '200':
+          description: Invoice rejected successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Conflict - invoice not in rejectable state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    InvoiceListResponse:
+      type: object
+      description: Paginated list of invoices
+      properties:
+        totalCount:
+          type: integer
+          description: Total number of matching invoices
+          example: 10
+        skip:
+          type: integer
+          description: Number of records skipped
+          example: 10
+        limit:
+          type: integer
+          description: Maximum records per page
+          example: 10
+        invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Invoice'
+          example: []
+    Money:
+      type: object
+      description: Monetary amount with currency code following ISO 4217
+      required:
+      - amount
+      - currencyCode
+      properties:
+        amount:
+          type: number
+          format: double
+          description: The monetary value
+          examples:
+          - 1250.0
+        currencyCode:
+          type: string
+          description: ISO 4217 currency code
+          pattern: ^[A-Z]{3}$
+          examples:
+          - USD
+          - EUR
+          - GBP
+    Address:
+      type: object
+      description: Postal address structure used for shipping, billing, and company addresses
+      properties:
+        name:
+          type: string
+          description: Addressee name or attention line
+          example: Example Title
+        lines:
+          type: string
+          description: Street address lines
+          example: example_value
+        city:
+          type: string
+          description: City name
+          example: example_value
+        state:
+          type: string
+          description: State or province
+          example: example_value
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+          example: example_value
+        country:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+          pattern: ^[A-Z]{2}$
+          example: example_value
+        phone:
+          type: string
+          description: Phone number
+          example: example_value
+        email:
+          type: string
+          format: email
+          description: Email address
+          example: user@example.com
+    ErrorResponse:
+      type: object
+      description: Standard error response structure
+      required:
+      - error
+      properties:
+        error:
+          type: object
+          required:
+          - code
+          - message
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+              examples:
+              - INVALID_REQUEST
+              - RESOURCE_NOT_FOUND
+              - UNAUTHORIZED
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    description: Field name that caused the error (for validation errors)
+                  message:
+                    type: string
+                    description: Detail message for this specific issue
+                  errorNumber:
+                    type: string
+                    description: SAP error number
+                  errorModule:
+                    type: string
+                    description: SAP module where the error originated
+          example: example_value
+    SupplierReference:
+      type: object
+      description: Reference to a supplier on the SAP Ariba Network
+      required:
+      - supplierId
+      properties:
+        supplierId:
+          type: string
+          description: Supplier unique identifier (AN-ID on the Ariba Network or internal supplier number)
+          examples:
+          - AN01000000001
+        name:
+          type: string
+          description: Supplier company name
+          example: Example Title
+        erpSupplierId:
+          type: string
+          description: Supplier number in the ERP system
+          example: '500123'
+    InvoiceStatus:
+      type: string
+      description: Status of an invoice in the processing lifecycle
+      enum:
+      - Draft
+      - Submitted
+      - PendingApproval
+      - Approved
+      - Rejected
+      - Paid
+      - PartiallyPaid
+      - Cancelled
+      - Failed
+    UnitOfMeasure:
+      type: object
+      description: Unit of measure specification following UN/ECE Recommendation 20 standard codes
+      required:
+      - code
+      properties:
+        code:
+          type: string
+          description: Unit of measure code (UN/ECE Rec 20 or SAP Ariba internal code)
+          examples:
+          - EA
+          - KG
+          - PC
+          - HR
+        description:
+          type: string
+          description: Human-readable description of the unit
+          examples:
+          - Each
+          - Kilogram
+          - Piece
+          - Hour
+    PaymentTerms:
+      type: object
+      description: Payment terms governing when and how invoices should be paid
+      properties:
+        code:
+          type: string
+          description: Payment terms code
+          examples:
+          - NET30
+          - NET60
+          - 2/10NET30
+        description:
+          type: string
+          description: Human-readable payment terms description
+          example: A sample description.
+        netDays:
+          type: integer
+          description: Number of days until payment is due
+          example: 10
+        discountPercent:
+          type: number
+          format: double
+          description: Early payment discount percentage
+          example: 42.5
+        discountDays:
+          type: integer
+          description: Number of days within which discount applies
+          example: 10
+    TaxDetail:
+      type: object
+      description: Tax calculation details for an invoice or line item
+      properties:
+        taxCode:
+          type: string
+          description: Tax code identifier
+          example: example_value
+        taxCategory:
+          type: string
+          description: Tax category (e.g., VAT, GST, Sales Tax)
+          example: example_value
+        taxRate:
+          type: number
+          format: double
+          description: Tax rate as a percentage
+          minimum: 0
+          example: 42.5
+        taxAmount:
+          $ref: '#/components/schemas/Money'
+        taxableAmount:
+          $ref: '#/components/schemas/Money'
+        description:
+          type: string
+          description: Description of the tax
+          example: A sample description.
+    InvoiceLineItem:
+      type: object
+      description: A line item on an invoice
+      required:
+      - lineNumber
+      - description
+      - quantity
+      - unitPrice
+      - netAmount
+      properties:
+        lineNumber:
+          type: string
+          description: Line item number on the invoice
+          example: example_value
+        purchaseOrderReference:
+          type: string
+          description: Referenced purchase order number
+          example: example_value
+        poLineNumber:
+          type: string
+          description: Referenced purchase order line item number
+          example: example_value
+        description:
+          type: string
+          description: Item or service description
+          example: A sample description.
+        quantity:
+          type: number
+          format: double
+          description: Invoiced quantity
+          example: 42.5
+        unitPrice:
+          $ref: '#/components/schemas/Money'
+        unitOfMeasure:
+          $ref: '#/components/schemas/UnitOfMeasure'
+        netAmount:
+          $ref: '#/components/schemas/Money'
+        taxDetail:
+          $ref: '#/components/schemas/TaxDetail'
+        commodityCode:
+          $ref: '#/components/schemas/CommodityCode'
+        buyerPartNumber:
+          type: string
+          description: Buyer part number
+          example: example_value
+        supplierPartNumber:
+          type: string
+          description: Supplier part number
+          example: example_value
+        serviceStartDate:
+          type: string
+          format: date
+          description: Service period start date
+          example: '2026-01-15'
+        serviceEndDate:
+          type: string
+          format: date
+          description: Service period end date
+          example: '2026-01-15'
+    BuyerReference:
+      type: object
+      description: Reference to a buyer organization
+      properties:
+        buyerId:
+          type: string
+          description: Buyer AN-ID on the SAP Ariba Network
+          example: '500123'
+        name:
+          type: string
+          description: Buyer organization name
+          example: Example Title
+        erpBuyerId:
+          type: string
+          description: Buyer identifier in the ERP system
+          example: '500123'
+    CommodityCode:
+      type: object
+      description: UNSPSC commodity classification code
+      required:
+      - code
+      properties:
+        code:
+          type: string
+          description: UNSPSC commodity code
+          examples:
+          - '43211500'
+        description:
+          type: string
+          description: Commodity description
+          examples:
+          - Computers
+        domain:
+          type: string
+          description: Classification domain identifier
+          default: UNSPSC
+          example: example_value
+    Invoice:
+      type: object
+      description: An invoice document submitted by a supplier for goods or services delivered against a purchase order
+      required:
+      - invoiceId
+      - invoiceNumber
+      - invoiceDate
+      - supplier
+      - totalAmount
+      - lineItems
+      properties:
+        invoiceId:
+          type: string
+          description: Internal unique invoice identifier
+          example: '500123'
+        invoiceNumber:
+          type: string
+          description: Supplier-assigned invoice number
+          example: example_value
+        invoiceDate:
+          type: string
+          format: date
+          description: Date the invoice was issued
+          example: '2026-01-15'
+        status:
+          $ref: '#/components/schemas/InvoiceStatus'
+        invoiceType:
+          type: string
+          description: Type of invoice document
+          enum:
+          - Standard
+          - CreditMemo
+          - DebitMemo
+          - SelfBilling
+          example: Standard
+        supplier:
+          $ref: '#/components/schemas/SupplierReference'
+        buyer:
+          $ref: '#/components/schemas/BuyerReference'
+        purchaseOrderReference:
+          type: string
+          description: Primary purchase order number this invoice relates to
+          example: example_value
+        currency:
+          type: string
+          description: ISO 4217 currency code
+          pattern: ^[A-Z]{3}$
+          example: example_value
+        subtotalAmount:
+          $ref: '#/components/schemas/Money'
+        taxAmount:
+          $ref: '#/components/schemas/Money'
+        shippingAmount:
+          $ref: '#/components/schemas/Money'
+        totalAmount:
+          $ref: '#/components/schemas/Money'
+        paymentTerms:
+          $ref: '#/components/schemas/PaymentTerms'
+        dueDate:
+          type: string
+          format: date
+          description: Payment due date
+          example: '2026-01-15'
+        remitTo:
+          $ref: '#/components/schemas/Address'
+        lineItems:
+          type: array
+          description: Invoice line items
+          items:
+            $ref: '#/components/schemas/InvoiceLineItem'
+          minItems: 1
+          example: []
+        taxDetails:
+          type: array
+          description: Header-level tax summary
+          items:
+            $ref: '#/components/schemas/TaxDetail'
+          example: []
+        comments:
+          type: string
+          description: Invoice comments or notes
+          example: example_value
+        approvalDate:
+          type: string
+          format: date-time
+          description: Date the invoice was approved
+          example: '2026-01-15T10:30:00Z'
+        paymentDate:
+          type: string
+          format: date
+          description: Date payment was made
+          example: '2026-01-15'
+        paymentReference:
+          type: string
+          description: Payment transaction reference number
+          example: example_value
+        createdDate:
+          type: string
+          format: date-time
+          description: Timestamp when the invoice was created in the system
+          example: '2026-01-15T10:30:00Z'
+        lastModifiedDate:
+          type: string
+          format: date-time
+          description: Timestamp of the last modification
+          example: '2026-01-15T10:30:00Z'
+    InvoiceCreate:
+      type: object
+      description: Request body for creating a new invoice
+      required:
+      - invoiceNumber
+      - invoiceDate
+      - supplier
+      - currency
+      - totalAmount
+      - lineItems
+      properties:
+        invoiceNumber:
+          type: string
+          description: Supplier-assigned invoice number
+          example: example_value
+        invoiceDate:
+          type: string
+          format: date
+          description: Invoice issue date
+          example: '2026-01-15'
+        invoiceType:
+          type: string
+          enum:
+          - Standard
+          - CreditMemo
+          - DebitMemo
+          - SelfBilling
+          default: Standard
+          example: Standard
+        supplier:
+          $ref: '#/components/schemas/SupplierReference'
+        purchaseOrderReference:
+          type: string
+          description: Purchase order number
+          example: example_value
+        currency:
+          type: string
+          pattern: ^[A-Z]{3}$
+          example: example_value
+        subtotalAmount:
+          $ref: '#/components/schemas/Money'
+        taxAmount:
+          $ref: '#/components/schemas/Money'
+        shippingAmount:
+          $ref: '#/components/schemas/Money'
+        totalAmount:
+          $ref: '#/components/schemas/Money'
+        paymentTerms:
+          $ref: '#/components/schemas/PaymentTerms'
+        remitTo:
+          $ref: '#/components/schemas/Address'
+        lineItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceLineItem'
+          minItems: 1
+          example: []
+        comments:
+          type: string
+          example: example_value
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Forbidden - insufficient permissions for the requested operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or missing authentication credentials
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Rate limit exceeded. Retry after the duration specified in the Retry-After header.
+      headers:
+        Retry-After:
+          description: Number of seconds to wait before retrying
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request - invalid parameters or malformed request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    SkipParam:
+      name: skip
+      in: query
+      description: Number of records to skip for pagination (default 0)
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    RealmParam:
+      name: realm
+      in: query
+      description: The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.
+      required: true
+      schema:
+        type: string
+    LimitParam:
+      name: limit
+      in: query
+      description: Maximum number of records to return per page (default 10, max 100)
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Client Credentials flow for SAP Ariba API authentication. Obtain client credentials from the SAP Ariba Developer Portal.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.ariba.com/v2/oauth/token
+          scopes: {}
