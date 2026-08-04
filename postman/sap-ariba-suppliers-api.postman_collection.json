@@ -1,0 +1,1025 @@
+{
+  "info": {
+    "_postman_id": "a40701b5-0e44-4253-91d3-814baad710fd",
+    "name": "SAP Ariba Procurement Invoices Suppliers API",
+    "description": "Enables integration with SAP Ariba procurement processes including purchase orders, invoices, requisitions, receipts, and supplier management across the SAP Business Network. This API supports the complete procure-to-pay lifecycle from requisition creation through invoice reconciliation and payment processing.\n\nContact Support:\n Name: SAP Ariba API Support\n Email: support@ariba.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:51:02.000Z",
+    "updatedAt": "2026-07-28T02:51:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a40701b5-0e44-4253-91d3-814baad710fd"
+  },
+  "item": [
+    {
+      "name": "suppliers",
+      "item": [
+        {
+          "name": "{supplierId}",
+          "item": [
+            {
+              "name": "Get a Supplier Profile",
+              "id": "49c1d2d2-3423-4d3e-9787-c5685da6fda4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers/:supplierId?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers",
+                    ":supplierId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "16aac028-563f-4376-bade-b33c45a4b8da",
+                      "key": "supplierId",
+                      "value": "<string>",
+                      "description": "(Required) Supplier AN-ID (Ariba Network ID) or internal supplier identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieves the complete profile details of a specific supplier including company information, contact details, addresses, certifications, commodity classifications, and qualification status."
+              },
+              "response": [
+                {
+                  "id": "ebfed594-7a42-4262-960b-f1e7f141d5c1",
+                  "name": "Successfully retrieved supplier profile",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:supplierId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":supplierId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "supplierId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"supplierId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"doingBusinessAs\": \"<string>\",\n  \"dunsNumber\": \"726084530\",\n  \"taxId\": \"<string>\",\n  \"yearEstablished\": \"<integer>\",\n  \"numberOfEmployees\": \"201-500\",\n  \"annualRevenue\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"BUT\"\n  },\n  \"qualificationStatus\": \"Qualified\",\n  \"registrationStatus\": \"Active\",\n  \"address\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"ZW\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"primaryContact\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone\": \"<string>\",\n    \"fax\": \"<string>\",\n    \"department\": \"<string>\"\n  },\n  \"commodityCodes\": [\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"domain\": \"UNSPSC\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"description\": \"<string>\",\n      \"domain\": \"UNSPSC\"\n    }\n  ],\n  \"certifications\": [\n    {\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"issuingBody\": \"<string>\",\n      \"expirationDate\": \"<date>\",\n      \"status\": \"Expired\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"issuingBody\": \"<string>\",\n      \"expirationDate\": \"<date>\",\n      \"status\": \"Expired\"\n    }\n  ],\n  \"diversityClassifications\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"website\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDate\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:51:03.000Z",
+                  "updatedAt": "2026-07-28T02:51:03.000Z",
+                  "uid": "35240-ebfed594-7a42-4262-960b-f1e7f141d5c1"
+                },
+                {
+                  "id": "662acdff-05d0-4904-9b7c-7d487cebc273",
+                  "name": "Unauthorized - invalid or missing authentication credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:supplierId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":supplierId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "supplierId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:03.000Z",
+                  "updatedAt": "2026-07-28T02:51:03.000Z",
+                  "uid": "35240-662acdff-05d0-4904-9b7c-7d487cebc273"
+                },
+                {
+                  "id": "8acd1020-8e7e-45e7-9258-5ca8d1b426b2",
+                  "name": "Forbidden - insufficient permissions for the requested operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:supplierId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":supplierId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "supplierId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:03.000Z",
+                  "updatedAt": "2026-07-28T02:51:03.000Z",
+                  "uid": "35240-8acd1020-8e7e-45e7-9258-5ca8d1b426b2"
+                },
+                {
+                  "id": "0e82fc88-0326-43cc-80af-e2ffb8df8371",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:supplierId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":supplierId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "supplierId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:03.000Z",
+                  "updatedAt": "2026-07-28T02:51:03.000Z",
+                  "uid": "35240-0e82fc88-0326-43cc-80af-e2ffb8df8371"
+                },
+                {
+                  "id": "7ee8ddca-4405-4396-8395-77eae04c002d",
+                  "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:supplierId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":supplierId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "supplierId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of seconds to wait before retrying",
+                        "type": "text/plain"
+                      },
+                      "key": "Retry-After",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:03.000Z",
+                  "updatedAt": "2026-07-28T02:51:03.000Z",
+                  "uid": "35240-7ee8ddca-4405-4396-8395-77eae04c002d"
+                },
+                {
+                  "id": "05bd2f71-0efe-497b-80b1-039d727d494b",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:supplierId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":supplierId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "supplierId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:03.000Z",
+                  "updatedAt": "2026-07-28T02:51:03.000Z",
+                  "uid": "35240-05bd2f71-0efe-497b-80b1-039d727d494b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:51:03.000Z",
+              "updatedAt": "2026-07-28T02:51:03.000Z",
+              "uid": "35240-49c1d2d2-3423-4d3e-9787-c5685da6fda4"
+            }
+          ],
+          "id": "5533004f-0afb-485c-9d5f-f9c63d999e0a",
+          "createdAt": "2026-07-28T02:51:03.000Z",
+          "updatedAt": "2026-07-28T02:51:03.000Z",
+          "uid": "35240-5533004f-0afb-485c-9d5f-f9c63d999e0a"
+        },
+        {
+          "name": "List Suppliers",
+          "id": "121f8186-885d-4c1e-ac3e-2b0fac987b79",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/suppliers?realm=<string>&skip=0&limit=10&filter=<string>&name=<string>&qualificationStatus=PendingReview&commodityCode=<string>&country=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "suppliers"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                  "key": "realm",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of records to skip for pagination (default 0)",
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "description": "Maximum number of records to return per page (default 10, max 100)",
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "description": "OData-style filter expression",
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Search suppliers by name (partial match supported)",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by supplier qualification status",
+                  "key": "qualificationStatus",
+                  "value": "PendingReview"
+                },
+                {
+                  "description": "Filter by UNSPSC commodity code",
+                  "key": "commodityCode",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by supplier country (ISO 3166-1 alpha-2)",
+                  "key": "country",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a paginated list of supplier profiles from the SAP Ariba Network. Supports filtering by supplier name, AN-ID, qualification status, commodity codes, and location."
+          },
+          "response": [
+            {
+              "id": "d974efb0-a964-43ab-a32f-aaeda8d5023b",
+              "name": "Successfully retrieved list of suppliers",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers?realm=<string>&skip=0&limit=10&filter=<string>&name=<string>&qualificationStatus=PendingReview&commodityCode=<string>&country=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search suppliers by name (partial match supported)",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier qualification status",
+                      "key": "qualificationStatus",
+                      "value": "PendingReview"
+                    },
+                    {
+                      "description": "Filter by UNSPSC commodity code",
+                      "key": "commodityCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier country (ISO 3166-1 alpha-2)",
+                      "key": "country",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"totalCount\": \"<integer>\",\n  \"skip\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"suppliers\": [\n    {\n      \"supplierId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"doingBusinessAs\": \"<string>\",\n      \"dunsNumber\": \"207594366\",\n      \"taxId\": \"<string>\",\n      \"yearEstablished\": \"<integer>\",\n      \"numberOfEmployees\": \"51-200\",\n      \"annualRevenue\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"JZE\"\n      },\n      \"qualificationStatus\": \"Conditional\",\n      \"registrationStatus\": \"Inactive\",\n      \"address\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"JR\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"primaryContact\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phone\": \"<string>\",\n        \"fax\": \"<string>\",\n        \"department\": \"<string>\"\n      },\n      \"commodityCodes\": [\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"domain\": \"UNSPSC\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"domain\": \"UNSPSC\"\n        }\n      ],\n      \"certifications\": [\n        {\n          \"type\": \"<string>\",\n          \"name\": \"<string>\",\n          \"issuingBody\": \"<string>\",\n          \"expirationDate\": \"<date>\",\n          \"status\": \"Active\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"name\": \"<string>\",\n          \"issuingBody\": \"<string>\",\n          \"expirationDate\": \"<date>\",\n          \"status\": \"Expired\"\n        }\n      ],\n      \"diversityClassifications\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"website\": \"<uri>\",\n      \"description\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\"\n    },\n    {\n      \"supplierId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"doingBusinessAs\": \"<string>\",\n      \"dunsNumber\": \"278437643\",\n      \"taxId\": \"<string>\",\n      \"yearEstablished\": \"<integer>\",\n      \"numberOfEmployees\": \"51-200\",\n      \"annualRevenue\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"MFA\"\n      },\n      \"qualificationStatus\": \"NotQualified\",\n      \"registrationStatus\": \"Pending\",\n      \"address\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"MG\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"primaryContact\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phone\": \"<string>\",\n        \"fax\": \"<string>\",\n        \"department\": \"<string>\"\n      },\n      \"commodityCodes\": [\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"domain\": \"UNSPSC\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"domain\": \"UNSPSC\"\n        }\n      ],\n      \"certifications\": [\n        {\n          \"type\": \"<string>\",\n          \"name\": \"<string>\",\n          \"issuingBody\": \"<string>\",\n          \"expirationDate\": \"<date>\",\n          \"status\": \"Active\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"name\": \"<string>\",\n          \"issuingBody\": \"<string>\",\n          \"expirationDate\": \"<date>\",\n          \"status\": \"Pending\"\n        }\n      ],\n      \"diversityClassifications\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"website\": \"<uri>\",\n      \"description\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:51:03.000Z",
+              "updatedAt": "2026-07-28T02:51:03.000Z",
+              "uid": "35240-d974efb0-a964-43ab-a32f-aaeda8d5023b"
+            },
+            {
+              "id": "09fab98d-4a68-4f78-8dd1-55762324bf0f",
+              "name": "Bad request - invalid parameters or malformed request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers?realm=<string>&skip=0&limit=10&filter=<string>&name=<string>&qualificationStatus=PendingReview&commodityCode=<string>&country=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search suppliers by name (partial match supported)",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier qualification status",
+                      "key": "qualificationStatus",
+                      "value": "PendingReview"
+                    },
+                    {
+                      "description": "Filter by UNSPSC commodity code",
+                      "key": "commodityCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier country (ISO 3166-1 alpha-2)",
+                      "key": "country",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:03.000Z",
+              "updatedAt": "2026-07-28T02:51:03.000Z",
+              "uid": "35240-09fab98d-4a68-4f78-8dd1-55762324bf0f"
+            },
+            {
+              "id": "ba426d76-fea7-4f56-8e0e-bb5b1bc13dd9",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers?realm=<string>&skip=0&limit=10&filter=<string>&name=<string>&qualificationStatus=PendingReview&commodityCode=<string>&country=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search suppliers by name (partial match supported)",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier qualification status",
+                      "key": "qualificationStatus",
+                      "value": "PendingReview"
+                    },
+                    {
+                      "description": "Filter by UNSPSC commodity code",
+                      "key": "commodityCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier country (ISO 3166-1 alpha-2)",
+                      "key": "country",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:03.000Z",
+              "updatedAt": "2026-07-28T02:51:03.000Z",
+              "uid": "35240-ba426d76-fea7-4f56-8e0e-bb5b1bc13dd9"
+            },
+            {
+              "id": "312240bd-a1e4-40ec-b7b4-0f50096b67ff",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers?realm=<string>&skip=0&limit=10&filter=<string>&name=<string>&qualificationStatus=PendingReview&commodityCode=<string>&country=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search suppliers by name (partial match supported)",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier qualification status",
+                      "key": "qualificationStatus",
+                      "value": "PendingReview"
+                    },
+                    {
+                      "description": "Filter by UNSPSC commodity code",
+                      "key": "commodityCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier country (ISO 3166-1 alpha-2)",
+                      "key": "country",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:03.000Z",
+              "updatedAt": "2026-07-28T02:51:03.000Z",
+              "uid": "35240-312240bd-a1e4-40ec-b7b4-0f50096b67ff"
+            },
+            {
+              "id": "2671bc64-8bbf-46c7-82bb-10cfb88adb87",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers?realm=<string>&skip=0&limit=10&filter=<string>&name=<string>&qualificationStatus=PendingReview&commodityCode=<string>&country=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search suppliers by name (partial match supported)",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier qualification status",
+                      "key": "qualificationStatus",
+                      "value": "PendingReview"
+                    },
+                    {
+                      "description": "Filter by UNSPSC commodity code",
+                      "key": "commodityCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier country (ISO 3166-1 alpha-2)",
+                      "key": "country",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "Number of seconds to wait before retrying",
+                    "type": "text/plain"
+                  },
+                  "key": "Retry-After",
+                  "value": "<integer>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:03.000Z",
+              "updatedAt": "2026-07-28T02:51:03.000Z",
+              "uid": "35240-2671bc64-8bbf-46c7-82bb-10cfb88adb87"
+            },
+            {
+              "id": "25cc2a8d-88d0-4ab0-81b1-1c407c34c498",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers?realm=<string>&skip=0&limit=10&filter=<string>&name=<string>&qualificationStatus=PendingReview&commodityCode=<string>&country=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search suppliers by name (partial match supported)",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier qualification status",
+                      "key": "qualificationStatus",
+                      "value": "PendingReview"
+                    },
+                    {
+                      "description": "Filter by UNSPSC commodity code",
+                      "key": "commodityCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier country (ISO 3166-1 alpha-2)",
+                      "key": "country",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:03.000Z",
+              "updatedAt": "2026-07-28T02:51:03.000Z",
+              "uid": "35240-25cc2a8d-88d0-4ab0-81b1-1c407c34c498"
+            }
+          ],
+          "createdAt": "2026-07-28T02:51:03.000Z",
+          "updatedAt": "2026-07-28T02:51:03.000Z",
+          "uid": "35240-121f8186-885d-4c1e-ac3e-2b0fac987b79"
+        }
+      ],
+      "id": "131b61af-7d74-4a5c-9874-c291ddf0da75",
+      "createdAt": "2026-07-28T02:51:03.000Z",
+      "updatedAt": "2026-07-28T02:51:03.000Z",
+      "uid": "35240-131b61af-7d74-4a5c-9874-c291ddf0da75"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.ariba.com/v2/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://openapi.ariba.com/api/procurement/v1"
+    }
+  ]
+}

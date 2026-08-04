@@ -1,0 +1,958 @@
+{
+  "info": {
+    "_postman_id": "4096dce8-d95d-46ac-9b7f-608ac58dc0bb",
+    "name": "SAP Ariba Procurement Invoices Purchase Order Line Items API",
+    "description": "Enables integration with SAP Ariba procurement processes including purchase orders, invoices, requisitions, receipts, and supplier management across the SAP Business Network. This API supports the complete procure-to-pay lifecycle from requisition creation through invoice reconciliation and payment processing.\n\nContact Support:\n Name: SAP Ariba API Support\n Email: support@ariba.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:57.000Z",
+    "updatedAt": "2026-07-28T02:50:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4096dce8-d95d-46ac-9b7f-608ac58dc0bb"
+  },
+  "item": [
+    {
+      "name": "orders",
+      "item": [
+        {
+          "name": "{orderId}",
+          "item": [
+            {
+              "name": "lineItems",
+              "item": [
+                {
+                  "name": "{lineItemNumber}",
+                  "item": [
+                    {
+                      "name": "Get a Specific Line Item",
+                      "id": "12af2010-04f3-4770-8f0e-539db115fd5c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orders/:orderId/lineItems/:lineItemNumber?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orders",
+                            ":orderId",
+                            "lineItems",
+                            ":lineItemNumber"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "7e42c349-e4ac-49d0-be30-470551620f68",
+                              "key": "orderId",
+                              "value": "<string>",
+                              "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                            },
+                            {
+                              "id": "724a6d61-741c-4475-b653-ffc8957ba99a",
+                              "key": "lineItemNumber",
+                              "value": "<string>",
+                              "description": "(Required) The line item number within the purchase order (NumberOnPO)"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves details for a specific line item within a purchase order identified by its line number (NumberOnPO)."
+                      },
+                      "response": [
+                        {
+                          "id": "e11e4c68-1aa5-4dae-a1c9-59fbed0b042b",
+                          "name": "Successfully retrieved line item details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/orders/:orderId/lineItems/:lineItemNumber?realm=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "orders",
+                                ":orderId",
+                                "lineItems",
+                                ":lineItemNumber"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                                  "key": "realm",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orderId"
+                                },
+                                {
+                                  "key": "lineItemNumber"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"numberOnPO\": \"<string>\",\n  \"description\": \"<string>\",\n  \"quantity\": \"<double>\",\n  \"unitPrice\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"JGY\"\n  },\n  \"unitOfMeasure\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"netAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"XQZ\"\n  },\n  \"commodityCode\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain\": \"UNSPSC\"\n  },\n  \"buyerPartNumber\": \"<string>\",\n  \"supplierPartNumber\": \"<string>\",\n  \"manufacturerPartId\": \"<string>\",\n  \"manufacturerName\": \"<string>\",\n  \"itemCategory\": \"<string>\",\n  \"accountCategory\": \"<string>\",\n  \"needByDate\": \"<date>\",\n  \"shipTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"JW\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"accountings\": [\n    {\n      \"costCenter\": \"<string>\",\n      \"generalLedger\": \"<string>\",\n      \"asset\": \"<string>\",\n      \"internalOrder\": \"<string>\",\n      \"wbsElement\": \"<string>\",\n      \"amount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"AFO\"\n      },\n      \"percentage\": \"<double>\",\n      \"sapDistributionFlag\": \"<string>\",\n      \"accountCategory\": \"<string>\"\n    },\n    {\n      \"costCenter\": \"<string>\",\n      \"generalLedger\": \"<string>\",\n      \"asset\": \"<string>\",\n      \"internalOrder\": \"<string>\",\n      \"wbsElement\": \"<string>\",\n      \"amount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"DCW\"\n      },\n      \"percentage\": \"<double>\",\n      \"sapDistributionFlag\": \"<string>\",\n      \"accountCategory\": \"<string>\"\n    }\n  ],\n  \"receivingType\": \"<integer>\",\n  \"taxCode\": \"<string>\",\n  \"taxDetail\": {\n    \"taxCode\": \"<string>\",\n    \"taxCategory\": \"<string>\",\n    \"taxRate\": \"<double>\",\n    \"taxAmount\": {\n      \"amount\": \"<double>\",\n      \"currencyCode\": \"FWP\"\n    },\n    \"taxableAmount\": {\n      \"amount\": \"<double>\",\n      \"currencyCode\": \"YTO\"\n    },\n    \"description\": \"<string>\"\n  },\n  \"itemOnRequisition\": \"<string>\",\n  \"serviceStartDate\": \"<date>\",\n  \"serviceEndDate\": \"<date>\",\n  \"comments\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:50:58.000Z",
+                          "updatedAt": "2026-07-28T02:50:58.000Z",
+                          "uid": "35240-e11e4c68-1aa5-4dae-a1c9-59fbed0b042b"
+                        },
+                        {
+                          "id": "88ee688f-42d6-42ed-a3f1-c1806536b1e5",
+                          "name": "Unauthorized - invalid or missing authentication credentials",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/orders/:orderId/lineItems/:lineItemNumber?realm=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "orders",
+                                ":orderId",
+                                "lineItems",
+                                ":lineItemNumber"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                                  "key": "realm",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orderId"
+                                },
+                                {
+                                  "key": "lineItemNumber"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T02:50:58.000Z",
+                          "updatedAt": "2026-07-28T02:50:58.000Z",
+                          "uid": "35240-88ee688f-42d6-42ed-a3f1-c1806536b1e5"
+                        },
+                        {
+                          "id": "1744149e-a5e9-4755-b811-f6f138eec5a7",
+                          "name": "Forbidden - insufficient permissions for the requested operation",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/orders/:orderId/lineItems/:lineItemNumber?realm=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "orders",
+                                ":orderId",
+                                "lineItems",
+                                ":lineItemNumber"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                                  "key": "realm",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orderId"
+                                },
+                                {
+                                  "key": "lineItemNumber"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T02:50:58.000Z",
+                          "updatedAt": "2026-07-28T02:50:58.000Z",
+                          "uid": "35240-1744149e-a5e9-4755-b811-f6f138eec5a7"
+                        },
+                        {
+                          "id": "e25c01d8-39d3-4eea-8fba-9c77488c7dc1",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/orders/:orderId/lineItems/:lineItemNumber?realm=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "orders",
+                                ":orderId",
+                                "lineItems",
+                                ":lineItemNumber"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                                  "key": "realm",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orderId"
+                                },
+                                {
+                                  "key": "lineItemNumber"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T02:50:58.000Z",
+                          "updatedAt": "2026-07-28T02:50:58.000Z",
+                          "uid": "35240-e25c01d8-39d3-4eea-8fba-9c77488c7dc1"
+                        },
+                        {
+                          "id": "5ab88680-d31f-4717-b6bc-a7dbde1c4885",
+                          "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/orders/:orderId/lineItems/:lineItemNumber?realm=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "orders",
+                                ":orderId",
+                                "lineItems",
+                                ":lineItemNumber"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                                  "key": "realm",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orderId"
+                                },
+                                {
+                                  "key": "lineItemNumber"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Number of seconds to wait before retrying",
+                                "type": "text/plain"
+                              },
+                              "key": "Retry-After",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T02:50:58.000Z",
+                          "updatedAt": "2026-07-28T02:50:58.000Z",
+                          "uid": "35240-5ab88680-d31f-4717-b6bc-a7dbde1c4885"
+                        },
+                        {
+                          "id": "9a39754b-a8f6-4eb5-ac57-5f2fe9e8e41d",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/orders/:orderId/lineItems/:lineItemNumber?realm=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "orders",
+                                ":orderId",
+                                "lineItems",
+                                ":lineItemNumber"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                                  "key": "realm",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orderId"
+                                },
+                                {
+                                  "key": "lineItemNumber"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T02:50:58.000Z",
+                          "updatedAt": "2026-07-28T02:50:58.000Z",
+                          "uid": "35240-9a39754b-a8f6-4eb5-ac57-5f2fe9e8e41d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:50:58.000Z",
+                      "updatedAt": "2026-07-28T02:50:58.000Z",
+                      "uid": "35240-12af2010-04f3-4770-8f0e-539db115fd5c"
+                    }
+                  ],
+                  "id": "d664c648-eec0-4d9c-a6c0-69783c02505f",
+                  "createdAt": "2026-07-28T02:50:58.000Z",
+                  "updatedAt": "2026-07-28T02:50:58.000Z",
+                  "uid": "35240-d664c648-eec0-4d9c-a6c0-69783c02505f"
+                },
+                {
+                  "name": "List Line Items for a Purchase Order",
+                  "id": "830b25de-8db1-4ff2-8e0f-be0557c8eca4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:orderId/lineItems?realm=<string>&skip=0&limit=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":orderId",
+                        "lineItems"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of records to skip for pagination (default 0)",
+                          "key": "skip",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of records to return per page (default 10, max 100)",
+                          "key": "limit",
+                          "value": "10"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "7883620d-1d9c-4cfb-b2d2-5531265c1fcf",
+                          "key": "orderId",
+                          "value": "<string>",
+                          "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                        }
+                      ]
+                    },
+                    "description": "Retrieves all line items associated with a specific purchase order including item details, quantities, pricing, delivery schedules, commodity codes, and accounting assignments."
+                  },
+                  "response": [
+                    {
+                      "id": "93a63e73-c891-4306-b22e-942a350a3854",
+                      "name": "Successfully retrieved line items",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orders/:orderId/lineItems?realm=<string>&skip=0&limit=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orders",
+                            ":orderId",
+                            "lineItems"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of records to skip for pagination (default 0)",
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of records to return per page (default 10, max 100)",
+                              "key": "limit",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"totalCount\": \"<integer>\",\n  \"skip\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"PVQ\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"TSK\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"UH\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"AKT\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"YOA\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"FRK\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"FBI\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    },\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"ATH\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"VYZ\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"OT\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"MII\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"ZPK\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"IUY\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"JNG\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:50:58.000Z",
+                      "updatedAt": "2026-07-28T02:50:58.000Z",
+                      "uid": "35240-93a63e73-c891-4306-b22e-942a350a3854"
+                    },
+                    {
+                      "id": "4c6ec0cf-b1a6-46c6-87a7-5bef1bc2b977",
+                      "name": "Unauthorized - invalid or missing authentication credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orders/:orderId/lineItems?realm=<string>&skip=0&limit=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orders",
+                            ":orderId",
+                            "lineItems"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of records to skip for pagination (default 0)",
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of records to return per page (default 10, max 100)",
+                              "key": "limit",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:58.000Z",
+                      "updatedAt": "2026-07-28T02:50:58.000Z",
+                      "uid": "35240-4c6ec0cf-b1a6-46c6-87a7-5bef1bc2b977"
+                    },
+                    {
+                      "id": "2b3187db-9665-48af-bc5a-64f37c8c6707",
+                      "name": "Forbidden - insufficient permissions for the requested operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orders/:orderId/lineItems?realm=<string>&skip=0&limit=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orders",
+                            ":orderId",
+                            "lineItems"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of records to skip for pagination (default 0)",
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of records to return per page (default 10, max 100)",
+                              "key": "limit",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:58.000Z",
+                      "updatedAt": "2026-07-28T02:50:58.000Z",
+                      "uid": "35240-2b3187db-9665-48af-bc5a-64f37c8c6707"
+                    },
+                    {
+                      "id": "8bcef756-c206-43ee-9521-6086273cbb96",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orders/:orderId/lineItems?realm=<string>&skip=0&limit=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orders",
+                            ":orderId",
+                            "lineItems"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of records to skip for pagination (default 0)",
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of records to return per page (default 10, max 100)",
+                              "key": "limit",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:58.000Z",
+                      "updatedAt": "2026-07-28T02:50:58.000Z",
+                      "uid": "35240-8bcef756-c206-43ee-9521-6086273cbb96"
+                    },
+                    {
+                      "id": "ebb2b911-5e8a-47d4-8d32-6a1a7da85f33",
+                      "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orders/:orderId/lineItems?realm=<string>&skip=0&limit=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orders",
+                            ":orderId",
+                            "lineItems"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of records to skip for pagination (default 0)",
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of records to return per page (default 10, max 100)",
+                              "key": "limit",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Number of seconds to wait before retrying",
+                            "type": "text/plain"
+                          },
+                          "key": "Retry-After",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:58.000Z",
+                      "updatedAt": "2026-07-28T02:50:58.000Z",
+                      "uid": "35240-ebb2b911-5e8a-47d4-8d32-6a1a7da85f33"
+                    },
+                    {
+                      "id": "52c98b27-6361-4771-bbf1-562591478de2",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orders/:orderId/lineItems?realm=<string>&skip=0&limit=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orders",
+                            ":orderId",
+                            "lineItems"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of records to skip for pagination (default 0)",
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of records to return per page (default 10, max 100)",
+                              "key": "limit",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:58.000Z",
+                      "updatedAt": "2026-07-28T02:50:58.000Z",
+                      "uid": "35240-52c98b27-6361-4771-bbf1-562591478de2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:58.000Z",
+                  "updatedAt": "2026-07-28T02:50:58.000Z",
+                  "uid": "35240-830b25de-8db1-4ff2-8e0f-be0557c8eca4"
+                }
+              ],
+              "id": "fd886850-cd53-47ae-87a5-e723aee18b31",
+              "createdAt": "2026-07-28T02:50:58.000Z",
+              "updatedAt": "2026-07-28T02:50:58.000Z",
+              "uid": "35240-fd886850-cd53-47ae-87a5-e723aee18b31"
+            }
+          ],
+          "id": "bf4da56e-7f8f-4139-bf32-f790dffd32e0",
+          "createdAt": "2026-07-28T02:50:58.000Z",
+          "updatedAt": "2026-07-28T02:50:58.000Z",
+          "uid": "35240-bf4da56e-7f8f-4139-bf32-f790dffd32e0"
+        }
+      ],
+      "id": "57312ce9-4882-4494-a32a-bfaf71b87ce5",
+      "createdAt": "2026-07-28T02:50:58.000Z",
+      "updatedAt": "2026-07-28T02:50:58.000Z",
+      "uid": "35240-57312ce9-4882-4494-a32a-bfaf71b87ce5"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.ariba.com/v2/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://openapi.ariba.com/api/procurement/v1"
+    }
+  ]
+}

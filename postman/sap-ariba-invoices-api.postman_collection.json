@@ -1,0 +1,2809 @@
+{
+  "info": {
+    "_postman_id": "51bb1065-965c-4149-833e-09995738f0e3",
+    "name": "SAP Ariba Procurement Invoices API",
+    "description": "Enables integration with SAP Ariba procurement processes including purchase orders, invoices, requisitions, receipts, and supplier management across the SAP Business Network. This API supports the complete procure-to-pay lifecycle from requisition creation through invoice reconciliation and payment processing.\n\nContact Support:\n Name: SAP Ariba API Support\n Email: support@ariba.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:56.000Z",
+    "updatedAt": "2026-07-28T02:50:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-51bb1065-965c-4149-833e-09995738f0e3"
+  },
+  "item": [
+    {
+      "name": "invoices",
+      "item": [
+        {
+          "name": "{invoiceId}",
+          "item": [
+            {
+              "name": "approve",
+              "item": [
+                {
+                  "name": "Approve an Invoice",
+                  "id": "1acb4090-d598-41dc-a34d-96a448ce5292",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"comment\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:invoiceId/approve?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":invoiceId",
+                        "approve"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "11cbb55f-82c8-4cbd-94ce-1ded51d1b3ce",
+                          "key": "invoiceId",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the invoice"
+                        }
+                      ]
+                    },
+                    "description": "Approves an invoice for payment processing. The invoice must be in Pending Approval status. Triggers downstream payment workflows."
+                  },
+                  "response": [
+                    {
+                      "id": "3f691e7d-c476-4224-a81f-40db1928db08",
+                      "name": "Invoice approved successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/approve?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "approve"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"invoiceId\": \"<string>\",\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"FVI\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"LYL\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"MOS\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"XRD\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"XUP\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"status\": \"Cancelled\",\n  \"invoiceType\": \"DebitMemo\",\n  \"buyer\": {\n    \"buyerId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpBuyerId\": \"<string>\"\n  },\n  \"purchaseOrderReference\": \"<string>\",\n  \"currency\": \"MLD\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"TTF\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"UZS\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"VHA\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"dueDate\": \"<date>\",\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"YD\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"taxDetails\": [\n    {\n      \"taxCode\": \"<string>\",\n      \"taxCategory\": \"<string>\",\n      \"taxRate\": \"<double>\",\n      \"taxAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"CZK\"\n      },\n      \"taxableAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"XTR\"\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"taxCode\": \"<string>\",\n      \"taxCategory\": \"<string>\",\n      \"taxRate\": \"<double>\",\n      \"taxAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"NNM\"\n      },\n      \"taxableAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"CXY\"\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"comments\": \"<string>\",\n  \"approvalDate\": \"<dateTime>\",\n  \"paymentDate\": \"<date>\",\n  \"paymentReference\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDate\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-3f691e7d-c476-4224-a81f-40db1928db08"
+                    },
+                    {
+                      "id": "c74f180d-48cf-41b1-a096-dde98643aed3",
+                      "name": "Unauthorized - invalid or missing authentication credentials",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/approve?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "approve"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-c74f180d-48cf-41b1-a096-dde98643aed3"
+                    },
+                    {
+                      "id": "dc02bba6-8fd9-4659-8f31-d11e9d9bdc89",
+                      "name": "Forbidden - insufficient permissions for the requested operation",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/approve?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "approve"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-dc02bba6-8fd9-4659-8f31-d11e9d9bdc89"
+                    },
+                    {
+                      "id": "ea272599-b1f1-4e65-b2ea-08399e0213e0",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/approve?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "approve"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-ea272599-b1f1-4e65-b2ea-08399e0213e0"
+                    },
+                    {
+                      "id": "0ab16186-723d-4430-b911-c661e303cfeb",
+                      "name": "Conflict - invoice not in approvable state",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/approve?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "approve"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-0ab16186-723d-4430-b911-c661e303cfeb"
+                    },
+                    {
+                      "id": "a59bc536-5800-4e24-aa0a-935684115d16",
+                      "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/approve?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "approve"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Number of seconds to wait before retrying",
+                            "type": "text/plain"
+                          },
+                          "key": "Retry-After",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-a59bc536-5800-4e24-aa0a-935684115d16"
+                    },
+                    {
+                      "id": "4c6c312f-c050-456b-a7bb-2163339bf687",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/approve?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "approve"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-4c6c312f-c050-456b-a7bb-2163339bf687"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:57.000Z",
+                  "updatedAt": "2026-07-28T02:50:57.000Z",
+                  "uid": "35240-1acb4090-d598-41dc-a34d-96a448ce5292"
+                }
+              ],
+              "id": "4da181e7-84b1-4f76-831f-a43be308d1b2",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-4da181e7-84b1-4f76-831f-a43be308d1b2"
+            },
+            {
+              "name": "reject",
+              "item": [
+                {
+                  "name": "Reject an Invoice",
+                  "id": "3843a68b-e8d1-4467-b288-2a3c9b8cbe97",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reason\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:invoiceId/reject?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":invoiceId",
+                        "reject"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "ea669fda-ccc7-4d7b-8963-db659be72dd6",
+                          "key": "invoiceId",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the invoice"
+                        }
+                      ]
+                    },
+                    "description": "Rejects an invoice and returns it to the supplier with a reason for rejection. The supplier is notified through the Ariba Network."
+                  },
+                  "response": [
+                    {
+                      "id": "c97b0a48-3721-4a05-a207-3e0d51be091e",
+                      "name": "Invoice rejected successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/reject?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "reject"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"invoiceId\": \"<string>\",\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"FVI\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"LYL\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"MOS\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"XRD\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"XUP\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"status\": \"Cancelled\",\n  \"invoiceType\": \"DebitMemo\",\n  \"buyer\": {\n    \"buyerId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpBuyerId\": \"<string>\"\n  },\n  \"purchaseOrderReference\": \"<string>\",\n  \"currency\": \"MLD\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"TTF\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"UZS\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"VHA\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"dueDate\": \"<date>\",\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"YD\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"taxDetails\": [\n    {\n      \"taxCode\": \"<string>\",\n      \"taxCategory\": \"<string>\",\n      \"taxRate\": \"<double>\",\n      \"taxAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"CZK\"\n      },\n      \"taxableAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"XTR\"\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"taxCode\": \"<string>\",\n      \"taxCategory\": \"<string>\",\n      \"taxRate\": \"<double>\",\n      \"taxAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"NNM\"\n      },\n      \"taxableAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"CXY\"\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"comments\": \"<string>\",\n  \"approvalDate\": \"<dateTime>\",\n  \"paymentDate\": \"<date>\",\n  \"paymentReference\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDate\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-c97b0a48-3721-4a05-a207-3e0d51be091e"
+                    },
+                    {
+                      "id": "732f2e0f-a660-4faa-b1c7-9b193d07d5cc",
+                      "name": "Unauthorized - invalid or missing authentication credentials",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/reject?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "reject"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-732f2e0f-a660-4faa-b1c7-9b193d07d5cc"
+                    },
+                    {
+                      "id": "3cbebf61-f88f-48a7-a9f9-b2df6fcf8645",
+                      "name": "Forbidden - insufficient permissions for the requested operation",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/reject?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "reject"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-3cbebf61-f88f-48a7-a9f9-b2df6fcf8645"
+                    },
+                    {
+                      "id": "76263c78-6d07-4783-82c6-b16f2ab19dd7",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/reject?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "reject"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-76263c78-6d07-4783-82c6-b16f2ab19dd7"
+                    },
+                    {
+                      "id": "66c5486e-7a6b-4b63-b790-cb918b34b456",
+                      "name": "Conflict - invoice not in rejectable state",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/reject?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "reject"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-66c5486e-7a6b-4b63-b790-cb918b34b456"
+                    },
+                    {
+                      "id": "1e103189-42fc-4613-b276-2f37d59feea9",
+                      "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/reject?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "reject"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Number of seconds to wait before retrying",
+                            "type": "text/plain"
+                          },
+                          "key": "Retry-After",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-1e103189-42fc-4613-b276-2f37d59feea9"
+                    },
+                    {
+                      "id": "14150103-f962-4572-8212-1de22239d5bf",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:invoiceId/reject?realm=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":invoiceId",
+                            "reject"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                              "key": "realm",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "invoiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:50:57.000Z",
+                      "updatedAt": "2026-07-28T02:50:57.000Z",
+                      "uid": "35240-14150103-f962-4572-8212-1de22239d5bf"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:57.000Z",
+                  "updatedAt": "2026-07-28T02:50:57.000Z",
+                  "uid": "35240-3843a68b-e8d1-4467-b288-2a3c9b8cbe97"
+                }
+              ],
+              "id": "32f2e1ff-b371-4a6a-b034-760ffaed161e",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-32f2e1ff-b371-4a6a-b034-760ffaed161e"
+            },
+            {
+              "name": "Get an Invoice",
+              "id": "3568340b-885b-42fe-9b1a-38b5cba7d9d1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices/:invoiceId?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "37c414c0-f75f-4603-8c49-7254bc428fe7",
+                      "key": "invoiceId",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "description": "Retrieves the complete details of a specific invoice including header information, line items, tax details, payment terms, and approval status."
+              },
+              "response": [
+                {
+                  "id": "0ca6ae23-9d3f-4d3b-889a-b193a37a18fe",
+                  "name": "Successfully retrieved invoice details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:invoiceId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":invoiceId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "invoiceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"invoiceId\": \"<string>\",\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"FVI\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"LYL\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"MOS\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"XRD\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"XUP\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"status\": \"Cancelled\",\n  \"invoiceType\": \"DebitMemo\",\n  \"buyer\": {\n    \"buyerId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpBuyerId\": \"<string>\"\n  },\n  \"purchaseOrderReference\": \"<string>\",\n  \"currency\": \"MLD\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"TTF\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"UZS\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"VHA\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"dueDate\": \"<date>\",\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"YD\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"taxDetails\": [\n    {\n      \"taxCode\": \"<string>\",\n      \"taxCategory\": \"<string>\",\n      \"taxRate\": \"<double>\",\n      \"taxAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"CZK\"\n      },\n      \"taxableAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"XTR\"\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"taxCode\": \"<string>\",\n      \"taxCategory\": \"<string>\",\n      \"taxRate\": \"<double>\",\n      \"taxAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"NNM\"\n      },\n      \"taxableAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"CXY\"\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"comments\": \"<string>\",\n  \"approvalDate\": \"<dateTime>\",\n  \"paymentDate\": \"<date>\",\n  \"paymentReference\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDate\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:50:57.000Z",
+                  "updatedAt": "2026-07-28T02:50:57.000Z",
+                  "uid": "35240-0ca6ae23-9d3f-4d3b-889a-b193a37a18fe"
+                },
+                {
+                  "id": "d881c9a0-abe6-4706-956b-b952141ccf10",
+                  "name": "Unauthorized - invalid or missing authentication credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:invoiceId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":invoiceId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "invoiceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:50:57.000Z",
+                  "updatedAt": "2026-07-28T02:50:57.000Z",
+                  "uid": "35240-d881c9a0-abe6-4706-956b-b952141ccf10"
+                },
+                {
+                  "id": "358429c4-3376-4870-8fb8-e51a01522bbb",
+                  "name": "Forbidden - insufficient permissions for the requested operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:invoiceId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":invoiceId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "invoiceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:50:57.000Z",
+                  "updatedAt": "2026-07-28T02:50:57.000Z",
+                  "uid": "35240-358429c4-3376-4870-8fb8-e51a01522bbb"
+                },
+                {
+                  "id": "797d6081-fcff-44d0-a523-2a3a0ad0cfc8",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:invoiceId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":invoiceId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "invoiceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:50:57.000Z",
+                  "updatedAt": "2026-07-28T02:50:57.000Z",
+                  "uid": "35240-797d6081-fcff-44d0-a523-2a3a0ad0cfc8"
+                },
+                {
+                  "id": "568e8267-c0b2-416c-90eb-c48b4fb7cb0f",
+                  "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:invoiceId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":invoiceId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "invoiceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of seconds to wait before retrying",
+                        "type": "text/plain"
+                      },
+                      "key": "Retry-After",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:50:57.000Z",
+                  "updatedAt": "2026-07-28T02:50:57.000Z",
+                  "uid": "35240-568e8267-c0b2-416c-90eb-c48b4fb7cb0f"
+                },
+                {
+                  "id": "d7022388-c433-4fa0-86b9-0bd8b1ef222f",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:invoiceId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":invoiceId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "invoiceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:50:57.000Z",
+                  "updatedAt": "2026-07-28T02:50:57.000Z",
+                  "uid": "35240-d7022388-c433-4fa0-86b9-0bd8b1ef222f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-3568340b-885b-42fe-9b1a-38b5cba7d9d1"
+            }
+          ],
+          "id": "79ae301e-7320-4df6-90a8-eb18c5d6989c",
+          "createdAt": "2026-07-28T02:50:57.000Z",
+          "updatedAt": "2026-07-28T02:50:57.000Z",
+          "uid": "35240-79ae301e-7320-4df6-90a8-eb18c5d6989c"
+        },
+        {
+          "name": "List Invoices",
+          "id": "414e5022-0474-4582-a3b2-1e605c966218",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/invoices?realm=<string>&skip=0&limit=10&filter=<string>&supplierId=<string>&buyerId=<string>&status=Approved&purchaseOrderId=<string>&fromDate=<date>&toDate=<date>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                  "key": "realm",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of records to skip for pagination (default 0)",
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "description": "Maximum number of records to return per page (default 10, max 100)",
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "description": "OData-style filter expression",
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by supplier AN-ID",
+                  "key": "supplierId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by buyer AN-ID",
+                  "key": "buyerId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by invoice processing status",
+                  "key": "status",
+                  "value": "Approved"
+                },
+                {
+                  "description": "Filter invoices referencing a specific purchase order",
+                  "key": "purchaseOrderId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter invoices created on or after this date",
+                  "key": "fromDate",
+                  "value": "<date>"
+                },
+                {
+                  "description": "Filter invoices created on or before this date",
+                  "key": "toDate",
+                  "value": "<date>"
+                }
+              ]
+            },
+            "description": "Retrieves a paginated list of invoices. Supports filtering by supplier, buyer, purchase order reference, date range, status, and payment status."
+          },
+          "response": [
+            {
+              "id": "0126096e-f3e0-48ca-a276-dd82800b59e4",
+              "name": "Successfully retrieved list of invoices",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>&skip=0&limit=10&filter=<string>&supplierId=<string>&buyerId=<string>&status=Approved&purchaseOrderId=<string>&fromDate=<date>&toDate=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier AN-ID",
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by buyer AN-ID",
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by invoice processing status",
+                      "key": "status",
+                      "value": "Approved"
+                    },
+                    {
+                      "description": "Filter invoices referencing a specific purchase order",
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter invoices created on or after this date",
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Filter invoices created on or before this date",
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"totalCount\": \"<integer>\",\n  \"skip\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"invoices\": [\n    {\n      \"invoiceId\": \"<string>\",\n      \"invoiceNumber\": \"<string>\",\n      \"invoiceDate\": \"<date>\",\n      \"supplier\": {\n        \"supplierId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"erpSupplierId\": \"<string>\"\n      },\n      \"totalAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"MOG\"\n      },\n      \"lineItems\": [\n        {\n          \"lineNumber\": \"<string>\",\n          \"description\": \"<string>\",\n          \"quantity\": \"<double>\",\n          \"unitPrice\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"ZPI\"\n          },\n          \"netAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"WCJ\"\n          },\n          \"purchaseOrderReference\": \"<string>\",\n          \"poLineNumber\": \"<string>\",\n          \"unitOfMeasure\": {\n            \"code\": \"<string>\",\n            \"description\": \"<string>\"\n          },\n          \"taxDetail\": {\n            \"taxCode\": \"<string>\",\n            \"taxCategory\": \"<string>\",\n            \"taxRate\": \"<double>\",\n            \"taxAmount\": {\n              \"amount\": \"<double>\",\n              \"currencyCode\": \"TYT\"\n            },\n            \"taxableAmount\": {\n              \"amount\": \"<double>\",\n              \"currencyCode\": \"UIX\"\n            },\n            \"description\": \"<string>\"\n          },\n          \"commodityCode\": {\n            \"code\": \"<string>\",\n            \"description\": \"<string>\",\n            \"domain\": \"UNSPSC\"\n          },\n          \"buyerPartNumber\": \"<string>\",\n          \"supplierPartNumber\": \"<string>\",\n          \"serviceStartDate\": \"<date>\",\n          \"serviceEndDate\": \"<date>\"\n        }\n      ],\n      \"status\": \"Cancelled\",\n      \"invoiceType\": \"DebitMemo\",\n      \"buyer\": {\n        \"buyerId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"erpBuyerId\": \"<string>\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"currency\": \"AZJ\",\n      \"subtotalAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"YPT\"\n      },\n      \"taxAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"VDM\"\n      },\n      \"shippingAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"UTG\"\n      },\n      \"paymentTerms\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"netDays\": \"<integer>\",\n        \"discountPercent\": \"<double>\",\n        \"discountDays\": \"<integer>\"\n      },\n      \"dueDate\": \"<date>\",\n      \"remitTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"MQ\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"taxDetails\": [\n        {\n          \"taxCode\": \"<string>\",\n          \"taxCategory\": \"<string>\",\n          \"taxRate\": \"<double>\",\n          \"taxAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"OOC\"\n          },\n          \"taxableAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"DRE\"\n          },\n          \"description\": \"<string>\"\n        },\n        {\n          \"taxCode\": \"<string>\",\n          \"taxCategory\": \"<string>\",\n          \"taxRate\": \"<double>\",\n          \"taxAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"OBE\"\n          },\n          \"taxableAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"BAX\"\n          },\n          \"description\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"approvalDate\": \"<dateTime>\",\n      \"paymentDate\": \"<date>\",\n      \"paymentReference\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\"\n    },\n    {\n      \"invoiceId\": \"<string>\",\n      \"invoiceNumber\": \"<string>\",\n      \"invoiceDate\": \"<date>\",\n      \"supplier\": {\n        \"supplierId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"erpSupplierId\": \"<string>\"\n      },\n      \"totalAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"IHI\"\n      },\n      \"lineItems\": [\n        {\n          \"lineNumber\": \"<string>\",\n          \"description\": \"<string>\",\n          \"quantity\": \"<double>\",\n          \"unitPrice\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"BXC\"\n          },\n          \"netAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"BMT\"\n          },\n          \"purchaseOrderReference\": \"<string>\",\n          \"poLineNumber\": \"<string>\",\n          \"unitOfMeasure\": {\n            \"code\": \"<string>\",\n            \"description\": \"<string>\"\n          },\n          \"taxDetail\": {\n            \"taxCode\": \"<string>\",\n            \"taxCategory\": \"<string>\",\n            \"taxRate\": \"<double>\",\n            \"taxAmount\": {\n              \"amount\": \"<double>\",\n              \"currencyCode\": \"MEB\"\n            },\n            \"taxableAmount\": {\n              \"amount\": \"<double>\",\n              \"currencyCode\": \"OQO\"\n            },\n            \"description\": \"<string>\"\n          },\n          \"commodityCode\": {\n            \"code\": \"<string>\",\n            \"description\": \"<string>\",\n            \"domain\": \"UNSPSC\"\n          },\n          \"buyerPartNumber\": \"<string>\",\n          \"supplierPartNumber\": \"<string>\",\n          \"serviceStartDate\": \"<date>\",\n          \"serviceEndDate\": \"<date>\"\n        }\n      ],\n      \"status\": \"Cancelled\",\n      \"invoiceType\": \"Standard\",\n      \"buyer\": {\n        \"buyerId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"erpBuyerId\": \"<string>\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"currency\": \"JJA\",\n      \"subtotalAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"JJF\"\n      },\n      \"taxAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"HLK\"\n      },\n      \"shippingAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"KKY\"\n      },\n      \"paymentTerms\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"netDays\": \"<integer>\",\n        \"discountPercent\": \"<double>\",\n        \"discountDays\": \"<integer>\"\n      },\n      \"dueDate\": \"<date>\",\n      \"remitTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"RJ\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"taxDetails\": [\n        {\n          \"taxCode\": \"<string>\",\n          \"taxCategory\": \"<string>\",\n          \"taxRate\": \"<double>\",\n          \"taxAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"ECO\"\n          },\n          \"taxableAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"DOF\"\n          },\n          \"description\": \"<string>\"\n        },\n        {\n          \"taxCode\": \"<string>\",\n          \"taxCategory\": \"<string>\",\n          \"taxRate\": \"<double>\",\n          \"taxAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"QVO\"\n          },\n          \"taxableAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"XUR\"\n          },\n          \"description\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"approvalDate\": \"<dateTime>\",\n      \"paymentDate\": \"<date>\",\n      \"paymentReference\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-0126096e-f3e0-48ca-a276-dd82800b59e4"
+            },
+            {
+              "id": "9543af7f-9b09-469c-96be-90177046afc4",
+              "name": "Bad request - invalid parameters or malformed request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>&skip=0&limit=10&filter=<string>&supplierId=<string>&buyerId=<string>&status=Approved&purchaseOrderId=<string>&fromDate=<date>&toDate=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier AN-ID",
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by buyer AN-ID",
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by invoice processing status",
+                      "key": "status",
+                      "value": "Approved"
+                    },
+                    {
+                      "description": "Filter invoices referencing a specific purchase order",
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter invoices created on or after this date",
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Filter invoices created on or before this date",
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-9543af7f-9b09-469c-96be-90177046afc4"
+            },
+            {
+              "id": "513fdb4d-1619-46ca-873b-f813cbd560aa",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>&skip=0&limit=10&filter=<string>&supplierId=<string>&buyerId=<string>&status=Approved&purchaseOrderId=<string>&fromDate=<date>&toDate=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier AN-ID",
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by buyer AN-ID",
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by invoice processing status",
+                      "key": "status",
+                      "value": "Approved"
+                    },
+                    {
+                      "description": "Filter invoices referencing a specific purchase order",
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter invoices created on or after this date",
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Filter invoices created on or before this date",
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-513fdb4d-1619-46ca-873b-f813cbd560aa"
+            },
+            {
+              "id": "5f5f064b-285c-48df-838b-ee3b46fad0e4",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>&skip=0&limit=10&filter=<string>&supplierId=<string>&buyerId=<string>&status=Approved&purchaseOrderId=<string>&fromDate=<date>&toDate=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier AN-ID",
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by buyer AN-ID",
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by invoice processing status",
+                      "key": "status",
+                      "value": "Approved"
+                    },
+                    {
+                      "description": "Filter invoices referencing a specific purchase order",
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter invoices created on or after this date",
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Filter invoices created on or before this date",
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-5f5f064b-285c-48df-838b-ee3b46fad0e4"
+            },
+            {
+              "id": "97e66675-0c45-4a79-953b-f1fbb37bd362",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>&skip=0&limit=10&filter=<string>&supplierId=<string>&buyerId=<string>&status=Approved&purchaseOrderId=<string>&fromDate=<date>&toDate=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier AN-ID",
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by buyer AN-ID",
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by invoice processing status",
+                      "key": "status",
+                      "value": "Approved"
+                    },
+                    {
+                      "description": "Filter invoices referencing a specific purchase order",
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter invoices created on or after this date",
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Filter invoices created on or before this date",
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "Number of seconds to wait before retrying",
+                    "type": "text/plain"
+                  },
+                  "key": "Retry-After",
+                  "value": "<integer>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-97e66675-0c45-4a79-953b-f1fbb37bd362"
+            },
+            {
+              "id": "0c777a99-eba6-4c75-8fe4-85a5cabca328",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>&skip=0&limit=10&filter=<string>&supplierId=<string>&buyerId=<string>&status=Approved&purchaseOrderId=<string>&fromDate=<date>&toDate=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by supplier AN-ID",
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by buyer AN-ID",
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by invoice processing status",
+                      "key": "status",
+                      "value": "Approved"
+                    },
+                    {
+                      "description": "Filter invoices referencing a specific purchase order",
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter invoices created on or after this date",
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Filter invoices created on or before this date",
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-0c777a99-eba6-4c75-8fe4-85a5cabca328"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:57.000Z",
+          "updatedAt": "2026-07-28T02:50:57.000Z",
+          "uid": "35240-414e5022-0474-4582-a3b2-1e605c966218"
+        },
+        {
+          "name": "Create an Invoice",
+          "id": "3680d74f-a607-4a23-9374-b357aa9112ce",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"currency\": \"RYZ\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"NYE\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"IKJ\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"YSJ\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"JIY\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PEG\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"<string>\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"PKK\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"ZNI\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"DZZ\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"PL\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"comments\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/invoices?realm=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                  "key": "realm",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Creates a new invoice in the SAP Ariba system. The invoice must reference a purchase order and include line item details, amounts, tax information, and supplier banking details for payment processing."
+          },
+          "response": [
+            {
+              "id": "6172dcc7-562c-40e8-98ca-9e0b269a47c3",
+              "name": "Invoice created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"currency\": \"RYZ\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"NYE\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"IKJ\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"YSJ\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"JIY\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PEG\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"<string>\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"PKK\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"ZNI\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"DZZ\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"PL\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "URI of the newly created invoice",
+                    "type": "text/plain"
+                  },
+                  "key": "Location",
+                  "value": "<uri>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"invoiceId\": \"<string>\",\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"FVI\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"LYL\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"MOS\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"XRD\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"XUP\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"status\": \"Cancelled\",\n  \"invoiceType\": \"DebitMemo\",\n  \"buyer\": {\n    \"buyerId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpBuyerId\": \"<string>\"\n  },\n  \"purchaseOrderReference\": \"<string>\",\n  \"currency\": \"MLD\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"TTF\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"UZS\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"VHA\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"dueDate\": \"<date>\",\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"YD\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"taxDetails\": [\n    {\n      \"taxCode\": \"<string>\",\n      \"taxCategory\": \"<string>\",\n      \"taxRate\": \"<double>\",\n      \"taxAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"CZK\"\n      },\n      \"taxableAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"XTR\"\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"taxCode\": \"<string>\",\n      \"taxCategory\": \"<string>\",\n      \"taxRate\": \"<double>\",\n      \"taxAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"NNM\"\n      },\n      \"taxableAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"CXY\"\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"comments\": \"<string>\",\n  \"approvalDate\": \"<dateTime>\",\n  \"paymentDate\": \"<date>\",\n  \"paymentReference\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDate\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-6172dcc7-562c-40e8-98ca-9e0b269a47c3"
+            },
+            {
+              "id": "1b3aff60-41b0-47a3-bae9-b0e2031dab53",
+              "name": "Bad request - invalid parameters or malformed request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"currency\": \"RYZ\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"NYE\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"IKJ\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"YSJ\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"JIY\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PEG\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"<string>\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"PKK\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"ZNI\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"DZZ\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"PL\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-1b3aff60-41b0-47a3-bae9-b0e2031dab53"
+            },
+            {
+              "id": "3c08fabe-1259-4d1c-a5c7-1d7e9b22b84a",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"currency\": \"RYZ\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"NYE\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"IKJ\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"YSJ\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"JIY\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PEG\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"<string>\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"PKK\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"ZNI\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"DZZ\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"PL\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-3c08fabe-1259-4d1c-a5c7-1d7e9b22b84a"
+            },
+            {
+              "id": "5b3d947e-b314-427a-b78a-8e47d48b562c",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"currency\": \"RYZ\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"NYE\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"IKJ\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"YSJ\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"JIY\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PEG\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"<string>\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"PKK\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"ZNI\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"DZZ\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"PL\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-5b3d947e-b314-427a-b78a-8e47d48b562c"
+            },
+            {
+              "id": "2940378f-0f5e-45ef-99a6-a10ffd8a33cb",
+              "name": "Conflict - duplicate invoice number",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"currency\": \"RYZ\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"NYE\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"IKJ\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"YSJ\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"JIY\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PEG\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"<string>\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"PKK\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"ZNI\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"DZZ\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"PL\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-2940378f-0f5e-45ef-99a6-a10ffd8a33cb"
+            },
+            {
+              "id": "0d05bdde-acb3-4990-9ac1-34886ac120ff",
+              "name": "Unprocessable entity - validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"currency\": \"RYZ\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"NYE\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"IKJ\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"YSJ\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"JIY\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PEG\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"<string>\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"PKK\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"ZNI\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"DZZ\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"PL\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-0d05bdde-acb3-4990-9ac1-34886ac120ff"
+            },
+            {
+              "id": "765eb524-351d-4b50-82eb-6567ad98c688",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"currency\": \"RYZ\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"NYE\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"IKJ\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"YSJ\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"JIY\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PEG\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"<string>\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"PKK\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"ZNI\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"DZZ\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"PL\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "Number of seconds to wait before retrying",
+                    "type": "text/plain"
+                  },
+                  "key": "Retry-After",
+                  "value": "<integer>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-765eb524-351d-4b50-82eb-6567ad98c688"
+            },
+            {
+              "id": "5ed425bb-405d-4a09-883a-4630d13e0d5a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"currency\": \"RYZ\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"NYE\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"IKJ\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"YSJ\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"JIY\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PEG\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"<string>\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"PKK\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"ZNI\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"DZZ\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"PL\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:50:57.000Z",
+              "updatedAt": "2026-07-28T02:50:57.000Z",
+              "uid": "35240-5ed425bb-405d-4a09-883a-4630d13e0d5a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:57.000Z",
+          "updatedAt": "2026-07-28T02:50:57.000Z",
+          "uid": "35240-3680d74f-a607-4a23-9374-b357aa9112ce"
+        }
+      ],
+      "id": "2aac33a5-47e5-46ca-bd90-1a117aabacd4",
+      "createdAt": "2026-07-28T02:50:57.000Z",
+      "updatedAt": "2026-07-28T02:50:57.000Z",
+      "uid": "35240-2aac33a5-47e5-46ca-bd90-1a117aabacd4"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.ariba.com/v2/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://openapi.ariba.com/api/procurement/v1"
+    }
+  ]
+}

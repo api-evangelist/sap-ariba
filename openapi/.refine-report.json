@@ -1,0 +1,24 @@
+{
+  "provider": "sap-ariba",
+  "sources": [
+    "sap-ariba-invoices-api-openapi.yml",
+    "sap-ariba-purchase-order-line-items-api-openapi.yml",
+    "sap-ariba-purchase-orders-api-openapi.yml",
+    "sap-ariba-receipts-api-openapi.yml",
+    "sap-ariba-requisitions-api-openapi.yml",
+    "sap-ariba-suppliers-api-openapi.yml"
+  ],
+  "outputs": [
+    "sap-ariba-invoices-api-openapi.yml",
+    "sap-ariba-purchase-order-line-items-api-openapi.yml",
+    "sap-ariba-purchase-orders-api-openapi.yml",
+    "sap-ariba-receipts-api-openapi.yml",
+    "sap-ariba-requisitions-api-openapi.yml",
+    "sap-ariba-suppliers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,1466 @@
+{
+  "info": {
+    "_postman_id": "7aa5dd03-3e83-4561-a9ce-5ad521069c13",
+    "name": "SAP Ariba Procurement Invoices Requisitions API",
+    "description": "Enables integration with SAP Ariba procurement processes including purchase orders, invoices, requisitions, receipts, and supplier management across the SAP Business Network. This API supports the complete procure-to-pay lifecycle from requisition creation through invoice reconciliation and payment processing.\n\nContact Support:\n Name: SAP Ariba API Support\n Email: support@ariba.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:51:01.000Z",
+    "updatedAt": "2026-07-28T02:51:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7aa5dd03-3e83-4561-a9ce-5ad521069c13"
+  },
+  "item": [
+    {
+      "name": "requisitions",
+      "item": [
+        {
+          "name": "{requisitionId}",
+          "item": [
+            {
+              "name": "Get a Requisition",
+              "id": "a7569174-259c-4dd6-8713-42a29a2da2e8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions/:requisitionId?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions",
+                    ":requisitionId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "b8e3713e-d1c2-4709-a392-9a9c7fe4b6cd",
+                      "key": "requisitionId",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for the requisition"
+                    }
+                  ]
+                },
+                "description": "Retrieves the complete details of a specific purchase requisition including line items, approval status, and linked purchase orders."
+              },
+              "response": [
+                {
+                  "id": "b36c8e3f-e90e-4e1e-a330-613ddb3a04c2",
+                  "name": "Successfully retrieved requisition details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/requisitions/:requisitionId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "requisitions",
+                        ":requisitionId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "requisitionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"requisitionId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"requestor\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"FLS\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"WSL\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"PH\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"EAB\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"FDC\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"HBR\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"SLK\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"status\": \"Ordered\",\n  \"requestorName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"companyCode\": \"<string>\",\n  \"needByDate\": \"<date>\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"WHS\"\n  },\n  \"purchaseOrderIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"comments\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"approvedDate\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:51:01.000Z",
+                  "updatedAt": "2026-07-28T02:51:01.000Z",
+                  "uid": "35240-b36c8e3f-e90e-4e1e-a330-613ddb3a04c2"
+                },
+                {
+                  "id": "3f67eb27-894a-49da-9092-e87b8eac7a0d",
+                  "name": "Unauthorized - invalid or missing authentication credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/requisitions/:requisitionId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "requisitions",
+                        ":requisitionId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "requisitionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:01.000Z",
+                  "updatedAt": "2026-07-28T02:51:01.000Z",
+                  "uid": "35240-3f67eb27-894a-49da-9092-e87b8eac7a0d"
+                },
+                {
+                  "id": "91783519-bf24-4405-b84d-47f074e9c177",
+                  "name": "Forbidden - insufficient permissions for the requested operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/requisitions/:requisitionId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "requisitions",
+                        ":requisitionId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "requisitionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:01.000Z",
+                  "updatedAt": "2026-07-28T02:51:01.000Z",
+                  "uid": "35240-91783519-bf24-4405-b84d-47f074e9c177"
+                },
+                {
+                  "id": "87e8158f-b2d8-44a0-91af-2e2d5a30750f",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/requisitions/:requisitionId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "requisitions",
+                        ":requisitionId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "requisitionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:01.000Z",
+                  "updatedAt": "2026-07-28T02:51:01.000Z",
+                  "uid": "35240-87e8158f-b2d8-44a0-91af-2e2d5a30750f"
+                },
+                {
+                  "id": "4435059e-742e-4f94-9972-642a9e477c24",
+                  "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/requisitions/:requisitionId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "requisitions",
+                        ":requisitionId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "requisitionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of seconds to wait before retrying",
+                        "type": "text/plain"
+                      },
+                      "key": "Retry-After",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:01.000Z",
+                  "updatedAt": "2026-07-28T02:51:01.000Z",
+                  "uid": "35240-4435059e-742e-4f94-9972-642a9e477c24"
+                },
+                {
+                  "id": "cf31f3e1-e00f-4f22-95f2-33d71eaa6538",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/requisitions/:requisitionId?realm=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "requisitions",
+                        ":requisitionId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                          "key": "realm",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "requisitionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:01.000Z",
+                  "updatedAt": "2026-07-28T02:51:01.000Z",
+                  "uid": "35240-cf31f3e1-e00f-4f22-95f2-33d71eaa6538"
+                }
+              ],
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-a7569174-259c-4dd6-8713-42a29a2da2e8"
+            }
+          ],
+          "id": "94d295f6-414c-497b-8537-5841cc4fbce1",
+          "createdAt": "2026-07-28T02:51:01.000Z",
+          "updatedAt": "2026-07-28T02:51:01.000Z",
+          "uid": "35240-94d295f6-414c-497b-8537-5841cc4fbce1"
+        },
+        {
+          "name": "List Requisitions",
+          "id": "766f6474-df13-4c72-8ae9-72f8347d58af",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requisitions?realm=<string>&skip=0&limit=10&filter=<string>&status=Denied&requestor=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requisitions"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                  "key": "realm",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of records to skip for pagination (default 0)",
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "description": "Maximum number of records to return per page (default 10, max 100)",
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "description": "OData-style filter expression",
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by requisition status",
+                  "key": "status",
+                  "value": "Denied"
+                },
+                {
+                  "description": "Filter by requestor user ID",
+                  "key": "requestor",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a paginated list of purchase requisitions. Requisitions are the starting point of the procurement process and flow into purchase orders upon approval."
+          },
+          "response": [
+            {
+              "id": "ab8e12e2-7eac-4683-8e97-0e7911f12f03",
+              "name": "Successfully retrieved list of requisitions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>&skip=0&limit=10&filter=<string>&status=Denied&requestor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by requisition status",
+                      "key": "status",
+                      "value": "Denied"
+                    },
+                    {
+                      "description": "Filter by requestor user ID",
+                      "key": "requestor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"totalCount\": \"<integer>\",\n  \"skip\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"requisitions\": [\n    {\n      \"requisitionId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"requestor\": \"<string>\",\n      \"lineItems\": [\n        {\n          \"numberOnPO\": \"<string>\",\n          \"description\": \"<string>\",\n          \"quantity\": \"<double>\",\n          \"unitPrice\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"APE\"\n          },\n          \"unitOfMeasure\": {\n            \"code\": \"<string>\",\n            \"description\": \"<string>\"\n          },\n          \"netAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"ZTU\"\n          },\n          \"commodityCode\": {\n            \"code\": \"<string>\",\n            \"description\": \"<string>\",\n            \"domain\": \"UNSPSC\"\n          },\n          \"buyerPartNumber\": \"<string>\",\n          \"supplierPartNumber\": \"<string>\",\n          \"manufacturerPartId\": \"<string>\",\n          \"manufacturerName\": \"<string>\",\n          \"itemCategory\": \"<string>\",\n          \"accountCategory\": \"<string>\",\n          \"needByDate\": \"<date>\",\n          \"shipTo\": {\n            \"name\": \"<string>\",\n            \"lines\": \"<string>\",\n            \"city\": \"<string>\",\n            \"state\": \"<string>\",\n            \"postalCode\": \"<string>\",\n            \"country\": \"MW\",\n            \"phone\": \"<string>\",\n            \"email\": \"<email>\"\n          },\n          \"accountings\": [\n            {\n              \"costCenter\": \"<string>\",\n              \"generalLedger\": \"<string>\",\n              \"asset\": \"<string>\",\n              \"internalOrder\": \"<string>\",\n              \"wbsElement\": \"<string>\",\n              \"amount\": {\n                \"amount\": \"<double>\",\n                \"currencyCode\": \"KAU\"\n              },\n              \"percentage\": \"<double>\",\n              \"sapDistributionFlag\": \"<string>\",\n              \"accountCategory\": \"<string>\"\n            },\n            {\n              \"costCenter\": \"<string>\",\n              \"generalLedger\": \"<string>\",\n              \"asset\": \"<string>\",\n              \"internalOrder\": \"<string>\",\n              \"wbsElement\": \"<string>\",\n              \"amount\": {\n                \"amount\": \"<double>\",\n                \"currencyCode\": \"FRI\"\n              },\n              \"percentage\": \"<double>\",\n              \"sapDistributionFlag\": \"<string>\",\n              \"accountCategory\": \"<string>\"\n            }\n          ],\n          \"receivingType\": \"<integer>\",\n          \"taxCode\": \"<string>\",\n          \"taxDetail\": {\n            \"taxCode\": \"<string>\",\n            \"taxCategory\": \"<string>\",\n            \"taxRate\": \"<double>\",\n            \"taxAmount\": {\n              \"amount\": \"<double>\",\n              \"currencyCode\": \"JHR\"\n            },\n            \"taxableAmount\": {\n              \"amount\": \"<double>\",\n              \"currencyCode\": \"SQR\"\n            },\n            \"description\": \"<string>\"\n          },\n          \"itemOnRequisition\": \"<string>\",\n          \"serviceStartDate\": \"<date>\",\n          \"serviceEndDate\": \"<date>\",\n          \"comments\": \"<string>\"\n        }\n      ],\n      \"status\": \"Ordered\",\n      \"requestorName\": \"<string>\",\n      \"department\": \"<string>\",\n      \"companyCode\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"totalAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"MKZ\"\n      },\n      \"purchaseOrderIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"comments\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"approvedDate\": \"<dateTime>\"\n    },\n    {\n      \"requisitionId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"requestor\": \"<string>\",\n      \"lineItems\": [\n        {\n          \"numberOnPO\": \"<string>\",\n          \"description\": \"<string>\",\n          \"quantity\": \"<double>\",\n          \"unitPrice\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"BGH\"\n          },\n          \"unitOfMeasure\": {\n            \"code\": \"<string>\",\n            \"description\": \"<string>\"\n          },\n          \"netAmount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"BZN\"\n          },\n          \"commodityCode\": {\n            \"code\": \"<string>\",\n            \"description\": \"<string>\",\n            \"domain\": \"UNSPSC\"\n          },\n          \"buyerPartNumber\": \"<string>\",\n          \"supplierPartNumber\": \"<string>\",\n          \"manufacturerPartId\": \"<string>\",\n          \"manufacturerName\": \"<string>\",\n          \"itemCategory\": \"<string>\",\n          \"accountCategory\": \"<string>\",\n          \"needByDate\": \"<date>\",\n          \"shipTo\": {\n            \"name\": \"<string>\",\n            \"lines\": \"<string>\",\n            \"city\": \"<string>\",\n            \"state\": \"<string>\",\n            \"postalCode\": \"<string>\",\n            \"country\": \"MB\",\n            \"phone\": \"<string>\",\n            \"email\": \"<email>\"\n          },\n          \"accountings\": [\n            {\n              \"costCenter\": \"<string>\",\n              \"generalLedger\": \"<string>\",\n              \"asset\": \"<string>\",\n              \"internalOrder\": \"<string>\",\n              \"wbsElement\": \"<string>\",\n              \"amount\": {\n                \"amount\": \"<double>\",\n                \"currencyCode\": \"XJI\"\n              },\n              \"percentage\": \"<double>\",\n              \"sapDistributionFlag\": \"<string>\",\n              \"accountCategory\": \"<string>\"\n            },\n            {\n              \"costCenter\": \"<string>\",\n              \"generalLedger\": \"<string>\",\n              \"asset\": \"<string>\",\n              \"internalOrder\": \"<string>\",\n              \"wbsElement\": \"<string>\",\n              \"amount\": {\n                \"amount\": \"<double>\",\n                \"currencyCode\": \"AWP\"\n              },\n              \"percentage\": \"<double>\",\n              \"sapDistributionFlag\": \"<string>\",\n              \"accountCategory\": \"<string>\"\n            }\n          ],\n          \"receivingType\": \"<integer>\",\n          \"taxCode\": \"<string>\",\n          \"taxDetail\": {\n            \"taxCode\": \"<string>\",\n            \"taxCategory\": \"<string>\",\n            \"taxRate\": \"<double>\",\n            \"taxAmount\": {\n              \"amount\": \"<double>\",\n              \"currencyCode\": \"UVV\"\n            },\n            \"taxableAmount\": {\n              \"amount\": \"<double>\",\n              \"currencyCode\": \"GOO\"\n            },\n            \"description\": \"<string>\"\n          },\n          \"itemOnRequisition\": \"<string>\",\n          \"serviceStartDate\": \"<date>\",\n          \"serviceEndDate\": \"<date>\",\n          \"comments\": \"<string>\"\n        }\n      ],\n      \"status\": \"Denied\",\n      \"requestorName\": \"<string>\",\n      \"department\": \"<string>\",\n      \"companyCode\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"totalAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"LCD\"\n      },\n      \"purchaseOrderIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"comments\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"approvedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-ab8e12e2-7eac-4683-8e97-0e7911f12f03"
+            },
+            {
+              "id": "7129e013-e151-4fc2-a50b-4901105ebfe0",
+              "name": "Bad request - invalid parameters or malformed request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>&skip=0&limit=10&filter=<string>&status=Denied&requestor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by requisition status",
+                      "key": "status",
+                      "value": "Denied"
+                    },
+                    {
+                      "description": "Filter by requestor user ID",
+                      "key": "requestor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-7129e013-e151-4fc2-a50b-4901105ebfe0"
+            },
+            {
+              "id": "b115293a-9bbe-4ba4-ae62-7ae5639a3904",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>&skip=0&limit=10&filter=<string>&status=Denied&requestor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by requisition status",
+                      "key": "status",
+                      "value": "Denied"
+                    },
+                    {
+                      "description": "Filter by requestor user ID",
+                      "key": "requestor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-b115293a-9bbe-4ba4-ae62-7ae5639a3904"
+            },
+            {
+              "id": "629597a0-e666-4bec-8b92-c1692f56ddbf",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>&skip=0&limit=10&filter=<string>&status=Denied&requestor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by requisition status",
+                      "key": "status",
+                      "value": "Denied"
+                    },
+                    {
+                      "description": "Filter by requestor user ID",
+                      "key": "requestor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-629597a0-e666-4bec-8b92-c1692f56ddbf"
+            },
+            {
+              "id": "594c3c2d-76c1-428f-a450-6b1ab6f9c37c",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>&skip=0&limit=10&filter=<string>&status=Denied&requestor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by requisition status",
+                      "key": "status",
+                      "value": "Denied"
+                    },
+                    {
+                      "description": "Filter by requestor user ID",
+                      "key": "requestor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "Number of seconds to wait before retrying",
+                    "type": "text/plain"
+                  },
+                  "key": "Retry-After",
+                  "value": "<integer>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-594c3c2d-76c1-428f-a450-6b1ab6f9c37c"
+            },
+            {
+              "id": "13585866-5fb0-404c-88bb-bf3c4306489c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>&skip=0&limit=10&filter=<string>&status=Denied&requestor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination (default 0)",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of records to return per page (default 10, max 100)",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "OData-style filter expression",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by requisition status",
+                      "key": "status",
+                      "value": "Denied"
+                    },
+                    {
+                      "description": "Filter by requestor user ID",
+                      "key": "requestor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-13585866-5fb0-404c-88bb-bf3c4306489c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:51:01.000Z",
+          "updatedAt": "2026-07-28T02:51:01.000Z",
+          "uid": "35240-766f6474-df13-4c72-8ae9-72f8347d58af"
+        },
+        {
+          "name": "Create a Requisition",
+          "id": "82bc475d-612f-4f0a-97a3-7aa31dc660de",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"SHG\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"JDH\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"CI\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"HQU\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"TDX\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PCU\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"KFJ\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"needByDate\": \"<date>\",\n  \"companyCode\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/requisitions?realm=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requisitions"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                  "key": "realm",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Creates a new purchase requisition. The requisition enters the approval workflow and upon approval generates one or more purchase orders."
+          },
+          "response": [
+            {
+              "id": "2577878a-2b0b-4926-b95c-831368a07593",
+              "name": "Requisition created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"SHG\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"JDH\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"CI\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"HQU\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"TDX\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PCU\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"KFJ\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"needByDate\": \"<date>\",\n  \"companyCode\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "URI of the newly created requisition",
+                    "type": "text/plain"
+                  },
+                  "key": "Location",
+                  "value": "<uri>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"requisitionId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"requestor\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"FLS\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"WSL\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"PH\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"EAB\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"FDC\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"HBR\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"SLK\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"status\": \"Ordered\",\n  \"requestorName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"companyCode\": \"<string>\",\n  \"needByDate\": \"<date>\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"WHS\"\n  },\n  \"purchaseOrderIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"comments\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"approvedDate\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-2577878a-2b0b-4926-b95c-831368a07593"
+            },
+            {
+              "id": "f60a31ae-2f6d-471b-ab4f-28087e9a049d",
+              "name": "Bad request - invalid parameters or malformed request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"SHG\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"JDH\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"CI\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"HQU\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"TDX\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PCU\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"KFJ\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"needByDate\": \"<date>\",\n  \"companyCode\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-f60a31ae-2f6d-471b-ab4f-28087e9a049d"
+            },
+            {
+              "id": "42007b7c-817e-41a7-a875-23ed098e696c",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"SHG\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"JDH\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"CI\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"HQU\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"TDX\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PCU\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"KFJ\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"needByDate\": \"<date>\",\n  \"companyCode\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-42007b7c-817e-41a7-a875-23ed098e696c"
+            },
+            {
+              "id": "4846fb9e-ab4b-4b23-9a8d-c125d730dc68",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"SHG\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"JDH\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"CI\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"HQU\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"TDX\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PCU\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"KFJ\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"needByDate\": \"<date>\",\n  \"companyCode\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-4846fb9e-ab4b-4b23-9a8d-c125d730dc68"
+            },
+            {
+              "id": "f60905d3-fa2c-4faa-94eb-b257b2d6e76b",
+              "name": "Unprocessable entity - validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"SHG\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"JDH\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"CI\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"HQU\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"TDX\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PCU\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"KFJ\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"needByDate\": \"<date>\",\n  \"companyCode\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-f60905d3-fa2c-4faa-94eb-b257b2d6e76b"
+            },
+            {
+              "id": "bb9dff83-b0de-469b-a76a-002915e33e40",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"SHG\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"JDH\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"CI\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"HQU\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"TDX\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PCU\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"KFJ\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"needByDate\": \"<date>\",\n  \"companyCode\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "Number of seconds to wait before retrying",
+                    "type": "text/plain"
+                  },
+                  "key": "Retry-After",
+                  "value": "<integer>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-bb9dff83-b0de-469b-a76a-002915e33e40"
+            },
+            {
+              "id": "547c1749-2ee7-4052-bb2d-a173ca7e072b",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"SHG\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"JDH\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"CI\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"HQU\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"TDX\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"PCU\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"KFJ\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"needByDate\": \"<date>\",\n  \"companyCode\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/requisitions?realm=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "requisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning.",
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"message\": \"<string>\",\n        \"errorNumber\": \"<string>\",\n        \"errorModule\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:51:01.000Z",
+              "updatedAt": "2026-07-28T02:51:01.000Z",
+              "uid": "35240-547c1749-2ee7-4052-bb2d-a173ca7e072b"
+            }
+          ],
+          "createdAt": "2026-07-28T02:51:01.000Z",
+          "updatedAt": "2026-07-28T02:51:01.000Z",
+          "uid": "35240-82bc475d-612f-4f0a-97a3-7aa31dc660de"
+        }
+      ],
+      "id": "a72e96be-6da3-4636-b7be-15b1bdc03c0d",
+      "createdAt": "2026-07-28T02:51:01.000Z",
+      "updatedAt": "2026-07-28T02:51:01.000Z",
+      "uid": "35240-a72e96be-6da3-4636-b7be-15b1bdc03c0d"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.ariba.com/v2/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://openapi.ariba.com/api/procurement/v1"
+    }
+  ]
+}
