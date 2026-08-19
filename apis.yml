@@ -2,6 +2,7 @@ name: SAP Ariba
 description: >-
   SAP Ariba is a cloud-based procurement and supply chain collaboration platform that connects buyers and suppliers. It
   offers APIs for procurement, sourcing, contract management, supplier management, and spend analysis.
+specificationVersion: '0.23'
 accessModel:
   pricing: enterprise
   onboarding: self-serve
