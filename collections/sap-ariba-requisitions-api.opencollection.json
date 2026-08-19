@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Ariba Procurement Invoices Requisitions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.ariba.com/v2/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Requisitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Requisitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/requisitions",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (default 10, max 100)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by requisition status"
+              },
+              {
+                "name": "requestor",
+                "value": "",
+                "type": "query",
+                "description": "Filter by requestor user ID"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of purchase requisitions. Requisitions are the starting point of the procurement process and flow into purchase orders upon approval."
+        },
+        {
+          "info": {
+            "name": "Create a Requisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/requisitions",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new purchase requisition. The requisition enters the approval workflow and upon approval generates one or more purchase orders."
+        },
+        {
+          "info": {
+            "name": "Get a Requisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/requisitions/:requisitionId",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "requisitionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the requisition"
+              }
+            ]
+          },
+          "docs": "Retrieves the complete details of a specific purchase requisition including line items, approval status, and linked purchase orders."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

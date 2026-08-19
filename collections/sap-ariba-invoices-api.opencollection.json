@@ -1,0 +1,208 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Ariba Procurement Invoices API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.ariba.com/v2/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/invoices",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (default 10, max 100)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression"
+              },
+              {
+                "name": "supplierId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by supplier AN-ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by buyer AN-ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by invoice processing status"
+              },
+              {
+                "name": "purchaseOrderId",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices referencing a specific purchase order"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices created on or after this date"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices created on or before this date"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of invoices. Supports filtering by supplier, buyer, purchase order reference, date range, status, and payment status."
+        },
+        {
+          "info": {
+            "name": "Create an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/invoices",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new invoice in the SAP Ariba system. The invoice must reference a purchase order and include line item details, amounts, tax information, and supplier banking details for payment processing."
+        },
+        {
+          "info": {
+            "name": "Get an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/invoices/:invoiceId",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the invoice"
+              }
+            ]
+          },
+          "docs": "Retrieves the complete details of a specific invoice including header information, line items, tax details, payment terms, and approval status."
+        },
+        {
+          "info": {
+            "name": "Approve an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/invoices/:invoiceId/approve",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the invoice"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approves an invoice for payment processing. The invoice must be in Pending Approval status. Triggers downstream payment workflows."
+        },
+        {
+          "info": {
+            "name": "Reject an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/invoices/:invoiceId/reject",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the invoice"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rejects an invoice and returns it to the supplier with a reason for rejection. The supplier is notified through the Ariba Network."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

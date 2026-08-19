@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Ariba Procurement Invoices Receipts API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.ariba.com/v2/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Receipts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Receipts for a Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId/receipts",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (default 10, max 100)"
+              }
+            ]
+          },
+          "docs": "Retrieves goods receipts and service confirmations recorded against a specific purchase order to support three-way matching."
+        },
+        {
+          "info": {
+            "name": "Create a Receipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId/receipts",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records a goods receipt or service confirmation against a purchase order. Receipts are used in the three-way matching process with purchase orders and invoices."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

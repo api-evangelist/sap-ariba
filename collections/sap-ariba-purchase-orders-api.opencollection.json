@@ -1,0 +1,208 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Ariba Procurement Invoices Purchase Orders API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.ariba.com/v2/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Purchase Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Purchase Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (default 10, max 100)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression to narrow results. Supports operators eq, ne, gt, lt, ge, le with the case-sensitive 'and' operator. Example: orderDate ge '2025-01-01' and status eq 'Ordered'"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "Field name to sort results by, with optional asc or desc direction"
+              },
+              {
+                "name": "supplierId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by supplier AN-ID on the SAP Ariba Network"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by buyer AN-ID on the SAP Ariba Network"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by purchase order status"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders created on or after this date (ISO 8601 format YYYY-MM-DD)"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders created on or before this date (ISO 8601 format YYYY-MM-DD)"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of purchase order headers matching the specified filter criteria. Supports filtering by buyer, supplier, date range, status, and other order attributes. Results are returned with pagination support using skip and limit parameters."
+        },
+        {
+          "info": {
+            "name": "Create a Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new purchase order in the SAP Ariba system. The order must include header information, at least one line item, supplier details, and shipping address. Upon successful creation, the purchase order is transmitted through the Ariba Network to the designated supplier."
+        },
+        {
+          "info": {
+            "name": "Get a Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              }
+            ]
+          },
+          "docs": "Retrieves the complete details of a specific purchase order including header information, all line items, accounting assignments, shipping addresses, and current status. The orderId corresponds to the unique purchase order identifier (UniqueName) in SAP Ariba."
+        },
+        {
+          "info": {
+            "name": "Update a Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing purchase order with change request information. Supports modifications to line items, quantities, prices, delivery dates, and shipping addresses. Creates a new version of the purchase order and increments the version number. Change requests are transmitted to the supplier through the Ariba Network."
+        },
+        {
+          "info": {
+            "name": "Cancel a Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.ariba.com/api/procurement/v1/orders/:orderId/cancel",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels an existing purchase order and notifies the supplier through the Ariba Network. Only orders in Ordered or Confirmed status can be cancelled. Cancellation creates a new version with cancelled status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

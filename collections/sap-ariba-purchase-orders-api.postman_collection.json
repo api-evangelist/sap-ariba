@@ -1,0 +1,2819 @@
+{
+  "item": [
+    {
+      "id": "da5aa10a-3a35-4d44-8c94-2eefd0390921",
+      "name": "Purchase Orders",
+      "description": {
+        "content": "Create, retrieve, update, and manage purchase orders across the SAP Ariba Network. Supports standard and service purchase orders including new, change, cancel, and close operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90d5ea30-2ed2-4fc7-b196-cd6ac3981e8e",
+          "name": "List Purchase Orders",
+          "request": {
+            "name": "List Purchase Orders",
+            "description": {
+              "content": "Retrieves a paginated list of purchase order headers matching the specified filter criteria. Supports filtering by buyer, supplier, date range, status, and other order attributes. Results are returned with pagination support using skip and limit parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "realm",
+                  "value": "<string>",
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (default 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return per page (default 10, max 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression to narrow results. Supports operators eq, ne, gt, lt, ge, le with the case-sensitive 'and' operator. Example: orderDate ge '2025-01-01' and status eq 'Ordered'"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>",
+                  "description": "Field name to sort results by, with optional asc or desc direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "supplierId",
+                  "value": "<string>",
+                  "description": "Filter by supplier AN-ID on the SAP Ariba Network"
+                },
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "Filter by buyer AN-ID on the SAP Ariba Network"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by purchase order status"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<date>",
+                  "description": "Filter orders created on or after this date (ISO 8601 format YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<date>",
+                  "description": "Filter orders created on or before this date (ISO 8601 format YYYY-MM-DD)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7c74e11-f2c6-44fb-9114-7b3c87a4a6d9",
+              "name": "Successfully retrieved list of purchase orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Submitted"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 10,\n  \"skip\": 10,\n  \"limit\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06d975e1-449a-4fe8-b528-7cb584aca607",
+              "name": "Bad request - invalid parameters or malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Submitted"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d579b1e-d24c-40eb-9992-3d8f2c686ee6",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Submitted"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ca69731-bc6e-4d3a-ba87-173d41457aac",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Submitted"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69c48521-326d-480d-bdf7-5d3172c4bb3f",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Submitted"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before retrying",
+                  "key": "Retry-After",
+                  "value": "9522"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cb19828-204c-4f9c-aaa2-e66674fa2308",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Submitted"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00d58331-441a-4478-9484-afc0cbe5c870",
+          "name": "Create a Purchase Order",
+          "request": {
+            "name": "Create a Purchase Order",
+            "description": {
+              "content": "Creates a new purchase order in the SAP Ariba system. The order must include header information, at least one line item, supplier details, and shipping address. Upon successful creation, the purchase order is transmitted through the Ariba Network to the designated supplier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "realm",
+                  "value": "<string>",
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"currency\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"<string>\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"<string>\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"<string>\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"<string>\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"erpPONumber\": \"<string>\",\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"purchaseOrg\": \"<string>\",\n  \"purchaseGroup\": \"<string>\",\n  \"companyCode\": \"<string>\",\n  \"shipTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"billTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"requisitionId\": \"<string>\",\n  \"contractId\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64b38c2e-70f7-41df-b0fe-422b561d6f62",
+              "name": "Purchase order created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"RY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EU\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "URI of the newly created purchase order",
+                  "key": "Location",
+                  "value": "https://n.dzogaSy2OjIfdKD9s"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"PO-2025-001234\",\n  \"orderDate\": \"2026-01-15T10:30:00Z\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"ZLA\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"versionNumber\": 10,\n  \"status\": \"Rejected\",\n  \"orderMethodCategory\": \"example_value\",\n  \"buyer\": {\n    \"buyerId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"erpBuyerId\": \"500123\"\n  },\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"MC\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\",\n  \"createdDate\": \"2026-01-15T10:30:00Z\",\n  \"lastModifiedDate\": \"2026-01-15T10:30:00Z\",\n  \"closedDate\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac55dafd-4aa7-4e90-b67d-51d84c4b3b54",
+              "name": "Bad request - invalid parameters or malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"RY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EU\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71c368ac-b722-4b9f-925f-a83d84282372",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"RY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EU\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a55e9f1-ab61-40da-a9d7-eb230fa1c0be",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"RY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EU\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2dc3dc6c-1b54-45f1-9a97-454809d6a1c2",
+              "name": "Conflict - duplicate order number or business rule violation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"RY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EU\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9af248c-379a-40b2-85bc-9c8ff403284f",
+              "name": "Unprocessable entity - validation error in order data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"RY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EU\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac610eea-cea2-453e-a7cf-4a7ecd904a22",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"RY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EU\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before retrying",
+                  "key": "Retry-After",
+                  "value": "9522"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a28dd53a-9705-4239-900a-edf6fa7b1e5a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"RY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EU\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "801a9d3f-c662-4d42-bce8-cad581db5eff",
+          "name": "Get a Purchase Order",
+          "request": {
+            "name": "Get a Purchase Order",
+            "description": {
+              "content": "Retrieves the complete details of a specific purchase order including header information, all line items, accounting assignments, shipping addresses, and current status. The orderId corresponds to the unique purchase order identifier (UniqueName) in SAP Ariba.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "realm",
+                  "value": "<string>",
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2fbeb222-0063-4e45-bdd0-3f1dbea0c17b",
+              "name": "Successfully retrieved purchase order details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"PO-2025-001234\",\n  \"orderDate\": \"2026-01-15T10:30:00Z\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"ZLA\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"versionNumber\": 10,\n  \"status\": \"Rejected\",\n  \"orderMethodCategory\": \"example_value\",\n  \"buyer\": {\n    \"buyerId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"erpBuyerId\": \"500123\"\n  },\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"MC\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\",\n  \"createdDate\": \"2026-01-15T10:30:00Z\",\n  \"lastModifiedDate\": \"2026-01-15T10:30:00Z\",\n  \"closedDate\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a810d20-531d-44c8-b765-cf12c35c1161",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "408bd363-1b14-4dcd-9050-23a42b414c1d",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b56aa293-7314-4d41-b9f9-9358cb6401b1",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd47188f-f433-4a63-8a5b-26d47f116445",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before retrying",
+                  "key": "Retry-After",
+                  "value": "9522"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4000215-d086-4a35-8ebb-90e98c98c0a8",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b204749d-86ab-491b-b09e-c993d9f173bc",
+          "name": "Update a Purchase Order",
+          "request": {
+            "name": "Update a Purchase Order",
+            "description": {
+              "content": "Updates an existing purchase order with change request information. Supports modifications to line items, quantities, prices, delivery dates, and shipping addresses. Creates a new version of the purchase order and increments the version number. Change requests are transmitted to the supplier through the Ariba Network.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "realm",
+                  "value": "<string>",
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lineItems\": [\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"<string>\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"<string>\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"<string>\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"<string>\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    },\n    {\n      \"numberOnPO\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"manufacturerPartId\": \"<string>\",\n      \"manufacturerName\": \"<string>\",\n      \"itemCategory\": \"<string>\",\n      \"accountCategory\": \"<string>\",\n      \"needByDate\": \"<date>\",\n      \"shipTo\": {\n        \"name\": \"<string>\",\n        \"lines\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"accountings\": [\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"<string>\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        },\n        {\n          \"costCenter\": \"<string>\",\n          \"generalLedger\": \"<string>\",\n          \"asset\": \"<string>\",\n          \"internalOrder\": \"<string>\",\n          \"wbsElement\": \"<string>\",\n          \"amount\": {\n            \"amount\": \"<double>\",\n            \"currencyCode\": \"<string>\"\n          },\n          \"percentage\": \"<double>\",\n          \"sapDistributionFlag\": \"<string>\",\n          \"accountCategory\": \"<string>\"\n        }\n      ],\n      \"receivingType\": \"<integer>\",\n      \"taxCode\": \"<string>\",\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"<string>\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"<string>\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"itemOnRequisition\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\",\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"shipTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"comments\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0cc132e3-a049-48c7-8b08-35e87a4fac0e",
+              "name": "Purchase order updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HD\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"PO-2025-001234\",\n  \"orderDate\": \"2026-01-15T10:30:00Z\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"ZLA\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"versionNumber\": 10,\n  \"status\": \"Rejected\",\n  \"orderMethodCategory\": \"example_value\",\n  \"buyer\": {\n    \"buyerId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"erpBuyerId\": \"500123\"\n  },\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"MC\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\",\n  \"createdDate\": \"2026-01-15T10:30:00Z\",\n  \"lastModifiedDate\": \"2026-01-15T10:30:00Z\",\n  \"closedDate\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "855316e9-a1a1-4816-a68f-89cc908f627c",
+              "name": "Bad request - invalid parameters or malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HD\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "319e2aa4-af49-4bff-ac12-29a9113a554a",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HD\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acb5e6b8-0459-4750-81d8-6198028b117a",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HD\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "763c95e2-394c-434d-854e-4958208ab280",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HD\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d09d0ba1-76b5-4e4a-a130-f66d015abd82",
+              "name": "Conflict - order is in a state that does not allow modification",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HD\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38bf26b8-18b9-4e44-b028-34fc216fa4d7",
+              "name": "Unprocessable entity - validation error in update data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HD\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94b2723a-5945-46f3-a958-7600df10ca09",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HD\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before retrying",
+                  "key": "Retry-After",
+                  "value": "9522"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e203a2b-c8b8-4add-a37f-d76d68d123e2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HD\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddf6bab1-8319-4e61-9efa-6e95709508c5",
+          "name": "Cancel a Purchase Order",
+          "request": {
+            "name": "Cancel a Purchase Order",
+            "description": {
+              "content": "Cancels an existing purchase order and notifies the supplier through the Ariba Network. Only orders in Ordered or Confirmed status can be cancelled. Cancellation creates a new version with cancelled status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "realm",
+                  "value": "<string>",
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5b8ae8b7-4e3e-41ca-b62f-6c5cc4e98dc3",
+              "name": "Purchase order cancelled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"PO-2025-001234\",\n  \"orderDate\": \"2026-01-15T10:30:00Z\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"ZLA\",\n  \"lineItems\": [],\n  \"erpPONumber\": \"example_value\",\n  \"versionNumber\": 10,\n  \"status\": \"Rejected\",\n  \"orderMethodCategory\": \"example_value\",\n  \"buyer\": {\n    \"buyerId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"erpBuyerId\": \"500123\"\n  },\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"purchaseOrg\": \"example_value\",\n  \"purchaseGroup\": \"example_value\",\n  \"companyCode\": \"example_value\",\n  \"shipTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"MC\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"billTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"EY\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"requisitionId\": \"500123\",\n  \"contractId\": \"500123\",\n  \"comments\": \"example_value\",\n  \"createdDate\": \"2026-01-15T10:30:00Z\",\n  \"lastModifiedDate\": \"2026-01-15T10:30:00Z\",\n  \"closedDate\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c2a1538-fd50-45c6-b00d-34606c5eb76a",
+              "name": "Bad request - invalid parameters or malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7004ccb-e34c-4adc-8963-ff98c509d1e3",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1fa6702e-6ceb-43e1-bac0-fa146b02d8e5",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d69a0753-a8fe-4873-b4c4-6f3485e4ff9a",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a72badb8-df50-4f51-9e74-bdf04c78cb59",
+              "name": "Conflict - order cannot be cancelled in its current state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74b05e7b-47f0-4aeb-943a-a3b774f2eb79",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before retrying",
+                  "key": "Retry-After",
+                  "value": "9522"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "427e1aaa-b2f8-479e-bee5-105e1c9951ad",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Unique purchase order identifier (UniqueName). This is the purchase order number with its version, or the ERP PO number (ERPPONumber)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://openapi.ariba.com/api/procurement/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.ariba.com/v2/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "610aff7b-7c8a-4aa2-a922-2d367f6eae81",
+    "name": "SAP Ariba Procurement Invoices Purchase Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Enables integration with SAP Ariba procurement processes including purchase orders, invoices, requisitions, receipts, and supplier management across the SAP Business Network. This API supports the complete procure-to-pay lifecycle from requisition creation through invoice reconciliation and payment processing.\n\nContact Support:\n Name: SAP Ariba API Support\n Email: support@ariba.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,2631 @@
+{
+  "item": [
+    {
+      "id": "bb61961d-61a7-4f4d-8fc3-bef2dc3adfbd",
+      "name": "Invoices",
+      "description": {
+        "content": "Process and manage invoices including creation, approval workflows, status tracking, and payment reconciliation.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "194101fa-ca7e-4828-9203-49e5bc0c35cc",
+          "name": "List Invoices",
+          "request": {
+            "name": "List Invoices",
+            "description": {
+              "content": "Retrieves a paginated list of invoices. Supports filtering by supplier, buyer, purchase order reference, date range, status, and payment status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "realm",
+                  "value": "<string>",
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (default 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return per page (default 10, max 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "supplierId",
+                  "value": "<string>",
+                  "description": "Filter by supplier AN-ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "Filter by buyer AN-ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by invoice processing status"
+                },
+                {
+                  "disabled": false,
+                  "key": "purchaseOrderId",
+                  "value": "<string>",
+                  "description": "Filter invoices referencing a specific purchase order"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<date>",
+                  "description": "Filter invoices created on or after this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<date>",
+                  "description": "Filter invoices created on or before this date"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b08a286-9973-4da9-803a-e4638a6e24d4",
+              "name": "Successfully retrieved list of invoices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Failed"
+                    },
+                    {
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 10,\n  \"skip\": 10,\n  \"limit\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ca79f86-63f1-4464-80a7-4609926e03b3",
+              "name": "Bad request - invalid parameters or malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Failed"
+                    },
+                    {
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93df67fd-993e-4bc3-9b99-e0f8e7f59fe9",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Failed"
+                    },
+                    {
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "039b85fe-090e-49e7-a9ac-6881259246c1",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Failed"
+                    },
+                    {
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d3efd38-6740-4576-8da8-8e8644896717",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Failed"
+                    },
+                    {
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before retrying",
+                  "key": "Retry-After",
+                  "value": "3168"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d64b81d3-9668-4b68-b5f8-729ed2781da8",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Failed"
+                    },
+                    {
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c216a9d1-97dc-4f8a-8543-585124e14ae3",
+          "name": "Create an Invoice",
+          "request": {
+            "name": "Create an Invoice",
+            "description": {
+              "content": "Creates a new invoice in the SAP Ariba system. The invoice must reference a purchase order and include line item details, amounts, tax information, and supplier banking details for payment processing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "realm",
+                  "value": "<string>",
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"invoiceNumber\": \"<string>\",\n  \"invoiceDate\": \"<date>\",\n  \"supplier\": {\n    \"supplierId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"erpSupplierId\": \"<string>\"\n  },\n  \"currency\": \"<string>\",\n  \"totalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"<string>\"\n  },\n  \"lineItems\": [\n    {\n      \"lineNumber\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<double>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"netAmount\": {\n        \"amount\": \"<double>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"purchaseOrderReference\": \"<string>\",\n      \"poLineNumber\": \"<string>\",\n      \"unitOfMeasure\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"taxDetail\": {\n        \"taxCode\": \"<string>\",\n        \"taxCategory\": \"<string>\",\n        \"taxRate\": \"<double>\",\n        \"taxAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"<string>\"\n        },\n        \"taxableAmount\": {\n          \"amount\": \"<double>\",\n          \"currencyCode\": \"<string>\"\n        },\n        \"description\": \"<string>\"\n      },\n      \"commodityCode\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"domain\": \"UNSPSC\"\n      },\n      \"buyerPartNumber\": \"<string>\",\n      \"supplierPartNumber\": \"<string>\",\n      \"serviceStartDate\": \"<date>\",\n      \"serviceEndDate\": \"<date>\"\n    }\n  ],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"<string>\",\n  \"subtotalAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"<string>\"\n  },\n  \"taxAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"<string>\"\n  },\n  \"shippingAmount\": {\n    \"amount\": \"<double>\",\n    \"currencyCode\": \"<string>\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"netDays\": \"<integer>\",\n    \"discountPercent\": \"<double>\",\n    \"discountDays\": \"<integer>\"\n  },\n  \"remitTo\": {\n    \"name\": \"<string>\",\n    \"lines\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"comments\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be27d4e9-e34f-4e99-8386-8f0d14be1cf9",
+              "name": "Invoice created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"example_value\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HG\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "URI of the newly created invoice",
+                  "key": "Location",
+                  "value": "http://YjFkTi.wijYaBD7Tn6rpa9"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoiceId\": \"500123\",\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"status\": \"Failed\",\n  \"invoiceType\": \"Standard\",\n  \"buyer\": {\n    \"buyerId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"erpBuyerId\": \"500123\"\n  },\n  \"purchaseOrderReference\": \"example_value\",\n  \"currency\": \"YHY\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"dueDate\": \"2026-01-15\",\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"OL\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\",\n  \"approvalDate\": \"2026-01-15T10:30:00Z\",\n  \"paymentDate\": \"2026-01-15\",\n  \"paymentReference\": \"example_value\",\n  \"createdDate\": \"2026-01-15T10:30:00Z\",\n  \"lastModifiedDate\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce890eb2-3695-4b1c-a0bd-e2629180c2f5",
+              "name": "Bad request - invalid parameters or malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"example_value\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HG\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03c4dac7-2b4d-41d6-b2c0-b2dfb37bd2c8",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"example_value\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HG\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6048949c-d80d-4737-b586-e566668600ce",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"example_value\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HG\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9a9e508-51da-4deb-b920-76b0fc4d472b",
+              "name": "Conflict - duplicate invoice number",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"example_value\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HG\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4316d0e-5e5e-43fe-adbf-542183d538cd",
+              "name": "Unprocessable entity - validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"example_value\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HG\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ace63026-ae06-4d69-9ab6-9466ddb7bfc4",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"example_value\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HG\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before retrying",
+                  "key": "Retry-After",
+                  "value": "3168"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db0439a5-977f-4533-b8d4-f4dcdc804b06",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"currency\": \"<string>\",\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"invoiceType\": \"Standard\",\n  \"purchaseOrderReference\": \"example_value\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"HG\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a65775b7-1f61-44f1-b03d-18ef0b12cd5a",
+          "name": "Get an Invoice",
+          "request": {
+            "name": "Get an Invoice",
+            "description": {
+              "content": "Retrieves the complete details of a specific invoice including header information, line items, tax details, payment terms, and approval status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":invoiceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "realm",
+                  "value": "<string>",
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceId",
+                  "description": "(Required) Unique identifier for the invoice"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "868203f9-e758-4fae-add3-71da87f51dc1",
+              "name": "Successfully retrieved invoice details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoiceId\": \"500123\",\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"status\": \"Failed\",\n  \"invoiceType\": \"Standard\",\n  \"buyer\": {\n    \"buyerId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"erpBuyerId\": \"500123\"\n  },\n  \"purchaseOrderReference\": \"example_value\",\n  \"currency\": \"YHY\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"dueDate\": \"2026-01-15\",\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"OL\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\",\n  \"approvalDate\": \"2026-01-15T10:30:00Z\",\n  \"paymentDate\": \"2026-01-15\",\n  \"paymentReference\": \"example_value\",\n  \"createdDate\": \"2026-01-15T10:30:00Z\",\n  \"lastModifiedDate\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92609cdc-f3df-4b08-a4a1-11c75fef23a7",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10628181-0c5c-46e0-867f-78e362a48341",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b603ec2-5d11-4a39-ba8f-efbbed5762a3",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0415a53d-2bfe-4634-91b3-21c3de9befc7",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before retrying",
+                  "key": "Retry-After",
+                  "value": "3168"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d15a573b-9360-4fdc-8d9d-5a259e974224",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f2a4357-6d35-4e34-ad4c-b91ad4eac359",
+          "name": "Approve an Invoice",
+          "request": {
+            "name": "Approve an Invoice",
+            "description": {
+              "content": "Approves an invoice for payment processing. The invoice must be in Pending Approval status. Triggers downstream payment workflows.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":invoiceId",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "realm",
+                  "value": "<string>",
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceId",
+                  "description": "(Required) Unique identifier for the invoice"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b12942e-40c3-420f-85bf-60e321c8f459",
+              "name": "Invoice approved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoiceId\": \"500123\",\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"status\": \"Failed\",\n  \"invoiceType\": \"Standard\",\n  \"buyer\": {\n    \"buyerId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"erpBuyerId\": \"500123\"\n  },\n  \"purchaseOrderReference\": \"example_value\",\n  \"currency\": \"YHY\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"dueDate\": \"2026-01-15\",\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"OL\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\",\n  \"approvalDate\": \"2026-01-15T10:30:00Z\",\n  \"paymentDate\": \"2026-01-15\",\n  \"paymentReference\": \"example_value\",\n  \"createdDate\": \"2026-01-15T10:30:00Z\",\n  \"lastModifiedDate\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "884703dd-c658-4640-ba41-65dd494bb2ea",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1baaa714-d305-4fd0-9f14-edbb588190fd",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdf7bd45-f294-43fa-a2c4-da368c1df0b0",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f85fc1b-f545-400f-a29a-27edf6933a13",
+              "name": "Conflict - invoice not in approvable state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90be3fc6-f26d-4dfd-bc25-e2886e980199",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before retrying",
+                  "key": "Retry-After",
+                  "value": "3168"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc5f4233-35c2-408e-a30c-f7b0ca915cbe",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf946cc7-9256-4ca4-b430-e9865592266b",
+          "name": "Reject an Invoice",
+          "request": {
+            "name": "Reject an Invoice",
+            "description": {
+              "content": "Rejects an invoice and returns it to the supplier with a reason for rejection. The supplier is notified through the Ariba Network.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":invoiceId",
+                "reject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "realm",
+                  "value": "<string>",
+                  "description": "(Required) The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceId",
+                  "description": "(Required) Unique identifier for the invoice"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91c4c57f-301a-4408-8bcd-bbb1b1339c13",
+              "name": "Invoice rejected successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoiceId\": \"500123\",\n  \"invoiceNumber\": \"example_value\",\n  \"invoiceDate\": \"2026-01-15\",\n  \"supplier\": {\n    \"supplierId\": \"AN01000000001\",\n    \"name\": \"Example Title\",\n    \"erpSupplierId\": \"500123\"\n  },\n  \"totalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"lineItems\": [],\n  \"status\": \"Failed\",\n  \"invoiceType\": \"Standard\",\n  \"buyer\": {\n    \"buyerId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"erpBuyerId\": \"500123\"\n  },\n  \"purchaseOrderReference\": \"example_value\",\n  \"currency\": \"YHY\",\n  \"subtotalAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"taxAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"shippingAmount\": {\n    \"amount\": 1250,\n    \"currencyCode\": \"USD\"\n  },\n  \"paymentTerms\": {\n    \"code\": \"NET30\",\n    \"description\": \"A sample description.\",\n    \"netDays\": 10,\n    \"discountPercent\": 42.5,\n    \"discountDays\": 10\n  },\n  \"dueDate\": \"2026-01-15\",\n  \"remitTo\": {\n    \"name\": \"Example Title\",\n    \"lines\": \"example_value\",\n    \"city\": \"example_value\",\n    \"state\": \"example_value\",\n    \"postalCode\": \"example_value\",\n    \"country\": \"OL\",\n    \"phone\": \"example_value\",\n    \"email\": \"user@example.com\"\n  },\n  \"comments\": \"example_value\",\n  \"approvalDate\": \"2026-01-15T10:30:00Z\",\n  \"paymentDate\": \"2026-01-15\",\n  \"paymentReference\": \"example_value\",\n  \"createdDate\": \"2026-01-15T10:30:00Z\",\n  \"lastModifiedDate\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47ebdcce-9f7e-410e-b92d-f2fe538da399",
+              "name": "Unauthorized - invalid or missing authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92540a86-f8ef-4fab-b7ba-5cbda2f08317",
+              "name": "Forbidden - insufficient permissions for the requested operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "921f7d23-afbe-4aa3-831b-beee5a689ff4",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6896810f-3620-4a61-9042-262bbc8c85f9",
+              "name": "Conflict - invoice not in rejectable state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d156ef65-4127-4ada-976e-9efdfb375859",
+              "name": "Rate limit exceeded. Retry after the duration specified in the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before retrying",
+                  "key": "Retry-After",
+                  "value": "3168"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1834c79b-1892-4d22-879e-aad8b0e63dbc",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "realm",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique identifier for the invoice"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"string\",\n        \"errorNumber\": \"string\",\n        \"errorModule\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://openapi.ariba.com/api/procurement/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.ariba.com/v2/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3ffd2c56-6e02-4a59-82c1-a830daf7f0fa",
+    "name": "SAP Ariba Procurement Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Enables integration with SAP Ariba procurement processes including purchase orders, invoices, requisitions, receipts, and supplier management across the SAP Business Network. This API supports the complete procure-to-pay lifecycle from requisition creation through invoice reconciliation and payment processing.\n\nContact Support:\n Name: SAP Ariba API Support\n Email: support@ariba.com",
+      "type": "text/plain"
+    }
+  }
+}

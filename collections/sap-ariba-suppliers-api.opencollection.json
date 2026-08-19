@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Ariba Procurement Invoices Suppliers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.ariba.com/v2/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Suppliers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Suppliers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/suppliers",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (default 10, max 100)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Search suppliers by name (partial match supported)"
+              },
+              {
+                "name": "qualificationStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by supplier qualification status"
+              },
+              {
+                "name": "commodityCode",
+                "value": "",
+                "type": "query",
+                "description": "Filter by UNSPSC commodity code"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Filter by supplier country (ISO 3166-1 alpha-2)"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of supplier profiles from the SAP Ariba Network. Supports filtering by supplier name, AN-ID, qualification status, commodity codes, and location."
+        },
+        {
+          "info": {
+            "name": "Get a Supplier Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.ariba.com/api/procurement/v1/suppliers/:supplierId",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The SAP Ariba realm identifier for the buyer organization. This is the unique site name assigned during provisioning."
+              },
+              {
+                "name": "supplierId",
+                "value": "",
+                "type": "path",
+                "description": "Supplier AN-ID (Ariba Network ID) or internal supplier identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves the complete profile details of a specific supplier including company information, contact details, addresses, certifications, commodity classifications, and qualification status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
