@@ -259,6 +259,10 @@ apis:
   tags:
   - Catalogs
   - Content Management
+  - Product
+  tags_raw:
+  - Catalogs
+  - Content Management
   - Products
   properties:
   - type: Documentation
@@ -358,6 +362,9 @@ apis:
     https://help.sap.com/docs/ariba-apis/operational-reporting-api-for-procurement/operational-reporting-api-for-procurement
   baseURL: https://openapi.ariba.com/api/operational-reporting-procurement
   tags:
+  - Procurement
+  - Reporting
+  tags_raw:
   - Operations
   - Procurement
   - Reporting
@@ -373,6 +380,9 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/operational-reporting-sourcing
   tags:
+  - Reporting
+  - Sourcing
+  tags_raw:
   - Operations
   - Reporting
   - Sourcing
@@ -433,6 +443,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/sourcing-project
   tags:
+  - Event
+  - Project
+  - Sourcing
+  tags_raw:
   - Events
   - Projects
   - Sourcing
@@ -447,6 +461,11 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/event-management
   tags:
+  - Auctions
+  - Event
+  - RFx
+  - Sourcing
+  tags_raw:
   - Auctions
   - Events
   - RFx
@@ -505,6 +524,10 @@ apis:
   baseURL: https://openapi.ariba.com/api/ship-notice-buyer
   tags:
   - Buyers
+  - Notification
+  - Shipping
+  tags_raw:
+  - Buyers
   - Notifications
   - Shipping
   properties:
@@ -518,6 +541,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/ship-notice-supplier
   tags:
+  - Notification
+  - Shipping
+  - Suppliers
+  tags_raw:
   - Notifications
   - Shipping
   - Suppliers
@@ -618,6 +645,10 @@ apis:
   tags:
   - Classification
   - Hierarchy
+  - Product
+  tags_raw:
+  - Classification
+  - Hierarchy
   - Products
   properties:
   - type: Documentation
@@ -630,6 +661,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/pricing
   tags:
+  - Pricing
+  - Product
+  - Sourcing
+  tags_raw:
   - Pricing
   - Products
   - Sourcing
@@ -716,6 +751,9 @@ apis:
   tags:
   - Async
   - Management
+  tags_raw:
+  - Async
+  - Management
   - Operations
   properties:
   - type: Documentation
@@ -728,6 +766,11 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/integration-event-monitoring
   tags:
+  - Event
+  - Integration
+  - Monitoring
+  - Procurement
+  tags_raw:
   - Events
   - Integration
   - Monitoring
@@ -771,6 +814,9 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/transaction-monitoring
   tags:
+  - Monitoring
+  - Transaction
+  tags_raw:
   - Monitoring
   - Operations
   - Transactions
@@ -827,6 +873,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/user-qualification
   tags:
+  - Access
+  - Qualifications
+  - User
+  tags_raw:
   - Access
   - Qualifications
   - Users
@@ -930,6 +980,10 @@ apis:
   tags:
   - Documents
   - Management
+  - Project
+  tags_raw:
+  - Documents
+  - Management
   - Projects
   properties:
   - type: Documentation
@@ -1026,6 +1080,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/master-data-job-status
   tags:
+  - Integration
+  - Job
+  - Master Data
+  tags_raw:
   - Integration
   - Jobs
   - Master Data
