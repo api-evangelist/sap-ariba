@@ -1,0 +1,74 @@
+slug: sap-ariba
+provider: SAP Ariba
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: Purchase Orders
+  spec_file: sap-ariba-purchase-orders-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.95
+  evidence: POST /orders  createPurchaseOrder  Create a Purchase Order; POST /orders/{orderId}/cancel  cancelPurchaseOrder
+  reason: Full CRUD plus cancel over purchase orders with PurchaseOrderStatus and PaymentTerms schemas
+    — PO creation, approval, execution.
+- tag: Invoices
+  spec_file: sap-ariba-invoices-api-openapi.yml
+  capability_id: BC-200.20
+  capability_id_l1: BC-200
+  capability_name: Accounts Payable Management
+  confidence: 0.88
+  evidence: 'POST /invoices/{invoiceId}/approve  approveInvoice; schemas: Invoice, SupplierReference,
+    PaymentTerms, TaxDetail'
+  reason: Supplier invoice creation, retrieval, approval/rejection within procure-to-pay — Accounts Payable
+    invoice processing.
+- tag: Purchase Order Line Items
+  spec_file: sap-ariba-purchase-order-line-items-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.88
+  evidence: GET /orders/{orderId}/lineItems  listPurchaseOrderLineItems  List Line Items for a Purchase
+    Order; schema PurchaseOrderLineItem
+  reason: Operations read the line-item detail of purchase orders in a procurement platform — purchase
+    order execution data, squarely Purchase Order Management within Procurement.
+- tag: Receipts
+  spec_file: sap-ariba-receipts-api-openapi.yml
+  capability_id: BC-500.40
+  capability_id_l1: BC-500
+  capability_name: Procure-to-Pay Operations Management
+  confidence: 0.82
+  evidence: POST /orders/{orderId}/receipts  createReceipt  Create a Receipt; description mentions "requisitions,
+    receipts"
+  reason: Goods receipt recording against purchase orders is day-to-day procure-to-pay operational execution,
+    not accounting or logistics per se.
+- tag: Requisitions
+  spec_file: sap-ariba-requisitions-api-openapi.yml
+  capability_id: BC-500.40
+  capability_id_l1: BC-500
+  capability_name: Procure-to-Pay Operations Management
+  confidence: 0.82
+  evidence: POST /requisitions  createRequisition  Create a Requisition; "complete procure-to-pay lifecycle
+    from requisition creation"
+  reason: Requisition intake and retrieval is explicitly named under Procure-to-Pay operations (requisitions,
+    receipts).
+- tag: Suppliers
+  spec_file: sap-ariba-suppliers-api-openapi.yml
+  capability_id: BC-510
+  capability_id_l1: BC-510
+  capability_name: Supplier Management
+  confidence: 0.75
+  evidence: GET /suppliers/{supplierId}  getSupplier  Get a Supplier Profile; schema SupplierQualificationStatus
+  reason: Read access to supplier profiles and qualification status is supplier management; the read-only
+    surface does not pin down a single sub-capability (onboarding vs relationship), so only L1 asserted.

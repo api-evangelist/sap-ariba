@@ -2,6 +2,18 @@ name: SAP Ariba
 description: >-
   SAP Ariba is a cloud-based procurement and supply chain collaboration platform that connects buyers and suppliers. It
   offers APIs for procurement, sourcing, contract management, supplier management, and spend analysis.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 specificationVersion: '0.23'
 accessModel:
   pricing: enterprise
@@ -1371,6 +1383,9 @@ apis:
   - type: Documentation
     url: https://developer.ariba.com/api/apis/invoices/overview
 common:
+  - type: CapabilityMap
+    url: capabilities/sap-ariba-capability-edges.yml
+    name: SAP Ariba Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/sap-ariba/overview
   - type: AgenticAccess
