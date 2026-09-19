@@ -206,6 +206,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/supplier-risk-engagements
   tags:
+  - Assessment
+  - Risk Management
+  - Suppliers
+  tags_raw:
   - Assessments
   - Risk Management
   - Suppliers
@@ -264,7 +268,7 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/catalog-content
   tags:
-  - Catalogs
+  - Catalog
   - Content Management
   - Product
   tags_raw:
@@ -282,6 +286,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/network-catalog
   tags:
+  - Catalog
+  - Networks
+  - Publishing
+  tags_raw:
   - Catalogs
   - Network
   - Publishing
@@ -296,6 +304,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/internal-catalogs
   tags:
+  - Catalog
+  - Internal
+  - Shopping
+  tags_raw:
   - Catalogs
   - Internal
   - Shopping
@@ -310,6 +322,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/public-catalogs
   tags:
+  - Catalog
+  - Marketplace
+  - Shopping
+  tags_raw:
   - Catalogs
   - Marketplace
   - Shopping
@@ -326,7 +342,7 @@ apis:
   tags:
   - Contract Lifecycle Management
   - Contracts
-  - Workspaces
+  - Workspace
   tags_raw:
   - CLM
   - Contracts
@@ -342,6 +358,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/contract-workspace-management
   tags:
+  - Contracts
+  - Management
+  - Workspace
+  tags_raw:
   - Contracts
   - Management
   - Workspaces
@@ -728,6 +748,10 @@ apis:
   tags:
   - Collaboration
   - Procurement
+  - Workspace
+  tags_raw:
+  - Collaboration
+  - Procurement
   - Workspaces
   properties:
   - type: Documentation
@@ -850,6 +874,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/catalog-connectivity
   tags:
+  - Catalog
+  - Integration
+  - Punchout
+  tags_raw:
   - Catalogs
   - Integration
   - Punchout
@@ -1101,6 +1129,10 @@ apis:
   humanURL: https://help.sap.com/docs/ariba-apis
   baseURL: https://openapi.ariba.com/api/risk-assessment-import
   tags:
+  - Assessment
+  - Import
+  - Risk Management
+  tags_raw:
   - Assessments
   - Import
   - Risk Management
